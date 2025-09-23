@@ -6,14 +6,16 @@ public class Candidato {
     private String nome;
     private String email;
     private String cpf;
+    private String senha;
 
     public Candidato() {}
 
-    public Candidato(int id, String nome, String email, String cpf) {
+    public Candidato(int id, String nome, String email, String cpf, String senha) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
+        this.senha = senha;
     }
 
     // Getters e Setters
@@ -44,5 +46,8 @@ public class Candidato {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
+    public String getSenha() { return senha; }
+    public void setSenha(String senha) { this.senha = senha; }
 
 }
