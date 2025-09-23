@@ -8,18 +8,18 @@ public class Colaborador {
     private String email;
     private String cargo;
     private String departamento;
-    private double salario_hora;
+    private double salarioHora;
 
     public Colaborador() {}
 
-    public Colaborador(int id, String nome, String cpf, String email, String cargo, String departamento, double salario_hora) {
+    public Colaborador(int id, String nome, String cpf, String email, String cargo, String departamento, double salarioHora) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.cargo = cargo;
         this.departamento = departamento;
-        this.salario_hora = salario_hora;
+        this.salarioHora = salarioHora;
     }
 
     // Getters e Setters
@@ -65,11 +65,11 @@ public class Colaborador {
         this.departamento = departamento;
     }
 
-    public double getSalario_hora() {
-        return salario_hora;
+    public double getSalarioHora() {
+        return salarioHora;
     }
-    public void setSalario_hora(double salario_hora) {
-        this.salario_hora = salario_hora;
+    public void setSalarioHora(double salarioHora) {
+        this.salarioHora = salarioHora;
     }
 
 }
