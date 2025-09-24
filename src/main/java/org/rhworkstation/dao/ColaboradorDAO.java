@@ -1,4 +1,36 @@
 package org.rhworkstation.dao;
 
+import org.rhworkstation.connection.Conexao;
+import org.rhworkstation.model.Colaborador;
+
+import java.sql.*;
+
 public class ColaboradorDAO {
+
+    public void criarColaborador(Colaborador colaborador) throws SQLException {
+        String query = "INSERT TO colaborador(nome, cpf, email, cargo, departamento, salario_hora, senha) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        try(Connection conn = Conexao.conectar();
+            PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+
+            stmt.setString(1, colaborador.getNome());
+            stmt.setString(2, colaborador.getCpf());
+            stmt.setString(3, colaborador.getEmail());
+            stmt.setString(4, colaborador.getCargo());
+            stmt.setString(5, colaborador.getDepartamento());
+            stmt.setDouble(6, colaborador.getSalario_hora());
+            stmt.setString(7, colaborador.getSenha());
+            stmt.executeUpdate();
+
+            try(ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    colaborador.setId(rs.getInt(1));
+                }
+            }
+
+        }
+    }
+
+
+
 }
