@@ -32,7 +32,7 @@ public class ColaboradorDAO {
     }
 
     public void editarColaborador(Colaborador colaborador) throws SQLException {
-        String query = "UPDATE colaboradores SET nome = ?, cpf = ?, email = ?, cargo = ?, departamento = ?, salario_hora = ?, senha = ? WHERE id = ?";
+        String query = "UPDATE colaborador SET nome = ?, cpf = ?, email = ?, cargo = ?, departamento = ?, salario_hora = ?, senha = ? WHERE id = ?";
 
         try (Connection conn = Conexao.conectar();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -46,6 +46,18 @@ public class ColaboradorDAO {
             stmt.setString(7, colaborador.getSenha());
             stmt.setInt(8, colaborador.getId());
             stmt.executeUpdate();
+        }
+    }
+
+    public void desligarColaborador(int id) throws SQLException {
+        String query = "DELETE FROM colaborador WHERE id = ?";
+
+        try (Connection conn = Conexao.conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+
         }
     }
 
