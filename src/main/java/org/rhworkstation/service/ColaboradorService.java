@@ -30,4 +30,26 @@ public class ColaboradorService {
         }
     }
 
+    public void editarColaborador() {
+        int id = input.inputID();
+        String nome = input.inputNome();
+        String cpf = input.inputCpf();
+        String email = input.inputEmail();
+        String cargo = input.inputCargo();
+        String departamento = input.inputDepartamento();
+        double salarioHora = input.inputSalarioHora();
+        String senha = input.inputSenha();
+
+        var colaborador = new Colaborador(id, nome, cpf, email, cargo, departamento, salarioHora, senha);
+        var colaboradorDAO = new ColaboradorDAO();
+
+        try {
+            colaboradorDAO.editarColaborador(colaborador);
+            System.out.println("Colaborador atualizado com sucesso!");
+        } catch (SQLException e) {
+            System.out.println("Erro ao atualizar colaborador no banco de dados!");
+            e.printStackTrace();
+        }
+    }
+
 }

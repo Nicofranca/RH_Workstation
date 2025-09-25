@@ -140,7 +140,7 @@ public class Inputs {
         return status;
     }
 
-    public int id(){
+    public int inputID(){
         System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
         System.out.println("┃ - Digite o ID                            ┃");
         System.out.print  ("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n:");
@@ -148,4 +148,5 @@ public class Inputs {
 
         return id;
     }
+
 }
