@@ -139,4 +139,13 @@ public class Inputs {
 
         return status;
     }
+
+    public int id(){
+        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("┃ - Digite o ID                            ┃");
+        System.out.print  ("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n:");
+        int id = input.nextInt();
+
+        return id;
+    }
 }
