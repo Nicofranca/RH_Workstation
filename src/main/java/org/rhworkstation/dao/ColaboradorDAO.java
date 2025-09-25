@@ -8,10 +8,10 @@ import java.sql.*;
 public class ColaboradorDAO {
 
     public void criarColaborador(Colaborador colaborador) throws SQLException {
-        String query = "INSERT TO colaborador(nome, cpf, email, cargo, departamento, salario_hora, senha) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO colaborador(nome, cpf, email, cargo, departamento, salario_hora, senha) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try(Connection conn = Conexao.conectar();
-            PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+            PreparedStatement stmt = conn.prepareStatement(query)) {
 
             stmt.setString(1, colaborador.getNome());
             stmt.setString(2, colaborador.getCpf());
@@ -21,12 +21,6 @@ public class ColaboradorDAO {
             stmt.setDouble(6, colaborador.getSalario_hora());
             stmt.setString(7, colaborador.getSenha());
             stmt.executeUpdate();
-
-            try(ResultSet rs = stmt.getGeneratedKeys()) {
-                if (rs.next()) {
-                    colaborador.setId(rs.getInt(1));
-                }
-            }
 
         }
     }

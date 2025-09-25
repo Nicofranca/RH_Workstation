@@ -13,6 +13,16 @@ public class Colaborador {
 
     public Colaborador() {}
 
+    public Colaborador(String nome, String cpf, String email, String cargo, String departamento, double salario_hora, String senha) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.cargo = cargo;
+        this.departamento = departamento;
+        this.salario_hora = salario_hora;
+        this.senha = senha;
+    }
+
     public Colaborador(int id, String nome, String cpf, String email, String cargo, String departamento, double salario_hora, String senha) {
         this.id = id;
         this.nome = nome;

@@ -14,19 +14,20 @@ public class ColaboradorService {
         String nome = input.inputNome();
         String cpf = input.inputCpf();
         String email = input.inputEmail();
+        String senha = input.inputSenha();
         String cargo = input.inputCargo();
         String departamento = input.inputDepartamento();
         double salarioHora = input.inputSalarioHora();
-        String senha = input.inputSenha();
 
-        var colaborador = new Colaborador(0, nome, cpf, email, cargo, departamento, salarioHora, senha);
+
+        var colaborador = new Colaborador(nome, cpf, email, cargo, departamento, salarioHora, senha);
         var colaboradorDAO = new ColaboradorDAO();
 
         try {
             colaboradorDAO.criarColaborador(colaborador);
             System.out.println("Colaborador inserido com sucesso!");
         } catch (SQLException e) {
-            System.out.println("Erro ao inserir colaborados no banco de dados!");
+            System.out.println("Erro ao inserir colaborador no banco de dados!");
         }
     }
 
