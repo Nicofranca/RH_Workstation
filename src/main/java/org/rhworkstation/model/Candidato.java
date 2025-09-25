@@ -8,7 +8,15 @@ public class Candidato {
     private String cpf;
     private String senha;
 
-    public Candidato() {}
+    public Candidato() {
+    }
+
+    public Candidato(String nome, String email, String cpf, String senha) {
+        this.nome = nome;
+        this.email = email;
+        this.cpf = cpf;
+        this.senha = senha;
+    }
 
     public Candidato(int id, String nome, String email, String cpf, String senha) {
         this.id = id;
