@@ -23,13 +23,12 @@ public class VagaDAO {
              ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
-                int id = rs.getInt("id");
                 String nomeVaga = rs.getString("nomeVaga");
                 String descricao = rs.getString("descricao");
                 double salarioHora = rs.getDouble("salarioHora");
                 StatusVaga status = StatusVaga.valueOf(rs.getString("status"));
 
-                Vaga vaga = new Vaga(id, nomeVaga, descricao, salarioHora, status);
+                Vaga vaga = new Vaga(nomeVaga, descricao, salarioHora, status);
                 vagasDisponiveis.add(vaga);
             }
 
