@@ -2,6 +2,10 @@ package org.rhworkstation.view;
 
 import org.rhworkstation.model.enums.StatusVaga;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Inputs {
@@ -147,6 +151,52 @@ public class Inputs {
         int id = input.nextInt();
 
         return id;
+    }
+
+    public Date inputDataInicio() {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        formato.setLenient(false);
+
+        Date dataInicio = null;
+
+        while (dataInicio == null) {
+            System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+            System.out.println("┃ - Digite a Data de Início                ┃");
+            System.out.print  ("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n:");
+            String linha = input.nextLine();
+
+            try {
+                dataInicio = formato.parse(linha);
+            } catch (ParseException e) {
+                System.out.println("Data inválida! Digite no formato dd/MM/yyyy.");
+            }
+        }
+
+        return dataInicio;
+
+    }
+
+    public Date inputDataFim() {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        formato.setLenient(false);
+
+        Date dataFim = null;
+
+        while (dataFim == null) {
+            System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+            System.out.println("┃ - Digite a Data de Fim                   ┃");
+            System.out.print  ("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n:");
+            String linha = input.nextLine();
+
+            try {
+                dataFim = formato.parse(linha);
+            } catch (ParseException e) {
+                System.out.println("Data inválida! Digite no formato dd/MM/yyyy.");
+            }
+        }
+
+        return dataFim;
+
     }
 
 }
