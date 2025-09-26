@@ -59,4 +59,15 @@ public class SolicitacaoFeriasDAO {
         }
     }
 
+    public static void deletarSolicitacao(int id) throws SQLException {
+        String query = "DELETE FROM solicitacao_ferias WHERE id = ?";
+
+        try (Connection conn = Conexao.conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }
+    }
+
 }
