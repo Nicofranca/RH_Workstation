@@ -10,6 +10,10 @@ import java.util.Scanner;
 public class Inputs {
     Scanner input = new Scanner(System.in);
 
+    public void limparScanner(){
+        input.nextLine();
+    }
+
     public String inputNome(){
         System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
         System.out.println("┃ - Digite o Nome                          ┃");
