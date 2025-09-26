@@ -44,4 +44,17 @@ public class AdminDAO {
             stmt.executeUpdate();
         }
     }
+
+    public void desligarColaborador(int id) throws SQLException {
+        String query = "DELETE FROM colaborador WHERE id = ?";
+
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+
+        }
+    }
+
 }
