@@ -5,6 +5,7 @@ import org.rhworkstation.model.Candidato;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CandidatoDAO {
@@ -22,6 +23,32 @@ public class CandidatoDAO {
 
             System.out.println("Candidato criado com sucesso!");
         }
+    }
+
+    public Candidato buscarPorCPF(Candidato candidato) throws SQLException{
+        String query = "SELECT id from candidato WHERE cpf = (?)";
+
+        Candidato candidatoEncontrado = null;
+
+        try(Connection conn = Conexao.conectar();
+        PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, candidato.getCpf());
+
+            try(ResultSet rs = stmt.executeQuery()) {
+                if(rs.next()){
+                    candidatoEncontrado = new Candidato();
+
+                    candidatoEncontrado.setId(rs.getInt("id"));
+                    candidatoEncontrado.setNome(rs.getString("nome"));
+                    candidatoEncontrado.setCpf(rs.getString("cpf"));
+                    candidatoEncontrado.setEmail(rs.getString("email"));
+                    candidatoEncontrado.setSenha(rs.getString("senha"));
+                }
+            }
+        }
+
+        return candidatoEncontrado;
     }
 }
 
