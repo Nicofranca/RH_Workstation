@@ -9,7 +9,6 @@ import java.sql.SQLException;
 public class ColaboradorService {
 
     Inputs input = new Inputs();
-
     public void desligarColaborador() {
         int id = input.inputID();
 

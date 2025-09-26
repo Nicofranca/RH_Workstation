@@ -1,7 +1,6 @@
 package org.rhworkstation.service;
 
 import org.rhworkstation.dao.AdminDAO;
-import org.rhworkstation.dao.ColaboradorDAO;
 import org.rhworkstation.model.Colaborador;
 import org.rhworkstation.view.Inputs;
 
@@ -31,7 +30,7 @@ public class AdminService {
             System.out.println("Erro ao inserir colaborador no banco de dados!");
         }
     }
-
+  
     public void editarColaborador() {
         int id = input.inputID();
         input.limparScanner();
@@ -55,5 +54,4 @@ public class AdminService {
             e.printStackTrace();
         }
     }
-
 }
