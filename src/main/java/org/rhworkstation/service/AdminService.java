@@ -1,7 +1,6 @@
 package org.rhworkstation.service;
 
 import org.rhworkstation.dao.AdminDAO;
-import org.rhworkstation.dao.ColaboradorDAO;
 import org.rhworkstation.model.Colaborador;
 import org.rhworkstation.view.Inputs;
 
@@ -45,13 +44,27 @@ public class AdminService {
         String senha = input.inputSenha();
 
         var colaborador = new Colaborador(id, nome, cpf, email, cargo, departamento, salarioHora, senha);
-        var colaboradorDAO = new ColaboradorDAO();
+        var adminDAO = new AdminDAO();
 
         try {
-            AdminDAO.editarColaborador(colaborador);
+            adminDAO.editarColaborador(colaborador);
             System.out.println("Colaborador atualizado com sucesso!");
         } catch (SQLException e) {
             System.out.println("Erro ao atualizar colaborador no banco de dados!");
+            e.printStackTrace();
+        }
+    }
+
+    public void desligarColaborador() {
+        int id = input.inputID();
+
+        var adminDAO = new AdminDAO();
+
+        try {
+            adminDAO.desligarColaborador(id);
+            System.out.println("Colaborador desligado com sucesso!");
+        } catch (SQLException e) {
+            System.out.println("Erro ao desligar colaborador no banco de dados!");
             e.printStackTrace();
         }
     }
