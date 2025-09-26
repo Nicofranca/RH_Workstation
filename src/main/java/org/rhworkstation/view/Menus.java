@@ -2,8 +2,17 @@ package org.rhworkstation.view;
 
 import static java.awt.SystemColor.menu;
 import static org.rhworkstation.utils.Utils.inputNumber;
+import org.rhworkstation.service.CandidatoSevice;
+import org.rhworkstation.service.ColaboradorService;
 
 public class Menus {
+  
+    public void mostrarMenu(){
+        var candidatoTeste = new CandidatoSevice();
+        var colaboradorTeste = new ColaboradorService();
+
+        colaboradorTeste.criarColaborador();
+    }
 
     public static int menuInicial(){
 
@@ -117,5 +126,4 @@ public class Menus {
 
         return inputNumber();
     }
-
 }
