@@ -12,6 +12,10 @@ public class SolicitacaoFerias {
 
     public SolicitacaoFerias() {}
 
+    public SolicitacaoFerias(int id) {
+        this.id = id;
+    }
+
     public SolicitacaoFerias(int id, int colaborador_id, Date data_inicio, Date data_fim, String status_solicitacao) {
         this.id = id;
         this.colaborador_id = colaborador_id;
