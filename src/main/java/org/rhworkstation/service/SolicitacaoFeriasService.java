@@ -55,4 +55,15 @@ public class SolicitacaoFeriasService {
         }
     }
 
+    public void deletarSolicitacao() {
+        int id = input.inputID();
+
+        try {
+            SolicitacaoFeriasDAO.deletarSolicitacao(id);
+            System.out.println("Solicitação de férias deletada com sucesso!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
