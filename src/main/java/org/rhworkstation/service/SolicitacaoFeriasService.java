@@ -43,4 +43,16 @@ public class SolicitacaoFeriasService {
         }
     }
 
+    public void atualizarStatusSolicitacao() {
+        int id = input.inputID();
+        String status = input.inputTexto("novo status de solicitação (ex: APROVADO, REJEITADO, PENDENTE)");
+
+        try {
+            SolicitacaoFeriasDAO.atualizarStatusSolicitacao(id, status.toUpperCase());
+            System.out.println("Status de solicitação atualizado para " + status.toUpperCase());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

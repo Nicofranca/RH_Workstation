@@ -47,4 +47,16 @@ public class SolicitacaoFeriasDAO {
         return lista;
     }
 
+    public static void atualizarStatusSolicitacao(int id, String status) throws SQLException {
+        String query = "UPDATE solicitacao_ferias SET status_solicitacao = ? WHERE id = ?";
+
+        try (Connection conn = Conexao.conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, status);
+            stmt.setInt(2, id);
+            stmt.executeUpdate();
+        }
+    }
+
 }
