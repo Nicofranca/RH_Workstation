@@ -11,7 +11,6 @@ public class Menus {
         var candidatoTeste = new CandidatoSevice();
         var colaboradorTeste = new ColaboradorService();
 
-        colaboradorTeste.criarColaborador();
     }
 
     public static int menuInicial(){
@@ -54,7 +53,7 @@ public class Menus {
         /*System.out.println("                    ┃ 5 - Minhas Candidaturas                  ┃");*/
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - sair                                 ┃");
-        System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :")
+        System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
 
         return inputNumber();
     }
