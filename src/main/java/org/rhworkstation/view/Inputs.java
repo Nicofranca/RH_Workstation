@@ -4,13 +4,12 @@ import org.rhworkstation.model.enums.StatusVaga;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Scanner;
 
 public class Inputs {
     Scanner input = new Scanner(System.in);
-
-    public void limparScanner(){}
 
     public String inputNome(){
         System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
@@ -101,7 +100,7 @@ public class Inputs {
         return formacao;
     }
 
-    public String inputTexto(String s){
+    public String inputTexto(){
         System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
         System.out.println("┃ - Digite o texto                         ┃");
         System.out.print  ("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n:");

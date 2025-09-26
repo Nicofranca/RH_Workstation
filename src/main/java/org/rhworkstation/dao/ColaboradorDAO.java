@@ -1,57 +1,32 @@
 package org.rhworkstation.dao;
 
 import org.rhworkstation.connection.Conexao;
-import org.rhworkstation.model.Colaborador;
 
 import java.sql.*;
 
 public class ColaboradorDAO {
 
-    public void criarColaborador(Colaborador colaborador) throws SQLException {
-        String query = "INSERT INTO colaborador(nome, cpf, email, cargo, departamento, salario_hora, senha) VALUES (?, ?, ?, ?, ?, ?, ?)";
-
-        try(Connection conn = Conexao.conectar();
-            PreparedStatement stmt = conn.prepareStatement(query)) {
-
-            stmt.setString(1, colaborador.getNome());
-            stmt.setString(2, colaborador.getCpf());
-            stmt.setString(3, colaborador.getEmail());
-            stmt.setString(4, colaborador.getCargo());
-            stmt.setString(5, colaborador.getDepartamento());
-            stmt.setDouble(6, colaborador.getSalario_hora());
-            stmt.setString(7, colaborador.getSenha());
-            stmt.executeUpdate();
-
-        }
-    }
-
-    public void editarColaborador(Colaborador colaborador) throws SQLException {
-        String query = "UPDATE colaborador SET nome = ?, cpf = ?, email = ?, cargo = ?, departamento = ?, salario_hora = ?, senha = ? WHERE id = ?";
+    public void atualizarSenha(int id, String novaSenha) throws SQLException {
+        String query = "UPDATE colaborador SET senha = ? WHERE id = ?";
 
         try (Connection conn = Conexao.conectar();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
-            stmt.setString(1, colaborador.getNome());
-            stmt.setString(2, colaborador.getCpf());
-            stmt.setString(3, colaborador.getEmail());
-            stmt.setString(4, colaborador.getCargo());
-            stmt.setString(5, colaborador.getDepartamento());
-            stmt.setDouble(6, colaborador.getSalario_hora());
-            stmt.setString(7, colaborador.getSenha());
-            stmt.setInt(8, colaborador.getId());
+            stmt.setString(1, novaSenha);
+            stmt.setInt(2, id);
             stmt.executeUpdate();
         }
     }
 
-    public void desligarColaborador(int id) throws SQLException {
-        String query = "DELETE FROM colaborador WHERE id = ?";
+    public void atualizarEmail(int id, String novoEmail) throws SQLException {
+        String query = "UPDATE colaborador SET email = ? WHERE id = ?";
 
         try (Connection conn = Conexao.conectar();
-            PreparedStatement stmt = conn.prepareStatement(query)) {
+             PreparedStatement stmt = conn.prepareStatement(query)) {
 
-            stmt.setInt(1, id);
+            stmt.setString(1, novoEmail);
+            stmt.setInt(2, id);
             stmt.executeUpdate();
-
         }
     }
 
