@@ -11,7 +11,6 @@ public class Menus {
         var candidatoTeste = new CandidatoSevice();
         var colaboradorTeste = new ColaboradorService();
 
-        colaboradorTeste.criarColaborador();
     }
 
     public static int menuInicial(){
