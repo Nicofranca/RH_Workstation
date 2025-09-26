@@ -8,7 +8,7 @@ import org.rhworkstation.service.CandidatoSevice;
 import org.rhworkstation.service.ColaboradorService;
 
 public class Menus {
-  
+
     public void mostrarMenu(){
         // var candidatoTeste = new CandidatoSevice();
         var colaboradorTeste = new ColaboradorService();
@@ -99,35 +99,6 @@ public class Menus {
 
     public int gerenciarColaborador(){
 
-        System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.out.println("                    ┃      RH Administração(Colaborador)       ┃");
-        System.out.println("                    ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
-        System.out.println("                    ┃                  opções                  ┃");
-        System.out.println("                    ┣------------------------------------------┫");
-        System.out.println("                    ┃ 1 - Criar Colaborador                    ┃");
-        System.out.println("                    ┃ 2 - Editar infos. Colaborador            ┃");
-        System.out.println("                    ┃ 1 - Desligar Colaborador                 ┃");
-        System.out.println("                    ┃ 2 - Olhar Solicitação de Férias          ┃");
-        System.out.println("                    ┃                                          ┃");
-        System.out.println("                    ┃ 0 - Voltar                               ┃");
-        System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
-
-        return inputNumber();
-    }
-
-    public int menuColaborador(){
-
-        System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.out.println("                    ┃            Colaborador Menu              ┃");
-        System.out.println("                    ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
-        System.out.println("                    ┃                  opções                  ┃");
-        System.out.println("                    ┣------------------------------------------┫");
-        System.out.println("                    ┃ 1 - Visualizar Folha Salarial            ┃");
-        System.out.println("                    ┃ 2 - Solicitar Férias                     ┃");
-        System.out.println("                    ┃                                          ┃");
-        System.out.println("                    ┃ 0 - sair                                 ┃");
-        System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
-
-        return inputNumber();
+        colaboradorTeste.criarColaborador();
     }
 }

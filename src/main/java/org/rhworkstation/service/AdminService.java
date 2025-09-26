@@ -30,7 +30,7 @@ public class AdminService {
             System.out.println("Erro ao inserir colaborador no banco de dados!");
         }
     }
-  
+
     public void editarColaborador() {
         int id = input.inputID();
         input.limparScanner();
