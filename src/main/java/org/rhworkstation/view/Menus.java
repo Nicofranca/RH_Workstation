@@ -6,8 +6,11 @@ import static org.rhworkstation.utils.Utils.inputNumber;
 import org.rhworkstation.service.AdminService;
 import org.rhworkstation.service.CandidatoSevice;
 import org.rhworkstation.service.ColaboradorService;
+import org.rhworkstation.service.CurriculoService;
 
 public class Menus {
+    ColaboradorService colaboradorTeste = new ColaboradorService();
+    CurriculoService curriculoService = new CurriculoService();
 
     public void mostrarMenu(){
         // var candidatoTeste = new CandidatoSevice();
@@ -19,6 +22,9 @@ public class Menus {
         // adminTeste.desligarColaborador();
         adminTeste.listarCandidatos();
 
+
+    public void mostrarMenu(){
+        curriculoService.excluirCurriculo();
     }
 
     public static int menuInicial(){
@@ -41,7 +47,7 @@ public class Menus {
         System.out.println("                    ┃ 2 - Logar                                ┃");
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - sair                                 ┃");
-        System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+        System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
 
         return inputNumber();
 
@@ -99,6 +105,5 @@ public class Menus {
 
         return inputNumber();
     }
-
 
 }

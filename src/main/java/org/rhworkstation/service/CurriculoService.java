@@ -1,5 +1,6 @@
 package org.rhworkstation.service;
 
+import org.rhworkstation.dao.CandidatoDAO;
 import org.rhworkstation.dao.CurriculoDAO;
 import org.rhworkstation.model.Curriculo;
 import org.rhworkstation.view.Inputs;
@@ -25,6 +26,32 @@ public class CurriculoService {
             curriculoDAO.criarCurriculo(curriculo);
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void excluirCurriculo(){
+        String cpf = data.inputCpf();
+
+        var curriculoDAO = new CurriculoDAO();
+        var candidatoDAO = new CandidatoDAO();
+
+        try {
+            curriculoDAO.exluirCurriculo(candidatoDAO.buscarPorCPF(cpf));
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void mostrarID(){
+        String cpf = data.inputCpf();
+
+        var curriculoDAO = new CurriculoDAO();
+        var candidatoDAO = new CandidatoDAO();
+
+        try {
+            System.out.println(candidatoDAO.buscarPorCPF(cpf));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }
