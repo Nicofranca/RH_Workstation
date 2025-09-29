@@ -22,7 +22,9 @@ public class Menus {
         // adminTeste.desligarColaborador();
         // adminTeste.listarCandidatos();
         // adminTeste.criarVaga();
-        adminTeste.excluirVaga();
+        // adminTeste.excluirVaga();
+        // adminTeste.editarVaga();
+        // adminTeste.excluirVaga();
 
         // curriculoService.excluirCurriculo();
     }

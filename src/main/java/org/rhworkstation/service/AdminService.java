@@ -123,4 +123,24 @@ public class AdminService {
         }
     }
 
+
+    public void editarVaga() {
+        int id = input.inputID();
+        input.limparScanner();
+        String nomeVaga = input.inputNomeVaga();
+        String descricao = input.inputDescricaoVaga();
+        double salarioHora = input.inputSalarioHoraVaga();
+
+        Vaga vaga = new Vaga(nomeVaga, descricao, salarioHora);
+        vaga.setId(id);
+
+        try {
+            AdminDAO.editarVaga(vaga);
+            System.out.println("Vaga atualizada com sucesso!");
+        } catch (SQLException e) {
+            System.out.println("Erro ao atualizar a vaga no banco de dados!");
+            e.printStackTrace();
+        }
+    }
+
 }
