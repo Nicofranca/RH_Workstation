@@ -108,4 +108,18 @@ public class AdminDAO {
         }
     }
 
+    public static void editarVaga(Vaga vaga) throws SQLException {
+        String query = "UPDATE vagas SET nome_vaga = ?, descricao = ?, salario_hora = ? WHERE id = ?";
+
+        try (Connection conn = Conexao.conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, vaga.getNomeVaga());
+            stmt.setString(2, vaga.getDescricao());
+            stmt.setDouble(3, vaga.getSalarioHora());
+            stmt.setInt(4, vaga.getId());
+            stmt.executeUpdate();
+        }
+    }
+
 }
