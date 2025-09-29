@@ -111,4 +111,16 @@ public class AdminService {
         }
     }
 
+    public void excluirVaga() {
+        int id = input.inputID();
+
+        try {
+            AdminDAO.excluirVaga(id);
+            System.out.println("Vaga excluída com sucesso!");
+        } catch (SQLException e) {
+            System.out.println("Erro ao excluir vaga no banco de dados!");
+            e.printStackTrace();
+        }
+    }
+
 }
