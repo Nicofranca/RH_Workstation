@@ -12,6 +12,16 @@ public class Menus {
     ColaboradorService colaboradorTeste = new ColaboradorService();
     CurriculoService curriculoService = new CurriculoService();
 
+    public void mostrarMenu(){
+        // var candidatoTeste = new CandidatoSevice();
+        // var colaboradorTeste = new ColaboradorService();
+        var adminTeste = new AdminService();
+
+        // adminTeste.criarColaborador();
+        // adminTeste.editarColaborador();
+        // adminTeste.desligarColaborador();
+        adminTeste.listarCandidatos();
+
 
     public void mostrarMenu(){
         curriculoService.excluirCurriculo();
@@ -95,4 +105,5 @@ public class Menus {
 
         return inputNumber();
     }
+
 }

@@ -1,10 +1,12 @@
 package org.rhworkstation.service;
 
 import org.rhworkstation.dao.AdminDAO;
+import org.rhworkstation.model.Candidato;
 import org.rhworkstation.model.Colaborador;
 import org.rhworkstation.view.Inputs;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class AdminService {
 
@@ -65,6 +67,29 @@ public class AdminService {
             System.out.println("Colaborador desligado com sucesso!");
         } catch (SQLException e) {
             System.out.println("Erro ao desligar colaborador no banco de dados!");
+            e.printStackTrace();
+        }
+    }
+
+    public void listarCandidatos() {
+        try {
+            List<Candidato> candidatos = AdminDAO.listarCandidatos();
+
+            if (candidatos.isEmpty()) {
+                System.out.println("Não há candidatos cadastrados.");
+                return;
+            }
+
+            System.out.println("=== Lista de Candidatos ===");
+            for (Candidato candidato : candidatos) {
+                System.out.println("ID: " + candidato.getId());
+                System.out.println("Nome: " + candidato.getNome());
+                System.out.println("Cpf: " + candidato.getCpf());
+                System.out.println("Email: " + candidato.getEmail());
+                System.out.println("---------------------------");
+            }
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
