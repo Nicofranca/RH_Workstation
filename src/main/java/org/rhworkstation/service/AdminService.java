@@ -3,6 +3,7 @@ package org.rhworkstation.service;
 import org.rhworkstation.dao.AdminDAO;
 import org.rhworkstation.model.Candidato;
 import org.rhworkstation.model.Colaborador;
+import org.rhworkstation.model.Vaga;
 import org.rhworkstation.view.Inputs;
 
 import java.sql.SQLException;
@@ -90,6 +91,22 @@ public class AdminService {
             }
 
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void criarVaga() {
+        String nomeVaga = input.inputNomeVaga();
+        String descricao = input.inputDescricaoVaga();
+        double salarioHora = input.inputSalarioHoraVaga();
+
+        Vaga vaga = new Vaga(nomeVaga, descricao, salarioHora);
+
+        try {
+            AdminDAO.criarVaga(vaga);
+            System.out.println("Vaga criada com sucesso!");
+        } catch (SQLException e) {
+            System.out.println("Erro ao criar vaga no banco de dados!");
             e.printStackTrace();
         }
     }
