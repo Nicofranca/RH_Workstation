@@ -123,6 +123,7 @@ public class AdminService {
         }
     }
 
+
     public void editarVaga() {
         int id = input.inputID();
         input.limparScanner();
