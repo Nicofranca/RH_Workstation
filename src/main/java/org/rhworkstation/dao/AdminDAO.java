@@ -97,4 +97,15 @@ public class AdminDAO {
         }
     }
 
+    public static void excluirVaga(int id) throws SQLException {
+        String query = "DELETE FROM vagas WHERE id = ?";
+
+        try (Connection conn = Conexao.conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }
+    }
+
 }

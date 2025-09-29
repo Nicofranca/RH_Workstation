@@ -20,9 +20,11 @@ public class Menus {
         // adminTeste.criarColaborador();
         // adminTeste.editarColaborador();
         // adminTeste.desligarColaborador();
-        adminTeste.listarCandidatos();
+        // adminTeste.listarCandidatos();
+        // adminTeste.criarVaga();
+        adminTeste.excluirVaga();
 
-        curriculoService.excluirCurriculo();
+        // curriculoService.excluirCurriculo();
     }
 
     public static int menuInicial(){
