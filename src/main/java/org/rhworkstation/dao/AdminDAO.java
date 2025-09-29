@@ -1,11 +1,15 @@
 package org.rhworkstation.dao;
 
 import org.rhworkstation.connection.Conexao;
+import org.rhworkstation.model.Candidato;
 import org.rhworkstation.model.Colaborador;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdminDAO {
 
@@ -55,6 +59,28 @@ public class AdminDAO {
             stmt.executeUpdate();
 
         }
+    }
+
+    public static List<Candidato> listarCandidatos() throws SQLException {
+        List<Candidato> candidatos = new ArrayList<>();
+
+        String query = "SELECT id, nome, cpf, email FROM candidato";
+
+        try (Connection conn = Conexao.conectar();
+            PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Candidato candidato = new Candidato();
+                candidato.setId(rs.getInt("id"));
+                candidato.setNome(rs.getString("nome"));
+                candidato.setCpf(rs.getString("cpf"));
+                candidato.setEmail(rs.getString("email"));
+                candidatos.add(candidato);
+            }
+        }
+
+        return candidatos;
     }
 
 }

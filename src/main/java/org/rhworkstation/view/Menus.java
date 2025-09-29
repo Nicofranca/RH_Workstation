@@ -11,11 +11,14 @@ public class Menus {
 
     public void mostrarMenu(){
         // var candidatoTeste = new CandidatoSevice();
-        var colaboradorTeste = new ColaboradorService();
-        // var adminTeste = new AdminService();
-        //adminTeste.editarColaborador();
+        // var colaboradorTeste = new ColaboradorService();
+        var adminTeste = new AdminService();
 
-        colaboradorTeste.atualizarEmail();
+        // adminTeste.criarColaborador();
+        // adminTeste.editarColaborador();
+        // adminTeste.desligarColaborador();
+        adminTeste.listarCandidatos();
+
     }
 
     public static int menuInicial(){
@@ -97,8 +100,5 @@ public class Menus {
         return inputNumber();
     }
 
-    public int gerenciarColaborador(){
 
-        colaboradorTeste.criarColaborador();
-    }
 }
