@@ -45,7 +45,8 @@ public class SolicitacaoFeriasService {
 
     public void atualizarStatusSolicitacao() {
         int id = input.inputID();
-        String status = input.inputTexto("novo status de solicitação (ex: APROVADO, REJEITADO, PENDENTE)");
+        System.out.println("\"novo status de solicitação (ex: APROVADO, REJEITADO, PENDENTE)\"");
+        String status = input.inputTexto();
 
         try {
             SolicitacaoFeriasDAO.atualizarStatusSolicitacao(id, status.toUpperCase());

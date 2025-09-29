@@ -24,4 +24,17 @@ public class CurriculoDAO {
             System.out.println("Curriculo Criado!");
         }
     }
+
+    public void exluirCurriculo(int id) throws SQLException{
+        String query = "DELETE FROM curriculo WHERE id_candidato = ?";
+
+        try(Connection conn = Conexao.conectar();
+        PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, id);
+
+            stmt.executeUpdate();
+
+            System.out.println("Curriculo excluido com sucesso!");
+        }
+    }
 }
