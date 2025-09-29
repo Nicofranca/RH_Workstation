@@ -22,8 +22,6 @@ public class Menus {
         // adminTeste.desligarColaborador();
         adminTeste.listarCandidatos();
 
-
-    public void mostrarMenu(){
         curriculoService.excluirCurriculo();
     }
 
