@@ -2,11 +2,14 @@ package org.rhworkstation.dao;
 
 import org.rhworkstation.connection.Conexao;
 import org.rhworkstation.model.Candidato;
+import org.rhworkstation.model.Vaga;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class  CandidatoDAO {
     public void criarCandidato(Candidato candidato) throws SQLException {
@@ -46,7 +49,29 @@ public class  CandidatoDAO {
 
         return candidatoEncontrado.getId();
     }
-}
 
+    public static List<Vaga> listarVagas() throws SQLException {
+        List<Vaga> vagas = new ArrayList<>();
+
+        String query = "SELECT id, nome_vaga, descricao, salario_hora FROM vagas";
+
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Vaga vaga = new Vaga();
+                vaga.setId(rs.getInt("id"));
+                vaga.setNomeVaga(rs.getString("nome_vaga"));
+                vaga.setDescricao(rs.getString("descricao"));
+                vaga.setSalarioHora(rs.getDouble("salario_hora"));
+                vagas.add(vaga);
+            }
+        }
+
+        return vagas;
+    }
+
+}
 
 //Olhar Minhas vagas

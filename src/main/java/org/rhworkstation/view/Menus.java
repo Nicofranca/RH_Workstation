@@ -13,9 +13,11 @@ public class Menus {
     CurriculoService curriculoService = new CurriculoService();
 
     public void mostrarMenu(){
-        // var candidatoTeste = new CandidatoSevice();
+        var candidatoTeste = new CandidatoSevice();
         // var colaboradorTeste = new ColaboradorService();
-        var adminTeste = new AdminService();
+        // var adminTeste = new AdminService();
+
+        candidatoTeste.listarVagas();
 
         // adminTeste.criarColaborador();
         // adminTeste.editarColaborador();
