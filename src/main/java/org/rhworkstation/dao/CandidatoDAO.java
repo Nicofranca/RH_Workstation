@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class  CandidatoDAO {
+public class CandidatoDAO {
     public void criarCandidato(Candidato candidato) throws SQLException {
         String query = "INSERT INTO candidato (nome, cpf, email, senha) VALUES (?, ?, ?, ?)";
 

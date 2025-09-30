@@ -54,4 +54,28 @@ public class CurriculoService {
             throw new RuntimeException(e);
         }
     }
+
+    public void editarCurriculo(){
+        String cpf = data.inputCpf();
+        int idade = data.inputIdade();
+
+        data.limparScanner();
+
+        String sexo = data.inputSexo();
+        String formacao = data.inputFormacao();
+        String texto = data.inputTexto();
+
+        var curriculo = new Curriculo(idade, sexo , formacao, texto);
+        var curriculoDAO = new CurriculoDAO();
+        var candidatoDAO = new CandidatoDAO();
+
+
+        try {
+            int valorID = candidatoDAO.buscarPorCPF(cpf);
+
+            curriculoDAO.editarCurriculo(curriculo, valorID);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
