@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class  CandidatoDAO {
+public class CandidatoDAO {
     public void criarCandidato(Candidato candidato) throws SQLException {
         String query = "INSERT INTO candidato (nome, cpf, email, senha) VALUES (?, ?, ?, ?)";
 
