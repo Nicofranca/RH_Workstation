@@ -37,4 +37,8 @@ public class ColaboradorDAO {
         }
     }
 
+    public void gerarDadosParaFolhaSalarial() throws SQLException {
+
+    }
+
 }

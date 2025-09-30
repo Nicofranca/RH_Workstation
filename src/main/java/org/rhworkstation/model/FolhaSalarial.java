@@ -1,5 +1,7 @@
 package org.rhworkstation.model;
 
+import java.time.LocalDate;
+
 public class FolhaSalarial {
 
     private int id;
@@ -7,20 +9,25 @@ public class FolhaSalarial {
     private double salario_bruto;
     private double inss;
     private double salario_liquido;
+    private LocalDate dataFolhaSalarial;
 
-    public FolhaSalarial(int id, String cpf_colaborador, double salario_bruto, double inss, double salario_liquido) {
+    public FolhaSalarial(int id, String cpf_colaborador, double salario_bruto, double inss, double salario_liquido,LocalDate dataFolhaSalarial) {
         this.id = id;
         this.cpf_colaborador = cpf_colaborador;
         this.salario_bruto = salario_bruto;
         this.inss = inss;
         this.salario_liquido = salario_liquido;
+        this.dataFolhaSalarial = LocalDate.now();
+        //isso vai definir a data automaticamente quando for liberado
     }
 
-    public FolhaSalarial(String cpf_colaborador, double salario_bruto, double inss, double salario_liquido) {
+    public FolhaSalarial(String cpf_colaborador, double salario_bruto, double inss, double salario_liquido,LocalDate dataFolhaSalarial) {
         this.cpf_colaborador = cpf_colaborador;
         this.salario_bruto = salario_bruto;
         this.inss = inss;
         this.salario_liquido = salario_liquido;
+        this.dataFolhaSalarial = LocalDate.now();
+        //isso vai definir a data automaticamente quando for liberado
     }
 
     public int getId() {
@@ -61,5 +68,13 @@ public class FolhaSalarial {
 
     public void setSalario_liquido(double salario_liquido) {
         this.salario_liquido = salario_liquido;
+    }
+
+    public LocalDate getDataFolhaSalarial() {
+        return dataFolhaSalarial;
+    }
+
+    public void setDataFolhaSalarial(LocalDate dataFolhaSalarial) {
+        this.dataFolhaSalarial = dataFolhaSalarial;
     }
 }
