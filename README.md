@@ -32,7 +32,7 @@
 <h4>- exluirCurriculo</h4>
 <h4>- editarCurriculo</h4>
 
-<h3><br>Curriculo</h3>
+<h3><br>Férias</h3>
 <h4>- criarSolicitacao</h4>
 <h4>- listarSolicitacoes</h4>
 <h4>- atualizarStatusSolicitacao</h4>
