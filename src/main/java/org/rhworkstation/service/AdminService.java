@@ -18,9 +18,10 @@ public class AdminService {
         String cargo = input.inputCargo();
         String departamento = input.inputDepartamento();
         double salarioHora = input.inputSalarioHora();
+        int horaDeTrabalho = input.inputHorasDeTrabalho();
 
 
-        var colaborador = new Colaborador(nome, cpf, email, cargo, departamento, salarioHora, senha);
+        var colaborador = new Colaborador(nome, cpf, email, cargo, departamento, salarioHora, senha, horaDeTrabalho);
         var adminDAO = new AdminDAO();
 
         try {
