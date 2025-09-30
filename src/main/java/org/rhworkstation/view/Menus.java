@@ -3,21 +3,19 @@ package org.rhworkstation.view;
 import static java.awt.SystemColor.menu;
 import static org.rhworkstation.utils.Utils.inputNumber;
 
-import org.rhworkstation.service.AdminService;
-import org.rhworkstation.service.CandidatoSevice;
-import org.rhworkstation.service.ColaboradorService;
-import org.rhworkstation.service.CurriculoService;
+import org.rhworkstation.service.*;
 
 public class Menus {
     ColaboradorService colaboradorTeste = new ColaboradorService();
     CurriculoService curriculoService = new CurriculoService();
 
     public void mostrarMenu(){
-        var candidatoTeste = new CandidatoSevice();
+        // var candidatoTeste = new CandidatoSevice();
         // var colaboradorTeste = new ColaboradorService();
         // var adminTeste = new AdminService();
+        var vagaFiltroTeste = new VagaFiltroService();
 
-        candidatoTeste.listarVagas();
+        // candidatoTeste.listarVagas();
 
         // adminTeste.criarColaborador();
         // adminTeste.editarColaborador();
@@ -29,6 +27,8 @@ public class Menus {
         // adminTeste.excluirVaga();
 
         // curriculoService.excluirCurriculo();
+
+        vagaFiltroTeste.listarVagasPorFaixaSalarial();
     }
 
     public static int menuInicial(){

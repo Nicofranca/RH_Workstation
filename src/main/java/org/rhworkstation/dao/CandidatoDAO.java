@@ -73,5 +73,3 @@ public class  CandidatoDAO {
     }
 
 }
-
-//Olhar Minhas vagas
