@@ -1,12 +1,15 @@
 package org.rhworkstation.view;
 
 import org.rhworkstation.model.enums.StatusVaga;
+import org.rhworkstation.utils.Utils.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Scanner;
+
+import static org.rhworkstation.utils.Utils.inputNumber;
 
 public class Inputs {
     Scanner input = new Scanner(System.in);
@@ -22,6 +25,13 @@ public class Inputs {
         String nome = input.nextLine();
 
         return nome;
+    }
+
+    public int inputHorasDeTrabalho(){
+        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("┃ - Digite as Horas de Trabalho            ┃");
+        System.out.print  ("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n:");
+        return inputNumber();
     }
 
     public String inputCpf(){

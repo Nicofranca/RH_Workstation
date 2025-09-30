@@ -15,7 +15,7 @@ import java.util.List;
 public class AdminDAO {
 
     public void criarColaborador(Colaborador colaborador) throws SQLException {
-        String query = "INSERT INTO colaborador(nome, cpf, email, cargo, departamento, salario_hora, senha) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO colaborador(nome, cpf, email, cargo, departamento, salario_hora, senha,horas_de_trabalho) VALUES (?, ?, ?, ?, ?, ?, ?,?)";
 
         try(Connection conn = Conexao.conectar();
             PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -27,6 +27,7 @@ public class AdminDAO {
             stmt.setString(5, colaborador.getDepartamento());
             stmt.setDouble(6, colaborador.getSalario_hora());
             stmt.setString(7, colaborador.getSenha());
+            stmt.setInt(8,colaborador.getHorasDeTrabalho());
             stmt.executeUpdate();
 
         }
