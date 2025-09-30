@@ -12,7 +12,6 @@ public class Menus {
     ColaboradorService colaboradorTeste = new ColaboradorService();
     CurriculoService curriculoService = new CurriculoService();
 
-
     public void mostrarMenu(){
         // var candidatoTeste = new CandidatoSevice();
         // var colaboradorTeste = new ColaboradorService();
@@ -21,9 +20,13 @@ public class Menus {
         // adminTeste.criarColaborador();
         // adminTeste.editarColaborador();
         // adminTeste.desligarColaborador();
-        //adminTeste.listarCandidatos();
+        // adminTeste.listarCandidatos();
+        // adminTeste.criarVaga();
+        // adminTeste.excluirVaga();
+        // adminTeste.editarVaga();
+        // adminTeste.excluirVaga();
 
-        curriculoService.editarCurriculo();
+        // curriculoService.excluirCurriculo();
     }
 
     public static int menuInicial(){

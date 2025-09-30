@@ -3,6 +3,7 @@ package org.rhworkstation.service;
 import org.rhworkstation.dao.AdminDAO;
 import org.rhworkstation.model.Candidato;
 import org.rhworkstation.model.Colaborador;
+import org.rhworkstation.model.Vaga;
 import org.rhworkstation.view.Inputs;
 
 import java.sql.SQLException;
@@ -90,6 +91,54 @@ public class AdminService {
             }
 
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void criarVaga() {
+        String nomeVaga = input.inputNomeVaga();
+        String descricao = input.inputDescricaoVaga();
+        double salarioHora = input.inputSalarioHoraVaga();
+
+        Vaga vaga = new Vaga(nomeVaga, descricao, salarioHora);
+
+        try {
+            AdminDAO.criarVaga(vaga);
+            System.out.println("Vaga criada com sucesso!");
+        } catch (SQLException e) {
+            System.out.println("Erro ao criar vaga no banco de dados!");
+            e.printStackTrace();
+        }
+    }
+
+    public void excluirVaga() {
+        int id = input.inputID();
+
+        try {
+            AdminDAO.excluirVaga(id);
+            System.out.println("Vaga excluída com sucesso!");
+        } catch (SQLException e) {
+            System.out.println("Erro ao excluir vaga no banco de dados!");
+            e.printStackTrace();
+        }
+    }
+
+
+    public void editarVaga() {
+        int id = input.inputID();
+        input.limparScanner();
+        String nomeVaga = input.inputNomeVaga();
+        String descricao = input.inputDescricaoVaga();
+        double salarioHora = input.inputSalarioHoraVaga();
+
+        Vaga vaga = new Vaga(nomeVaga, descricao, salarioHora);
+        vaga.setId(id);
+
+        try {
+            AdminDAO.editarVaga(vaga);
+            System.out.println("Vaga atualizada com sucesso!");
+        } catch (SQLException e) {
+            System.out.println("Erro ao atualizar a vaga no banco de dados!");
             e.printStackTrace();
         }
     }

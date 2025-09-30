@@ -3,6 +3,7 @@ package org.rhworkstation.dao;
 import org.rhworkstation.connection.Conexao;
 import org.rhworkstation.model.Candidato;
 import org.rhworkstation.model.Colaborador;
+import org.rhworkstation.model.Vaga;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -81,6 +82,44 @@ public class AdminDAO {
         }
 
         return candidatos;
+    }
+
+    public static void criarVaga(Vaga vaga) throws SQLException {
+        String query = "INSERT INTO vagas(nome_vaga, descricao, salario_hora) VALUES (?, ?, ?)";
+
+        try (Connection conn = Conexao.conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, vaga.getNomeVaga());
+            stmt.setString(2, vaga.getDescricao());
+            stmt.setDouble(3, vaga.getSalarioHora());
+            stmt.executeUpdate();
+        }
+    }
+
+    public static void excluirVaga(int id) throws SQLException {
+        String query = "DELETE FROM vagas WHERE id = ?";
+
+        try (Connection conn = Conexao.conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }
+    }
+
+    public static void editarVaga(Vaga vaga) throws SQLException {
+        String query = "UPDATE vagas SET nome_vaga = ?, descricao = ?, salario_hora = ? WHERE id = ?";
+
+        try (Connection conn = Conexao.conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, vaga.getNomeVaga());
+            stmt.setString(2, vaga.getDescricao());
+            stmt.setDouble(3, vaga.getSalarioHora());
+            stmt.setInt(4, vaga.getId());
+            stmt.executeUpdate();
+        }
     }
 
 }
