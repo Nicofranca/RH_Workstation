@@ -9,6 +9,8 @@ public class Vaga {
     private String descricao;
     private double salarioHora;
 
+    public Vaga() {}
+
     public Vaga(int id, String nomeVaga, String descricao, double salarioHora) {
         this.id = id;
         this.nomeVaga = nomeVaga;
