@@ -8,27 +8,27 @@ public class Vaga {
     private String nomeVaga;
     private String descricao;
     private double salarioHora;
-    private StatusVaga status;
 
-    public Vaga(int id, String nomeVaga, String descricao, double salarioHora, StatusVaga status) {
+    public Vaga() {}
+
+    public Vaga(int id, String nomeVaga, String descricao, double salarioHora) {
         this.id = id;
         this.nomeVaga = nomeVaga;
         this.descricao = descricao;
         this.salarioHora = salarioHora;
-        this.status = status;
     }
 
-    public Vaga(String nomeVaga, String descricao, double salarioHora, StatusVaga status) {
+    public Vaga(String nomeVaga, String descricao, double salarioHora) {
         this.nomeVaga = nomeVaga;
         this.descricao = descricao;
         this.salarioHora = salarioHora;
-        this.status = status;
     }
 
+
+    // Getters e Setters
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -36,7 +36,6 @@ public class Vaga {
     public String getNomeVaga() {
         return  nomeVaga;
     }
-
     public void setNomeVaga(String nomeVaga){
         this.nomeVaga = nomeVaga;
     }
@@ -44,7 +43,6 @@ public class Vaga {
     public String getDescricao(){
         return descricao;
     }
-
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
@@ -52,23 +50,13 @@ public class Vaga {
     public double getSalarioHora() {
         return salarioHora;
     }
-
     public void setSalarioHora(double salarioHora) {
         this.salarioHora = salarioHora;
     }
 
-    public StatusVaga getStatus() {
-        return status;
-    }
-
-    public void setStatus(StatusVaga status) {
-        this.status = status;
-    }
-
     @Override
     public String toString() {
-        return "Vaga [id=" + id + ", nomeVaga=" + nomeVaga + ", descricao=" + descricao + ", salarioHora=" + salarioHora + ", status=" + status + "]";
+        return "Vaga [id=" + id + ", nomeVaga=" + nomeVaga + ", descricao=" + descricao + ", salarioHora=" + salarioHora + "]";
     }
 
 }
-

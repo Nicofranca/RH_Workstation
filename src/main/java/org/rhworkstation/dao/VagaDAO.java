@@ -28,7 +28,7 @@ public class VagaDAO {
                 double salarioHora = rs.getDouble("salarioHora");
                 StatusVaga status = StatusVaga.valueOf(rs.getString("status"));
 
-                Vaga vaga = new Vaga(nomeVaga, descricao, salarioHora, status);
+                Vaga vaga = new Vaga(nomeVaga, descricao, salarioHora);
                 vagasDisponiveis.add(vaga);
             }
 
