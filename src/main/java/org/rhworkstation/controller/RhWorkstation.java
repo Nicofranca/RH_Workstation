@@ -1,13 +1,31 @@
 package org.rhworkstation.controller;
 
+import org.rhworkstation.service.CandidatoSevice;
+import org.rhworkstation.service.LoginService;
+import org.rhworkstation.view.Inputs;
 import org.rhworkstation.view.Menus;
+
+import java.awt.*;
 
 public class RhWorkstation {
 
-    public void Application(){
-        var menu = new Menus();
+    Menus menu = new Menus();
+    Inputs data = new Inputs();
+    CandidatoSevice candidatoSevice = new CandidatoSevice();
+    LoginService loginService = new LoginService();
 
-        menu.mostrarMenu();
+    public void Application(){
+
+        int inputUsuario = menu.menuInicial();
+
+        do{
+            switch (inputUsuario){
+                case 1 -> candidatoSevice.criarUsuario();
+                case 2 -> loginService.login();
+            }
+        } while (inputUsuario != 0);
+
+
 
     }
 }
