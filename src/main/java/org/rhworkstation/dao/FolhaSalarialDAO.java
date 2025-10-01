@@ -12,7 +12,9 @@ public class FolhaSalarialDAO {
 
     public void CriarFolhaSalarial(FolhaSalarial folha) throws SQLException {
 
+
         String query = "INSERT INTO FolhaSalarial (id,cpf_colaborador,salario_bruto,inss,salario_liquido,data_folha_salarial) VALUES (?,?,?,?,?,?) ";
+
 
         try(Connection conn = Conexao.conectar();
             PreparedStatement stmt = conn.prepareStatement(query)){

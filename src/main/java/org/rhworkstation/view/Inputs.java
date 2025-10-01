@@ -10,8 +10,13 @@ import java.util.Scanner;
 
 import static org.rhworkstation.utils.Utils.inputNumber;
 
+
 public class  Inputs {
     Scanner input = new Scanner(System.in);
+
+    public void limparScanner(){
+        input.nextLine();
+    }
 
     public String inputNome(){
         System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
@@ -109,7 +114,7 @@ public class  Inputs {
         return formacao;
     }
 
-    public String inputTexto(String s){
+    public String inputTexto(){
         System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
         System.out.println("┃ - Digite o texto                         ┃");
         System.out.print  ("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n:");
@@ -205,7 +210,24 @@ public class  Inputs {
         }
 
         return dataFim;
+    }
 
+    public double inputSalarioHoraMinimo(){
+        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("┃ - Digite o Valor da Hora Mínimo          ┃");
+        System.out.print  ("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n:");
+        double salarioMin = input.nextDouble();
+
+        return salarioMin;
+    }
+
+    public double inputSalarioHoraMaximo(){
+        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("┃ - Digite o Valor da Hora Máximo          ┃");
+        System.out.print  ("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n:");
+        double salarioMax = input.nextDouble();
+
+        return salarioMax;
     }
 
 }

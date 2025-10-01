@@ -1,6 +1,8 @@
 package org.rhworkstation.model;
 
+
 public class RegistroFalta{
+
 
     private String cpfColaborador;
     private double horasFaltas;

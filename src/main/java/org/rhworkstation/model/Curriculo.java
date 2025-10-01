@@ -10,6 +10,14 @@ public class Curriculo {
     private Candidato id_candidato;
 
     public Curriculo() {}
+
+    public Curriculo(int idade, String sexo, String formacao, String texto) {
+        this.idade = idade;
+        this.sexo = sexo;
+        this.formacao = formacao;
+        this.texto = texto;
+    }
+
     public Curriculo(int id, int idade, String sexo, String formacao, String texto, Candidato id_candidato) {
         this.id = id;
         this.idade = idade;

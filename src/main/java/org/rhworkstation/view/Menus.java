@@ -2,18 +2,43 @@ package org.rhworkstation.view;
 
 import static java.awt.SystemColor.menu;
 import static org.rhworkstation.utils.Utils.inputNumber;
-import org.rhworkstation.service.CandidatoSevice;
-import org.rhworkstation.service.ColaboradorService;
+
+
+import org.rhworkstation.service.*;
+
+import java.sql.SQLException;
 
 public class Menus {
-  
-    public void mostrarMenu(){
-        var candidatoTeste = new CandidatoSevice();
-        var colaboradorTeste = new ColaboradorService();
+    ColaboradorService colaboradorTeste = new ColaboradorService();
+    CurriculoService curriculoService = new CurriculoService();
 
+    public void mostrarMenu() throws SQLException {
+
+        var candidatoTeste = new CandidatoSevice();
+        // var colaboradorTeste = new ColaboradorService();
+        // var adminTeste = new AdminService();
+        var vagaFiltroTeste = new VagaFiltroService();
+
+        // candidatoTeste.listarVagas();
+
+        // adminTeste.criarColaborador();
+        // adminTeste.editarColaborador();
+        // adminTeste.desligarColaborador();
+        // adminTeste.listarCandidatos();
+        // adminTeste.criarVaga();
+        // adminTeste.excluirVaga();
+        // adminTeste.editarVaga();
+        // adminTeste.excluirVaga();
+
+        // curriculoService.excluirCurriculo();
+
+        // vagaFiltroTeste.listarVagasPorCargo();
+        vagaFiltroTeste.listarVagasPorFaixaSalarial();
     }
 
+
     public static int menuInicial(){
+
 
         System.out.println("( ___ )-----------------------------------------------------------------------( ___ )\n" +
                 " |   |  ____  _   _  __        __         _        _        _   _              |   | \n" +
@@ -34,6 +59,7 @@ public class Menus {
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - sair                                 ┃");
         System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+
 
         return inputNumber();
 
@@ -69,7 +95,8 @@ public class Menus {
         System.out.println("                    ┃ 2 - Gerenciar Colaborador                ┃");
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - sair                                 ┃");
-        System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+        System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+
 
         return inputNumber();
     }
@@ -87,10 +114,12 @@ public class Menus {
         System.out.println("                    ┃ 2 - Olhar Candidatos                     ┃");
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - Voltar                               ┃");
-        System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+        System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+
 
         return inputNumber();
     }
+
 
     public int gerenciarColaborador(){
 
@@ -109,6 +138,7 @@ public class Menus {
 
         return inputNumber();
     }
+
 
     public int menuColaborador(){
 
@@ -132,3 +162,7 @@ public class Menus {
         obj.menuInicial();
     }
 }
+
+
+
+
