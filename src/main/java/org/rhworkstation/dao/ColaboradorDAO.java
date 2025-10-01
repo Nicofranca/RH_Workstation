@@ -39,6 +39,20 @@ public class ColaboradorDAO {
 
     public void gerarDadosParaFolhaSalarial() throws SQLException {
 
+        String query = "SELECT" +
+                "c.cpf," +
+                "c.salario_hora," +
+                "c.horas_de_trabalho," +
+                "IFNULL(SUM(f.horas_faltas), 0) AS horas_faltas" +
+                "FROM colaborador c" +
+                "LEFT JOIN faltas_trabalho f" +
+                "ON c.cpf = f.cpf_colaborador" +
+                "GROUP BY c.cpf, c.salario_hora, c.horas_de_trabalho;";
+        try (Connection conn = Conexao.conectar();
+        PreparedStatement stmt =  conn.prepareStatement(query)){
+
+
+        }
     }
 
 }
