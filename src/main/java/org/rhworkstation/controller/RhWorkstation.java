@@ -7,6 +7,8 @@ import org.rhworkstation.view.Menus;
 
 import java.awt.*;
 
+import java.sql.SQLException;
+
 public class RhWorkstation {
 
     Menus menu = new Menus();
