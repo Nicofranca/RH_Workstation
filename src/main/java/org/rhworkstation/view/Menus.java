@@ -5,11 +5,13 @@ import static org.rhworkstation.utils.Utils.inputNumber;
 
 import org.rhworkstation.service.*;
 
+import java.sql.SQLException;
+
 public class Menus {
     ColaboradorService colaboradorTeste = new ColaboradorService();
     CurriculoService curriculoService = new CurriculoService();
 
-    public void mostrarMenu(){
+    public void mostrarMenu() throws SQLException {
         var candidatoTeste = new CandidatoSevice();
         // var colaboradorTeste = new ColaboradorService();
         // var adminTeste = new AdminService();
@@ -28,7 +30,7 @@ public class Menus {
 
         // curriculoService.excluirCurriculo();
 
-        vagaFiltroTeste.listarVagasPorFaixaSalarial();
+        vagaFiltroTeste.listarVagasPorCargo();
     }
 
     public static int menuInicial(){

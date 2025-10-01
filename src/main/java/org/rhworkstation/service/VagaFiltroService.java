@@ -5,6 +5,7 @@ import org.rhworkstation.model.Vaga;
 import org.rhworkstation.view.Inputs;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class VagaFiltroService {
@@ -45,6 +46,34 @@ public class VagaFiltroService {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void listarVagasPorCargo() {
+        System.out.println("=== Filtro de Vagas por Cargo ===");
+
+        String cargo = input.inputCargo();
+
+        List<Vaga> vagas = new ArrayList<>();
+
+        try {
+            vagas = VagaFiltroDAO.listarVagasPorCargo(cargo);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        if (vagas == null || vagas.isEmpty()) {
+            System.out.println("Não há vagas cadastradas para esse cargo!");
+            return;
+        }
+
+        System.out.println("=== Lista de Vagas por Cargo ===");
+        for (Vaga vaga : vagas) {
+            System.out.println("ID: " + vaga.getId());
+            System.out.println("Nome da Vaga: " + vaga.getNomeVaga());
+            System.out.println("Descrição: " + vaga.getDescricao());
+            System.out.println("Salário Hora: " + vaga.getSalarioHora());
+            System.out.println("---------------------------");
         }
     }
 
