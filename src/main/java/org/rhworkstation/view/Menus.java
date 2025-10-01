@@ -3,6 +3,7 @@ package org.rhworkstation.view;
 import static java.awt.SystemColor.menu;
 import static org.rhworkstation.utils.Utils.inputNumber;
 
+
 import org.rhworkstation.service.*;
 
 import java.sql.SQLException;
@@ -12,6 +13,7 @@ public class Menus {
     CurriculoService curriculoService = new CurriculoService();
 
     public void mostrarMenu() throws SQLException {
+
         var candidatoTeste = new CandidatoSevice();
         // var colaboradorTeste = new ColaboradorService();
         // var adminTeste = new AdminService();
@@ -34,7 +36,11 @@ public class Menus {
         vagaFiltroTeste.listarVagasPorFaixaSalarial();
     }
 
+
+    public static int menuInicial(){
+
     public int menuInicial(){
+
 
         System.out.println("( ___ )-----------------------------------------------------------------------( ___ )\n" +
                 " |   |  ____  _   _  __        __         _        _        _   _              |   | \n" +
@@ -54,7 +60,8 @@ public class Menus {
         System.out.println("                    ┃ 2 - Logar                                ┃");
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - sair                                 ┃");
-        System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+        System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+
 
         return inputNumber();
 
@@ -92,6 +99,7 @@ public class Menus {
         System.out.println("                    ┃ 0 - sair                                 ┃");
         System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
 
+
         return inputNumber();
     }
 
@@ -110,13 +118,47 @@ public class Menus {
         System.out.println("                    ┃ 0 - Voltar                               ┃");
         System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
 
+
         return inputNumber();
     }
+
+
+    public int gerenciarColaborador(){
+
+        System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("                    ┃      RH Administração(Colaborador)       ┃");
+        System.out.println("                    ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
+        System.out.println("                    ┃                  opções                  ┃");
+        System.out.println("                    ┣------------------------------------------┫");
+        System.out.println("                    ┃ 1 - Criar Colaborador                    ┃");
+        System.out.println("                    ┃ 2 - Editar infos. Colaborador            ┃");
+        System.out.println("                    ┃ 1 - Desligar Colaborador                 ┃");
+        System.out.println("                    ┃ 2 - Olhar Solicitação de Férias          ┃");
+        System.out.println("                    ┃                                          ┃");
+        System.out.println("                    ┃ 0 - Voltar                               ┃");
+        System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+
+        return inputNumber();
+    }
+
 
     public int menuColaborador(){
 
+        System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("                    ┃            Colaborador Menu              ┃");
+        System.out.println("                    ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
+        System.out.println("                    ┃                  opções                  ┃");
+        System.out.println("                    ┣------------------------------------------┫");
+        System.out.println("                    ┃ 1 - Visualizar Folha Salarial            ┃");
+        System.out.println("                    ┃ 2 - Solicitar Férias                     ┃");
+        System.out.println("                    ┃                                          ┃");
+        System.out.println("                    ┃ 0 - sair                                 ┃");
+        System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+
         return inputNumber();
     }
+}
 
 
 }
+
