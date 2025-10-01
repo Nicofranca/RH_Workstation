@@ -39,8 +39,6 @@ public class Menus {
 
     public static int menuInicial(){
 
-    public int menuInicial(){
-
 
         System.out.println("( ___ )-----------------------------------------------------------------------( ___ )\n" +
                 " |   |  ____  _   _  __        __         _        _        _   _              |   | \n" +
@@ -160,5 +158,5 @@ public class Menus {
 }
 
 
-}
+
 
