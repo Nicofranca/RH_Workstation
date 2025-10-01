@@ -155,6 +155,12 @@ public class Menus {
 
         return inputNumber();
     }
+
+    public static void main(String[] args) {
+
+        var obj = new Menus();
+        obj.menuInicial();
+    }
 }
 
 

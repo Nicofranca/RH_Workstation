@@ -1,6 +1,8 @@
 package org.rhworkstation.model;
 
-public class Colaborador {
+import org.rhworkstation.model.RegistroFalta;
+
+public class Colaborador{
 
     private int id;
     private String nome;
@@ -12,7 +14,6 @@ public class Colaborador {
     private String senha;
     private int horasDeTrabalho;
 
-    public Colaborador() {}
 
     public Colaborador(String nome, String cpf, String email, String cargo, String departamento, double salario_hora, String senha, int horasDeTrabalho) {
         this.nome = nome;

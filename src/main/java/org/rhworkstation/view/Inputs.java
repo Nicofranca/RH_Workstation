@@ -10,7 +10,8 @@ import java.util.Scanner;
 
 import static org.rhworkstation.utils.Utils.inputNumber;
 
-public class Inputs {
+
+public class  Inputs {
     Scanner input = new Scanner(System.in);
 
     public void limparScanner(){
