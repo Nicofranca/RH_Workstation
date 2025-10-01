@@ -1,12 +1,14 @@
 package org.rhworkstation.view;
 
 import org.rhworkstation.model.enums.StatusVaga;
+import org.rhworkstation.utils.Utils.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.Scanner;
+
+import static org.rhworkstation.utils.Utils.inputNumber;
 
 public class Inputs {
     Scanner input = new Scanner(System.in);
@@ -22,6 +24,13 @@ public class Inputs {
         String nome = input.nextLine();
 
         return nome;
+    }
+
+    public int inputHorasDeTrabalho(){
+        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("┃ - Digite as Horas de Trabalho            ┃");
+        System.out.print  ("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n:");
+        return inputNumber();
     }
 
     public String inputCpf(){
@@ -200,7 +209,24 @@ public class Inputs {
         }
 
         return dataFim;
+    }
 
+    public double inputSalarioHoraMinimo(){
+        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("┃ - Digite o Valor da Hora Mínimo          ┃");
+        System.out.print  ("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n:");
+        double salarioMin = input.nextDouble();
+
+        return salarioMin;
+    }
+
+    public double inputSalarioHoraMaximo(){
+        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("┃ - Digite o Valor da Hora Máximo          ┃");
+        System.out.print  ("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n:");
+        double salarioMax = input.nextDouble();
+
+        return salarioMax;
     }
 
 }

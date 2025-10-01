@@ -31,6 +31,10 @@ public class ColaboradorDAO {
         }
     }
 
+    public void gerarDadosParaFolhaSalarial() throws SQLException {
+
+    }
+
     public Colaborador loginColaborador(String email, String senha) throws SQLException{
         String query = "SELECT id, nome, cpf, email, cargo, departamento, salario_hora, senha, horas_de_trabalho FROM colaborador WHERE email = ? AND senha = ?";
         Colaborador colaborador = null;
