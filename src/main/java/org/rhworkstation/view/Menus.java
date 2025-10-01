@@ -34,7 +34,7 @@ public class Menus {
         vagaFiltroTeste.listarVagasPorFaixaSalarial();
     }
 
-    public static int menuInicial(){
+    public int menuInicial(){
 
         System.out.println("( ___ )-----------------------------------------------------------------------( ___ )\n" +
                 " |   |  ____  _   _  __        __         _        _        _   _              |   | \n" +
@@ -90,7 +90,7 @@ public class Menus {
         System.out.println("                    ┃ 2 - Gerenciar Colaborador                ┃");
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - sair                                 ┃");
-        System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+        System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
 
         return inputNumber();
     }
@@ -108,9 +108,15 @@ public class Menus {
         System.out.println("                    ┃ 2 - Olhar Candidatos                     ┃");
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - Voltar                               ┃");
-        System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+        System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
 
         return inputNumber();
     }
+
+    public int menuColaborador(){
+
+        return inputNumber();
+    }
+
 
 }

@@ -1,6 +1,7 @@
 package org.rhworkstation.service;
 
 import org.rhworkstation.dao.ColaboradorDAO;
+import org.rhworkstation.model.Colaborador;
 import org.rhworkstation.view.Inputs;
 
 import java.sql.SQLException;
@@ -39,4 +40,21 @@ public class ColaboradorService {
         }
     }
 
+    public boolean loginColaborador(String email, String senha){
+        boolean colaboradorEncontrado = false;
+
+        var colaboradorDAO = new ColaboradorDAO();
+
+        try {
+            Colaborador colaborador = colaboradorDAO.loginColaborador(email, senha);
+            if (colaborador != null){
+                colaboradorEncontrado = true;
+                System.out.println("Colaborador encontrado: " + colaborador.getNome());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return colaboradorEncontrado;
+    }
 }

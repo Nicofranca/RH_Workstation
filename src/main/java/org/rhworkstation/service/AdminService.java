@@ -1,6 +1,7 @@
 package org.rhworkstation.service;
 
 import org.rhworkstation.dao.AdminDAO;
+import org.rhworkstation.model.Admin;
 import org.rhworkstation.model.Candidato;
 import org.rhworkstation.model.Colaborador;
 import org.rhworkstation.model.Vaga;
@@ -142,6 +143,23 @@ public class AdminService {
             System.out.println("Erro ao atualizar a vaga no banco de dados!");
             e.printStackTrace();
         }
+    }
+
+    public boolean loginAdmin(String email, String senha){
+        boolean adminEncontrado = false;
+        var adminDAO = new AdminDAO();
+
+        try {
+            Admin admin = adminDAO.verificacaoAdmin(email, senha);
+            if (admin != null){
+                adminEncontrado = true;
+                System.out.println("Admin encontrado: "+admin.getNome());
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return adminEncontrado;
     }
 
 }
