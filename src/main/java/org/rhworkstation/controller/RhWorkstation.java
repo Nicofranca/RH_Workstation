@@ -24,6 +24,9 @@ public class RhWorkstation {
             switch (inputUsuario){
                 case 1 -> candidatoSevice.criarUsuario();
                 case 2 -> loginService.login();
+
+
+
             }
         } while (inputUsuario != 0);
 

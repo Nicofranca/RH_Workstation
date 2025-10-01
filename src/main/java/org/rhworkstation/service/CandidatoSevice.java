@@ -20,7 +20,7 @@ public class CandidatoSevice {
         String email = data.inputEmail();
         String senha = data.inputSenha();
 
-        var novoCandidato = new Candidato(nome, cpf, email, senha);
+        var novoCandidato = new Candidato(nome, email, cpf, senha);
         var candidatoDAO = new CandidatoDAO();
 
         try {
