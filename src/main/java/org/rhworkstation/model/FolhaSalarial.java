@@ -30,6 +30,10 @@ public class FolhaSalarial {
         //isso vai definir a data automaticamente quando for liberado
     }
 
+    public FolhaSalarial() {
+
+    }
+
     public int getId() {
         return id;
     }

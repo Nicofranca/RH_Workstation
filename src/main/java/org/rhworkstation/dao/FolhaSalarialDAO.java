@@ -12,16 +12,17 @@ public class FolhaSalarialDAO {
 
     public void CriarFolhaSalarial(FolhaSalarial folha) throws SQLException {
 
-        String query = "INSERT INTO FolhaSalarial (cpf_colaborador,salario_bruto,inss,salario_liquido,data_folha_salarial) VALUES (?,?,?,?,?) ";
+        String query = "INSERT INTO FolhaSalarial (id,cpf_colaborador,salario_bruto,inss,salario_liquido,data_folha_salarial) VALUES (?,?,?,?,?,?) ";
 
         try(Connection conn = Conexao.conectar();
             PreparedStatement stmt = conn.prepareStatement(query)){
 
-            stmt.setString(1,folha.getCpf_colaborador());
-            stmt.setDouble(2,folha.getSalario_bruto());
-            stmt.setDouble(3,folha.getInss());
-            stmt.setDouble(4,folha.getSalario_liquido());
-            stmt.setDate(5,java.sql.Date.valueOf(folha.getDataFolhaSalarial()));
+            stmt.setInt(1,folha.getId());
+            stmt.setString(2,folha.getCpf_colaborador());
+            stmt.setDouble(3,folha.getSalario_bruto());
+            stmt.setDouble(4,folha.getInss());
+            stmt.setDouble(5,folha.getSalario_liquido());
+            stmt.setDate(6,java.sql.Date.valueOf(folha.getDataFolhaSalarial()));
             stmt.executeUpdate();
         }
     }

@@ -1,9 +1,13 @@
 package org.rhworkstation.dao;
 
 import org.rhworkstation.connection.Conexao;
+import org.rhworkstation.dto.DadosFolhaSalarialDTO;
 import org.rhworkstation.model.Colaborador;
+import org.rhworkstation.model.FolhaSalarial;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ColaboradorDAO {
 
@@ -37,22 +41,36 @@ public class ColaboradorDAO {
         }
     }
 
-    public void gerarDadosParaFolhaSalarial() throws SQLException {
+    public List<DadosFolhaSalarialDTO> gerarDadosParaFolhaSalarial() throws SQLException {
 
-        String query = "SELECT" +
-                "c.cpf," +
+        List<DadosFolhaSalarialDTO> folha = new ArrayList<>();
+        String query = "SELECT " +
+                "cpf," +
                 "c.salario_hora," +
                 "c.horas_de_trabalho," +
-                "IFNULL(SUM(f.horas_faltas), 0) AS horas_faltas" +
-                "FROM colaborador c" +
-                "LEFT JOIN faltas_trabalho f" +
-                "ON c.cpf = f.cpf_colaborador" +
+                "IFNULL(SUM(f.horas_faltas), 0) AS horas_faltas " +
+                "FROM colaborador c " +
+                "LEFT JOIN faltas_trabalho f " +
+                "ON c.cpf = f.cpf_colaborador " +
                 "GROUP BY c.cpf, c.salario_hora, c.horas_de_trabalho;";
         try (Connection conn = Conexao.conectar();
         PreparedStatement stmt =  conn.prepareStatement(query)){
 
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                String cpf = rs.getString("cpf");
+                double salario_hora = rs.getDouble("salario_hora");
+                double horas_de_trabalho = rs.getDouble("horas_de_trabalho");
+                double horas_faltas = rs.getDouble("horas_faltas");
+
+                var colaborador = new DadosFolhaSalarialDTO(cpf,salario_hora,horas_de_trabalho,horas_faltas);
+                folha.add(colaborador);
+            }
 
         }
+
+        return folha;
     }
 
 }
