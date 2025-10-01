@@ -30,7 +30,8 @@ public class Menus {
 
         // curriculoService.excluirCurriculo();
 
-        vagaFiltroTeste.listarVagasPorCargo();
+        // vagaFiltroTeste.listarVagasPorCargo();
+        vagaFiltroTeste.listarVagasPorFaixaSalarial();
     }
 
     public static int menuInicial(){
