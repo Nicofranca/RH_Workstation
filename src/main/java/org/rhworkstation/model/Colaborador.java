@@ -49,6 +49,10 @@ public class Colaborador{
         this.senha = senha;
     }
 
+    public Colaborador() {
+
+    }
+
     // Getters e Setters
     public int getId() {
         return id;

@@ -37,7 +37,7 @@ public class Menus {
     }
 
 
-    public static int menuInicial(){
+    public int menuInicial(){
 
 
         System.out.println("( ___ )-----------------------------------------------------------------------( ___ )\n" +

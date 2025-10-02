@@ -11,26 +11,19 @@ import java.sql.SQLException;
 
 public class RhWorkstation {
 
-    Menus menu = new Menus();
-    Inputs data = new Inputs();
-    CandidatoSevice candidatoSevice = new CandidatoSevice();
-    LoginService loginService = new LoginService();
-
     public void Application(){
+        var menu = new Menus();
+        boolean logout = false;
 
-        int inputUsuario = menu.menuInicial();
+        while(!logout){
 
-        do{
-            switch (inputUsuario){
-                case 1 -> candidatoSevice.criarUsuario();
-                case 2 -> loginService.login();
-
-
-
+            switch (menu.menuInicial()){
+                case 1->{}
+                case 2 ->{}
+                case 0->{
+                    logout = true;
+                }
             }
-        } while (inputUsuario != 0);
-
-
-
+        }
     }
 }
