@@ -10,6 +10,10 @@ import java.awt.*;
 import java.sql.SQLException;
 
 public class RhWorkstation {
+    CandidatoController candidatoController = new CandidatoController();
+    ColaboradorController colaboradorController = new ColaboradorController();
+    AdminController adminController = new AdminController();
+    Menus menus = new Menus();
 
     public void Application(){
         var menu = new Menus();
@@ -17,10 +21,10 @@ public class RhWorkstation {
 
         while(!logout){
 
-            switch (menu.menuInicial()){
-                case 1->{}
-                case 2 ->{}
-                case 0->{
+            switch (menu.menuUsuario()){
+                case 1 -> candidatoController.iniciar();
+                case 0 -> {
+                    menus.menuFinal();
                     logout = true;
                 }
             }
