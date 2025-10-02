@@ -12,7 +12,7 @@ public class CandidatoController {
     Menus menus = new Menus();
 
         //Criar candidato - ListarVagas
-        public void iniciar(){
+        public void iniciarMenuCandidato(){
             boolean saida = false;
 
             while (!saida){
@@ -27,5 +27,9 @@ public class CandidatoController {
                     }
                 }
             }
+        }
+
+        public void criarCandidato(){
+            candidatoSevice.criarUsuario();
         }
 }

@@ -53,4 +53,24 @@ public class CandidatoSevice {
         }
     }
 
+    public boolean loginCandidato(String email, String senha) {
+        boolean candidatoEncontrado = false;
+        var candidatoDAO = new CandidatoDAO();
+
+        try {
+            Candidato candidato = candidatoDAO.verificacaoCandidato(email, senha);
+
+            if (candidato != null) {
+                candidatoEncontrado = true;
+                System.out.println("Login bem-sucedido! Bem-vindo(a) candidato, " + candidato.getNome());
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao tentar fazer login do candidato: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return candidatoEncontrado;
+    }
+
 }

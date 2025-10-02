@@ -13,6 +13,7 @@ public class RhWorkstation {
     CandidatoController candidatoController = new CandidatoController();
     ColaboradorController colaboradorController = new ColaboradorController();
     AdminController adminController = new AdminController();
+    LoginController loginController = new LoginController();
     Menus menus = new Menus();
 
     public void Application(){
@@ -21,8 +22,9 @@ public class RhWorkstation {
 
         while(!logout){
 
-            switch (menu.menuUsuario()){
-                case 1 -> candidatoController.iniciar();
+            switch (menu.menuInicial()){
+                case 1 -> candidatoController.criarCandidato();
+                case 2 -> loginController.login();
                 case 0 -> {
                     menus.menuFinal();
                     logout = true;

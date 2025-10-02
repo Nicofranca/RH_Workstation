@@ -125,8 +125,8 @@ public class Menus {
         System.out.println("                    ┣------------------------------------------┫");
         System.out.println("                    ┃ 1 - Criar Vagas                          ┃");
         System.out.println("                    ┃ 2 - Editar Vagas                         ┃");
-        System.out.println("                    ┃ 1 - Excluir Vagas                        ┃");
-        System.out.println("                    ┃ 2 - Olhar Candidatos                     ┃");
+        System.out.println("                    ┃ 3 - Excluir Vagas                        ┃");
+        System.out.println("                    ┃ 4 - Olhar Candidatos                     ┃");
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - Voltar                               ┃");
         System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
@@ -145,8 +145,8 @@ public class Menus {
         System.out.println("                    ┣------------------------------------------┫");
         System.out.println("                    ┃ 1 - Criar Colaborador                    ┃");
         System.out.println("                    ┃ 2 - Editar infos. Colaborador            ┃");
-        System.out.println("                    ┃ 1 - Desligar Colaborador                 ┃");
-        System.out.println("                    ┃ 2 - Olhar Solicitação de Férias          ┃");
+        System.out.println("                    ┃ 3 - Desligar Colaborador                 ┃");
+        System.out.println("                    ┃ 4 - Olhar Solicitação de Férias          ┃");
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - Voltar                               ┃");
         System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");

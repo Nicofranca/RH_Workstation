@@ -15,6 +15,8 @@ public class AdminService {
     Inputs input = new Inputs();
 
     public void criarColaborador() {
+        input.limparScanner();
+
         String nome = input.inputNome();
         String cpf = input.inputCpf();
         String email = input.inputEmail();
@@ -153,7 +155,7 @@ public class AdminService {
             Admin admin = adminDAO.verificacaoAdmin(email, senha);
             if (admin != null){
                 adminEncontrado = true;
-                System.out.println("Admin encontrado: "+admin.getNome());
+                System.out.println("Login bem-sucedido! Bem-vindo(a) admin, "+admin.getNome());
             }
         } catch (SQLException e){
             e.printStackTrace();

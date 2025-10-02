@@ -49,7 +49,7 @@ public class ColaboradorService {
             Colaborador colaborador = colaboradorDAO.loginColaborador(email, senha);
             if (colaborador != null){
                 colaboradorEncontrado = true;
-                System.out.println("Colaborador encontrado: " + colaborador.getNome());
+                System.out.println("Login bem-sucedido! Bem-vindo(a) colaborador, "+ colaborador.getNome());
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

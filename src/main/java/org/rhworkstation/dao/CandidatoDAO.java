@@ -72,4 +72,28 @@ public class CandidatoDAO {
         return vagas;
     }
 
+    public Candidato verificacaoCandidato(String email, String senha) throws SQLException {
+        String query = "SELECT id, nome, email, cpf, senha FROM candidato WHERE email = ? AND senha = ?";
+        Candidato candidato = null;
+
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, email);
+            stmt.setString(2, senha);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    candidato = new Candidato();
+                    candidato.setId(rs.getInt("id"));
+                    candidato.setNome(rs.getString("nome"));
+                    candidato.setEmail(rs.getString("email"));
+                    candidato.setCpf(rs.getString("cpf"));
+                    candidato.setSenha(rs.getString("senha"));
+                }
+            }
+        }
+        return candidato;
+    }
+
 }
