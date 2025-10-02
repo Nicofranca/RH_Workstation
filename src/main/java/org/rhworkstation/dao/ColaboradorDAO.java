@@ -2,6 +2,7 @@ package org.rhworkstation.dao;
 
 import org.rhworkstation.connection.Conexao;
 import org.rhworkstation.dto.DadosFolhaSalarialDTO;
+import org.rhworkstation.model.Candidato;
 import org.rhworkstation.model.Colaborador;
 import org.rhworkstation.model.FolhaSalarial;
 
@@ -93,6 +94,28 @@ public class ColaboradorDAO {
         }
 
         return folha;
+    }
+
+    public int buscarPorCPF(String CPFColaborador) throws SQLException{
+        String query = "SELECT id FROM colaborador WHERE cpf = (?)";
+
+        Colaborador colaboradorEncontrado = null;
+
+        try(Connection conn = Conexao.conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, CPFColaborador);
+
+            try(ResultSet rs = stmt.executeQuery()) {
+                if(rs.next()){
+                    colaboradorEncontrado = new Colaborador();
+
+                    colaboradorEncontrado.setId(rs.getInt("id"));
+                }
+            }
+        }
+
+        return colaboradorEncontrado.getId();
     }
 
 }
