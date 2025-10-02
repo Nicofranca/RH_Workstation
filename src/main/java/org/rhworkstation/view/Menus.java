@@ -58,11 +58,26 @@ public class Menus {
         System.out.println("                    ┃ 2 - Logar                                ┃");
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - sair                                 ┃");
-        System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+        System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
 
 
         return inputNumber();
 
+    }
+
+    public int menuUsuario(){
+        System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("                    ┃              SEJA BEM VINDO              ┃");
+        System.out.println("                    ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
+        System.out.println("                    ┃                  opções                  ┃");
+        System.out.println("                    ┣------------------------------------------┫");
+        System.out.println("                    ┃ 1 - Candidato                            ┃");
+        System.out.println("                    ┃ 2 - Colaborador                          ┃");
+        System.out.println("                    ┃ 3 - Administrador                        ┃");
+        System.out.println("                    ┃ 0 - sair                                 ┃");
+        System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+
+        return inputNumber();
     }
 
     public int menuCandidato(){
@@ -160,6 +175,12 @@ public class Menus {
 
         var obj = new Menus();
         obj.menuInicial();
+    }
+
+    public void menuFinal(){
+        System.out.println("                   ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("                   ┃ Agradecemos por utilizar o RH-Workstation! ┃");
+        System.out.print("                   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
     }
 }
 
