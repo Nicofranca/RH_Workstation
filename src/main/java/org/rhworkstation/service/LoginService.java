@@ -7,6 +7,7 @@ import org.rhworkstation.view.Menus;
 import java.sql.SQLException;
 
 public class LoginService {
+
     Inputs input = new Inputs();
     AdminService adminService = new AdminService();
     ColaboradorService colaboradorService = new ColaboradorService();
@@ -36,4 +37,5 @@ public class LoginService {
             e.printStackTrace();
         }
     }
+
 }

@@ -2,12 +2,14 @@ package org.rhworkstation.service;
 
 import org.rhworkstation.dao.CandidatoDAO;
 import org.rhworkstation.dao.CurriculoDAO;
+import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Curriculo;
 import org.rhworkstation.view.Inputs;
 
 import java.sql.SQLException;
 
 public class CurriculoService {
+
     Inputs data = new Inputs();
 
     public void criarCurriculo(){
@@ -24,7 +26,9 @@ public class CurriculoService {
 
         try {
             curriculoDAO.criarCurriculo(curriculo);
-        } catch (SQLException e) {
+
+        } catch (RHException e) {
+            System.out.println("Erro ao criar curriculo: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -37,7 +41,9 @@ public class CurriculoService {
 
         try {
             curriculoDAO.exluirCurriculo(candidatoDAO.buscarPorCPF(cpf));
-        } catch (SQLException e){
+
+        } catch (RHException e) {
+            System.out.println("Erro ao excluir curriculo: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -50,8 +56,10 @@ public class CurriculoService {
 
         try {
             System.out.println(candidatoDAO.buscarPorCPF(cpf));
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+
+        } catch (RHException e) {
+            System.out.println("Erro ao mostrar ID: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -69,13 +77,15 @@ public class CurriculoService {
         var curriculoDAO = new CurriculoDAO();
         var candidatoDAO = new CandidatoDAO();
 
-
         try {
             int valorID = candidatoDAO.buscarPorCPF(cpf);
 
             curriculoDAO.editarCurriculo(curriculo, valorID);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+
+        } catch (RHException e) {
+            System.out.println("Erro ao editar curriculo: " + e.getMessage());
+            e.printStackTrace();
         }
     }
+
 }

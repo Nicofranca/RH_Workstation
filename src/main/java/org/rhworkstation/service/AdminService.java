@@ -6,6 +6,7 @@ import org.rhworkstation.model.Candidato;
 import org.rhworkstation.model.Colaborador;
 import org.rhworkstation.model.Vaga;
 import org.rhworkstation.view.Inputs;
+import org.rhworkstation.exception.RHException;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -31,8 +32,10 @@ public class AdminService {
         try {
             adminDAO.criarColaborador(colaborador);
             System.out.println("Colaborador inserido com sucesso!");
-        } catch (SQLException e) {
-            System.out.println("Erro ao inserir colaborador no banco de dados!");
+
+        } catch (RHException e) {
+            System.out.println("Erro ao inserir colaborador: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -54,8 +57,9 @@ public class AdminService {
         try {
             adminDAO.editarColaborador(colaborador);
             System.out.println("Colaborador atualizado com sucesso!");
-        } catch (SQLException e) {
-            System.out.println("Erro ao atualizar colaborador no banco de dados!");
+
+        } catch (RHException e) {
+            System.out.println("Erro ao atualizar colaborador: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -68,8 +72,9 @@ public class AdminService {
         try {
             adminDAO.desligarColaborador(id);
             System.out.println("Colaborador desligado com sucesso!");
-        } catch (SQLException e) {
-            System.out.println("Erro ao desligar colaborador no banco de dados!");
+
+        } catch (RHException e) {
+            System.out.println("Erro ao desligar colaborador: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -92,7 +97,8 @@ public class AdminService {
                 System.out.println("---------------------------");
             }
 
-        } catch (SQLException e) {
+        } catch (RHException e) {
+            System.out.println("Erro ao listar candidatos: " +e.getMessage());
             e.printStackTrace();
         }
     }
@@ -107,8 +113,9 @@ public class AdminService {
         try {
             AdminDAO.criarVaga(vaga);
             System.out.println("Vaga criada com sucesso!");
-        } catch (SQLException e) {
-            System.out.println("Erro ao criar vaga no banco de dados!");
+
+        } catch (RHException e) {
+            System.out.println("Erro ao criar vaga: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -119,8 +126,9 @@ public class AdminService {
         try {
             AdminDAO.excluirVaga(id);
             System.out.println("Vaga excluída com sucesso!");
-        } catch (SQLException e) {
-            System.out.println("Erro ao excluir vaga no banco de dados!");
+
+        } catch (RHException e) {
+            System.out.println("Erro ao excluir vaga: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -139,8 +147,9 @@ public class AdminService {
         try {
             AdminDAO.editarVaga(vaga);
             System.out.println("Vaga atualizada com sucesso!");
-        } catch (SQLException e) {
-            System.out.println("Erro ao atualizar a vaga no banco de dados!");
+
+        } catch (RHException e) {
+            System.out.println("Erro ao atualizar a vaga: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -155,7 +164,9 @@ public class AdminService {
                 adminEncontrado = true;
                 System.out.println("Admin encontrado: "+admin.getNome());
             }
-        } catch (SQLException e){
+
+        } catch (RHException e){
+            System.out.println("Erro ao realizar login: " + e.getMessage());
             e.printStackTrace();
         }
 

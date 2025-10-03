@@ -2,6 +2,7 @@ package org.rhworkstation.service;
 
 import org.rhworkstation.dao.AdminDAO;
 import org.rhworkstation.dao.CandidatoDAO;
+import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Candidato;
 import org.rhworkstation.model.Vaga;
 import org.rhworkstation.view.Inputs;
@@ -25,7 +26,9 @@ public class CandidatoSevice {
 
         try {
             candidatoDAO.criarCandidato(novoCandidato);
-        } catch (SQLException e) {
+
+        } catch (RHException e) {
+            System.out.println("Erro ao criar usuário: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -48,7 +51,8 @@ public class CandidatoSevice {
                 System.out.println("---------------------------");
             }
 
-        } catch (SQLException e) {
+        } catch (RHException e) {
+            System.out.println("Erro ao listar candidatos: " + e.getMessage());
             e.printStackTrace();
         }
     }
