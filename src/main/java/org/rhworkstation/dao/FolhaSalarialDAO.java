@@ -1,12 +1,17 @@
 package org.rhworkstation.dao;
 
 import org.rhworkstation.connection.Conexao;
+import org.rhworkstation.dto.Cache;
+import org.rhworkstation.dto.FolhaSalarialDTO;
 import org.rhworkstation.model.FolhaSalarial;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FolhaSalarialDAO {
 
@@ -27,5 +32,40 @@ public class FolhaSalarialDAO {
             stmt.setDate(6,java.sql.Date.valueOf(folha.getDataFolhaSalarial()));
             stmt.executeUpdate();
         }
+    }
+
+    public List<FolhaSalarialDTO> VisualizarFolhaSalarial (String cpf) throws SQLException {
+        var folhaAtual = new ArrayList<FolhaSalarialDTO>();
+        String query = "SELECT c.nome," +
+                "f.cpf_colaborador," +
+                "f.salario_bruto," +
+                "f.inss," +
+                "f.salario_liquido," +
+                "f.data_folha_salarial" +
+                " FROM FolhaSalarial f" +
+                " JOIN colaborador c" +
+                " ON f.cpf_colaborador = c.cpf" +
+                " WHERE cpf_colaborador = ?";
+
+        try(Connection conn = Conexao.conectar();
+        PreparedStatement stmt = conn.prepareStatement(query)){
+            stmt.setString(1,cpf);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+
+                String  nome = rs.getString("nome");
+                String  cpfColaborador = rs.getString("cpf_colaborador");
+                double  salarioBruto = rs.getDouble("salario_bruto");
+                double  inss = rs.getDouble("inss");
+                double  salarioLiquido = rs.getDouble("salario_liquido");
+                LocalDate data = LocalDate.parse(rs.getString("data_folha_salarial"));
+
+                var valores = new FolhaSalarialDTO(nome,cpfColaborador,salarioBruto,inss,salarioLiquido,data);
+                folhaAtual.add(valores);
+            }
+
+        }
+
+        return folhaAtual;
     }
 }

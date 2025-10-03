@@ -1,6 +1,5 @@
 package org.rhworkstation.view;
 
-import static java.awt.SystemColor.menu;
 import static org.rhworkstation.utils.Utils.inputNumber;
 
 
@@ -14,7 +13,7 @@ public class Menus {
 
     public void mostrarMenu() throws SQLException {
 
-        var candidatoTeste = new CandidatoSevice();
+        var candidatoTeste = new CandidatoService();
         // var colaboradorTeste = new ColaboradorService();
         // var adminTeste = new AdminService();
         var vagaFiltroTeste = new VagaFiltroService();
@@ -58,7 +57,7 @@ public class Menus {
         System.out.println("                    ┃ 2 - Logar                                ┃");
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - sair                                 ┃");
-        System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+        System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
 
 
         return inputNumber();
@@ -79,7 +78,7 @@ public class Menus {
         /*System.out.println("                    ┃ 5 - Minhas Candidaturas                  ┃");*/
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - sair                                 ┃");
-        System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+        System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
 
         return inputNumber();
     }
@@ -134,7 +133,7 @@ public class Menus {
         System.out.println("                    ┃ 2 - Olhar Solicitação de Férias          ┃");
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - Voltar                               ┃");
-        System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+        System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
 
         return inputNumber();
     }
@@ -151,7 +150,7 @@ public class Menus {
         System.out.println("                    ┃ 2 - Solicitar Férias                     ┃");
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - sair                                 ┃");
-        System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+        System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
 
         return inputNumber();
     }
