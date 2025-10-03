@@ -1,13 +1,6 @@
 package org.rhworkstation.controller;
 
-import org.rhworkstation.service.CandidatoSevice;
-import org.rhworkstation.service.LoginService;
-import org.rhworkstation.view.Inputs;
 import org.rhworkstation.view.Menus;
-
-import java.awt.*;
-
-import java.sql.SQLException;
 
 public class RhWorkstation {
     CandidatoController candidatoController = new CandidatoController();
