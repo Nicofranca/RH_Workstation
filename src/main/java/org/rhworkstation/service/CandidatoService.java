@@ -1,6 +1,5 @@
 package org.rhworkstation.service;
 
-import org.rhworkstation.dao.AdminDAO;
 import org.rhworkstation.dao.CandidatoDAO;
 import org.rhworkstation.model.Candidato;
 import org.rhworkstation.model.Vaga;
@@ -9,7 +8,7 @@ import org.rhworkstation.view.Inputs;
 import java.sql.SQLException;
 import java.util.List;
 
-public class CandidatoSevice {
+public class CandidatoService {
 
     Inputs data = new Inputs();
 
