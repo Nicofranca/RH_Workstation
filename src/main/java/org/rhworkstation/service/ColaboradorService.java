@@ -7,19 +7,21 @@ import org.rhworkstation.view.Inputs;
 
 import java.sql.SQLException;
 
+import static org.rhworkstation.utils.Utils.limparScanner;
+
 public class ColaboradorService {
 
     Inputs input = new Inputs();
 
-    public void atualizarSenha() {
+    public void atualizarSenhaColaborador() {
         int id = input.inputID();
-        input.limparScanner();
+        limparScanner();
         String novaSenha = input.inputSenha();
 
         var colaboradorDAO = new ColaboradorDAO();
 
         try {
-            colaboradorDAO.atualizarSenha(id, novaSenha);
+            colaboradorDAO.atualizarSenhaColaborador(id, novaSenha);
             System.out.println("Senha atualizada com sucesso!");
 
         } catch (RHException e) {
@@ -28,15 +30,81 @@ public class ColaboradorService {
         }
     }
 
+    public void editarColaborador() {
+        int id = input.inputID();
+        limparScanner();
+        String nome = input.inputNome();
+        String cpf = input.inputCpf();
+        String email = input.inputEmail();
+        String cargo = input.inputCargo();
+        String departamento = input.inputDepartamento();
+        double salarioHora = input.inputSalarioHora();
+        limparScanner();
+        String senha = input.inputSenha();
+
+        var colaborador = new Colaborador(id, nome, cpf, email, cargo, departamento, salarioHora, senha);
+        var colaboradorDAO = new ColaboradorDAO();
+
+        try {
+            colaboradorDAO.editarColaborador(colaborador);
+            System.out.println("Colaborador atualizado com sucesso!");
+
+        } catch (RHException e) {
+            System.out.println("Erro ao atualizar colaborador: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void desligarColaborador() {
+        int id = input.inputID();
+
+        var colaborador = new ColaboradorDAO();
+
+        try {
+            colaborador.desligarColaborador(id);
+            System.out.println("Colaborador desligado com sucesso!");
+
+        } catch (RHException e) {
+            System.out.println("Erro ao desligar colaborador: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void criarColaborador() {
+        limparScanner();
+
+        String nome = input.inputNome();
+        String cpf = input.inputCpf();
+        String email = input.inputEmail();
+        String senha = input.inputSenha();
+        String cargo = input.inputCargo();
+        String departamento = input.inputDepartamento();
+        double salarioHora = input.inputSalarioHora();
+        int horaDeTrabalho = input.inputHorasDeTrabalho();
+
+
+        var colaborador = new Colaborador(nome, cpf, email, cargo, departamento, salarioHora, senha, horaDeTrabalho);
+        var colaboradorDAO = new ColaboradorDAO();
+
+        try {
+            colaboradorDAO.criarColaborador(colaborador);
+            System.out.println("Colaborador inserido com sucesso!");
+
+        } catch (RHException e) {
+            System.out.println("Erro ao inserir colaborador: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
     public void atualizarEmail() {
         int id = input.inputID();
-        input.limparScanner();
+        limparScanner();
         String novoEmail = input.inputEmail();
 
         var colaboradorDAO = new ColaboradorDAO();
 
         try {
-            colaboradorDAO.atualizarEmail(id, novoEmail);
+            colaboradorDAO.atualizarEmailColaborador(id, novoEmail);
             System.out.println("Email atualizado com sucesso!");
 
         } catch (RHException e) {

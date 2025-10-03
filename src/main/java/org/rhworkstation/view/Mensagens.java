@@ -6,4 +6,10 @@ public class Mensagens {
         System.err.println("                    ┃ Você digitou um valor incorreto, tente um número ┃");
         System.err.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
     }
+
+    public void dataError(){
+        System.err.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.err.println("                    ┃ Data inválida! Digite no formato dd/MM/yyyy. ┃");
+        System.err.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+    }
 }

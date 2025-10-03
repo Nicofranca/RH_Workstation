@@ -24,4 +24,8 @@ public class Utils {
         } while (error);
         return number;
     }
+
+    public static void limparScanner(){
+        input.nextLine();
+    }
 }

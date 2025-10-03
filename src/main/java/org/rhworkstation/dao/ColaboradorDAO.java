@@ -13,7 +13,63 @@ import java.util.List;
 
 public class ColaboradorDAO {
 
-    public void atualizarSenha(int id, String novaSenha) throws RHException {
+    public void criarColaborador(Colaborador colaborador) throws RHException {
+        String query = "INSERT INTO colaborador(nome, cpf, email, cargo, departamento, salario_hora, senha,horas_de_trabalho) VALUES (?, ?, ?, ?, ?, ?, ?,?)";
+
+        try(Connection conn = Conexao.conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, colaborador.getNome());
+            stmt.setString(2, colaborador.getCpf());
+            stmt.setString(3, colaborador.getEmail());
+            stmt.setString(4, colaborador.getCargo());
+            stmt.setString(5, colaborador.getDepartamento());
+            stmt.setDouble(6, colaborador.getSalario_hora());
+            stmt.setString(7, colaborador.getSenha());
+            stmt.setInt(8,colaborador.getHorasDeTrabalho());
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao criar colaborador", e);
+        }
+    }
+
+    public static void editarColaborador(Colaborador colaborador) throws RHException {
+        String query = "UPDATE colaborador SET nome = ?, cpf = ?, email = ?, cargo = ?, departamento = ?, salario_hora = ?, senha = ? WHERE id = ?";
+
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, colaborador.getNome());
+            stmt.setString(2, colaborador.getCpf());
+            stmt.setString(3, colaborador.getEmail());
+            stmt.setString(4, colaborador.getCargo());
+            stmt.setString(5, colaborador.getDepartamento());
+            stmt.setDouble(6, colaborador.getSalario_hora());
+            stmt.setString(7, colaborador.getSenha());
+            stmt.setInt(8, colaborador.getId());
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao editar colaborador", e);
+        }
+    }
+
+    public void desligarColaborador(int id) throws RHException {
+        String query = "DELETE FROM colaborador WHERE id = ?";
+
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao desligar colaborador", e);
+        }
+    }
+
+    public void atualizarSenhaColaborador(int id, String novaSenha) throws RHException {
         String query = "UPDATE colaborador SET senha = ? WHERE id = ?";
 
         try (Connection conn = Conexao.conectar();
@@ -28,7 +84,7 @@ public class ColaboradorDAO {
         }
     }
 
-    public void atualizarEmail(int id, String novoEmail) throws RHException {
+    public void atualizarEmailColaborador(int id, String novoEmail) throws RHException {
         String query = "UPDATE colaborador SET email = ? WHERE id = ?";
 
         try (Connection conn = Conexao.conectar();

@@ -8,6 +8,8 @@ import org.rhworkstation.view.Inputs;
 
 import java.sql.SQLException;
 
+import static org.rhworkstation.utils.Utils.limparScanner;
+
 public class CurriculoService {
 
     Inputs data = new Inputs();
@@ -15,7 +17,7 @@ public class CurriculoService {
     public void criarCurriculo(){
         int idade = data.inputIdade();
 
-        data.limparScanner();
+        limparScanner();
 
         String sexo = data.inputSexo();
         String formacao = data.inputFormacao();
@@ -67,7 +69,7 @@ public class CurriculoService {
         String cpf = data.inputCpf();
         int idade = data.inputIdade();
 
-        data.limparScanner();
+        limparScanner();
 
         String sexo = data.inputSexo();
         String formacao = data.inputFormacao();
