@@ -35,6 +35,7 @@ public class FolhaSalarialDAO {
         }
     }
 
+
     public List<FolhaSalarialDTO> VisualizarFolhaSalarial (String cpf) throws RHException {
         var folhaAtual = new ArrayList<FolhaSalarialDTO>();
         String query = "SELECT c.nome," +
@@ -49,7 +50,7 @@ public class FolhaSalarialDAO {
                 " WHERE cpf_colaborador = ?";
 
         try(Connection conn = Conexao.conectar();
-            PreparedStatement stmt = conn.prepareStatement(query)){
+            PreparedStatement stmt = conn.prepareStatement(query)) {
 
             stmt.setString(1,cpf);
             ResultSet rs = stmt.executeQuery();

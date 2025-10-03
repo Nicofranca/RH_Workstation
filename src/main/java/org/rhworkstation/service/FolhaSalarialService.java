@@ -4,8 +4,8 @@ import org.rhworkstation.dao.ColaboradorDAO;
 import org.rhworkstation.dto.Cache;
 import org.rhworkstation.dto.DadosFolhaSalarialDTO;
 import org.rhworkstation.dao.FolhaSalarialDAO;
-import org.rhworkstation.exception.RHException;
 import org.rhworkstation.dto.FolhaSalarialDTO;
+import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.FolhaSalarial;
 
 import java.sql.SQLException;
@@ -22,6 +22,7 @@ public class FolhaSalarialService {
 
         if(!folha.isEmpty()){
             var folhaSalarialDAO = new FolhaSalarialDAO();
+
             for(DadosFolhaSalarialDTO c:folha){
                 try {
                     String cpf = c.cpf();
@@ -48,14 +49,13 @@ public class FolhaSalarialService {
                     System.out.println("cadastrado com sucesso");
 
                 } catch (RHException e){
-                System.out.println("Erro ao cadastrar folha salarial:" + e.getMessage());
-                e.printStackTrace();
+                    System.out.println("Erro ao cadastrar folha salarial: " + e.getMessage());
+                    e.printStackTrace();
                 }
-
             }
         }
-
     }
+
     FolhaSalarialDAO folhaSalarialDAO = new FolhaSalarialDAO();
     Cache cache = new Cache("345.678.901-22");
 
@@ -88,7 +88,6 @@ public class FolhaSalarialService {
     }
 
     public static void main(String[] args) {
-
         FolhaSalarialService folio = new FolhaSalarialService();
 
         try {

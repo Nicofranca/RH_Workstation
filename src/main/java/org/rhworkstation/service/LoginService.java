@@ -41,7 +41,7 @@ public class LoginService {
         }
     }
 
-    public String autenticarUsuario(String email, String senha){
+    public String autenticarUsuario(String email, String senha) {
         if (adminService.loginAdmin(email, senha)){
             return "ADMIN";
         } else if (colaboradorService.loginColaborador(email, senha)) {
