@@ -1,6 +1,5 @@
 package org.rhworkstation.service;
 
-import org.rhworkstation.dao.AdminDAO;
 import org.rhworkstation.dao.CandidatoDAO;
 import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Candidato;
@@ -10,7 +9,7 @@ import org.rhworkstation.view.Inputs;
 import java.sql.SQLException;
 import java.util.List;
 
-public class CandidatoSevice {
+public class CandidatoService {
 
     Inputs data = new Inputs();
 
@@ -55,6 +54,26 @@ public class CandidatoSevice {
             System.out.println("Erro ao listar candidatos: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    public boolean loginCandidato(String email, String senha) {
+        boolean candidatoEncontrado = false;
+        var candidatoDAO = new CandidatoDAO();
+
+        try {
+            Candidato candidato = candidatoDAO.verificacaoCandidato(email, senha);
+
+            if (candidato != null) {
+                candidatoEncontrado = true;
+                System.out.println("Login bem-sucedido! Bem-vindo(a) candidato, " + candidato.getNome());
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao tentar fazer login do candidato: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return candidatoEncontrado;
     }
 
 }

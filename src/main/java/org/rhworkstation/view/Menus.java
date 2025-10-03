@@ -1,6 +1,5 @@
 package org.rhworkstation.view;
 
-import static java.awt.SystemColor.menu;
 import static org.rhworkstation.utils.Utils.inputNumber;
 
 
@@ -14,7 +13,7 @@ public class Menus {
 
     public void mostrarMenu() throws SQLException {
 
-        var candidatoTeste = new CandidatoSevice();
+        var candidatoTeste = new CandidatoService();
         // var colaboradorTeste = new ColaboradorService();
         // var adminTeste = new AdminService();
         var vagaFiltroTeste = new VagaFiltroService();
@@ -94,7 +93,7 @@ public class Menus {
         /*System.out.println("                    ┃ 5 - Minhas Candidaturas                  ┃");*/
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - sair                                 ┃");
-        System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+        System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
 
         return inputNumber();
     }
@@ -125,8 +124,8 @@ public class Menus {
         System.out.println("                    ┣------------------------------------------┫");
         System.out.println("                    ┃ 1 - Criar Vagas                          ┃");
         System.out.println("                    ┃ 2 - Editar Vagas                         ┃");
-        System.out.println("                    ┃ 1 - Excluir Vagas                        ┃");
-        System.out.println("                    ┃ 2 - Olhar Candidatos                     ┃");
+        System.out.println("                    ┃ 3 - Excluir Vagas                        ┃");
+        System.out.println("                    ┃ 4 - Olhar Candidatos                     ┃");
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - Voltar                               ┃");
         System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
@@ -145,11 +144,11 @@ public class Menus {
         System.out.println("                    ┣------------------------------------------┫");
         System.out.println("                    ┃ 1 - Criar Colaborador                    ┃");
         System.out.println("                    ┃ 2 - Editar infos. Colaborador            ┃");
-        System.out.println("                    ┃ 1 - Desligar Colaborador                 ┃");
-        System.out.println("                    ┃ 2 - Olhar Solicitação de Férias          ┃");
+        System.out.println("                    ┃ 3 - Desligar Colaborador                 ┃");
+        System.out.println("                    ┃ 4 - Olhar Solicitação de Férias          ┃");
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - Voltar                               ┃");
-        System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+        System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
 
         return inputNumber();
     }
@@ -166,7 +165,7 @@ public class Menus {
         System.out.println("                    ┃ 2 - Solicitar Férias                     ┃");
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - sair                                 ┃");
-        System.out.print("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+        System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
 
         return inputNumber();
     }

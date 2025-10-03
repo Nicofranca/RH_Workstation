@@ -11,6 +11,7 @@ public class LoginService {
     Inputs input = new Inputs();
     AdminService adminService = new AdminService();
     ColaboradorService colaboradorService = new ColaboradorService();
+    CandidatoService candidatoService = new CandidatoService();
     Menus menus = new Menus();
 
     public void login() {
@@ -18,24 +19,38 @@ public class LoginService {
         String senha = input.inputSenha();
 
         try {
-            boolean adminEncontrado = adminService.loginAdmin(email, senha);
-            if (adminEncontrado) {
+            if (adminService.loginAdmin(email, senha)) {
                 menus.menuAdmin();
                 return;
             }
 
-            boolean colaboradorEncontrado = colaboradorService.loginColaborador(email, senha);
-
-            if (colaboradorEncontrado){
+            if (candidatoService.loginCandidato(email, senha)) {
                 menus.menuCandidato();
                 return;
             }
 
-            System.out.println("Usuario nao encontrado, cadastre-se!");
+            if (colaboradorService.loginColaborador(email, senha)) {
+                menus.menuColaborador();
+                return;
+            }
 
-        } catch (Exception e){
+            System.out.println("Usuário não encontrado. Verifique suas credenciais ou cadastre-se!");
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public String autenticarUsuario(String email, String senha) {
+        if (adminService.loginAdmin(email, senha)){
+            return "ADMIN";
+        } else if (colaboradorService.loginColaborador(email, senha)) {
+            return "COLABORADOR";
+        } else if (candidatoService.loginCandidato(email, senha)) {
+            return "CANDIDATO";
+        }
+
+        return null;
     }
 
 }
