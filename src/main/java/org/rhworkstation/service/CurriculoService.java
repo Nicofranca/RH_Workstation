@@ -4,14 +4,14 @@ import org.rhworkstation.dao.CandidatoDAO;
 import org.rhworkstation.dao.CurriculoDAO;
 import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Curriculo;
+import org.rhworkstation.utils.Utils;
 import org.rhworkstation.view.Inputs;
 
 import java.sql.SQLException;
 
-import static org.rhworkstation.utils.Utils.limparScanner;
 
 public class CurriculoService {
-
+    Utils utils = new Utils();
     Inputs data = new Inputs();
 
     public void criarCurriculo(){
@@ -22,13 +22,13 @@ public class CurriculoService {
 
         try {
             idCandidato = candidatoDAO.buscarPorCPF(cpf);
-        } catch (SQLException e) {
+        } catch (RHException e) {
             throw new RuntimeException(e);
         }
 
         int idade = data.inputIdade();
 
-        limparScanner();
+        utils.limparScanner();
 
         String sexo = data.inputSexo();
         String formacao = data.inputFormacao();
@@ -77,9 +77,9 @@ public class CurriculoService {
 
     public void editarCurriculo(){
         String cpf = data.inputCpf();
-        int idade = data.inputIdade();
 
-        limparScanner();
+        int idade = data.inputIdade(); //        utils.limparScanner();
+
 
         String sexo = data.inputSexo();
         String formacao = data.inputFormacao();

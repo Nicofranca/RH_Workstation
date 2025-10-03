@@ -40,8 +40,8 @@ public class CandidatoDAO {
         return candidatos;
     }
 
-    public void criarCandidato(Candidato candidato) throws SQLException {
-        String query = "INSERT INTO candidato (nome, cpf, email, senha, id_candidato) VALUES (?, ?, ?, ?, ?)";
+    public void criarCandidato(Candidato candidato) throws SQLException, RHException {
+        String query = "INSERT INTO candidato (nome, cpf, email, senha) VALUES (?, ?, ?, ?)";
 
         try(Connection conn = Conexao.conectar();
             PreparedStatement stmt = conn.prepareStatement(query)){
@@ -49,7 +49,6 @@ public class CandidatoDAO {
             stmt.setString(2, candidato.getCpf());
             stmt.setString(3, candidato.getEmail());
             stmt.setString(4, candidato.getSenha());
-            stmt.setInt(5, candidato.getId());
 
             stmt.executeUpdate();
 

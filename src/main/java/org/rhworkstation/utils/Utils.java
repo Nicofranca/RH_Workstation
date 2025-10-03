@@ -25,7 +25,7 @@ public class Utils {
         return number;
     }
 
-    public static void limparScanner(){
+    public void limparScanner(){
         input.nextLine();
     }
 }
