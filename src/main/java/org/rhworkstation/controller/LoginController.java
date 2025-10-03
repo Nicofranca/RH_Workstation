@@ -1,6 +1,6 @@
 package org.rhworkstation.controller;
 
-import org.rhworkstation.service.CandidatoSevice;
+import org.rhworkstation.service.CandidatoService;
 import org.rhworkstation.service.LoginService;
 import org.rhworkstation.view.Inputs;
 

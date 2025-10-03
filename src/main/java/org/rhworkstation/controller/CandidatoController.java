@@ -1,13 +1,13 @@
 package org.rhworkstation.controller;
 
-import org.rhworkstation.service.CandidatoSevice;
+import org.rhworkstation.service.CandidatoService;
 import org.rhworkstation.service.CurriculoService;
 import org.rhworkstation.view.Inputs;
 import org.rhworkstation.view.Menus;
 
 public class CandidatoController {
     Inputs inputs = new Inputs();
-    CandidatoSevice candidatoSevice = new CandidatoSevice();
+    CandidatoService candidatoSevice = new CandidatoService();
     CurriculoService curriculoService = new CurriculoService();
     Menus menus = new Menus();
 
