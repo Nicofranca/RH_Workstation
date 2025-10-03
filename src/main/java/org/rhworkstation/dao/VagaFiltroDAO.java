@@ -1,6 +1,7 @@
 package org.rhworkstation.dao;
 
 import org.rhworkstation.connection.Conexao;
+import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Vaga;
 
 import java.sql.Connection;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class VagaFiltroDAO {
 
-    public static List<Vaga> listarVagasPorFaixaSalarial(Double salarioMin, Double salarioMax) throws SQLException {
+    public static List<Vaga> listarVagasPorFaixaSalarial(Double salarioMin, Double salarioMax) throws RHException {
         List<Vaga> vagas = new ArrayList<>();
 
         String query = "SELECT id, nome_vaga, descricao, salario_hora FROM vagas WHERE 1=1";
@@ -49,12 +50,14 @@ public class VagaFiltroDAO {
                 }
             }
 
+        } catch (SQLException e) {
+            throw new RHException("Erro ao filtrar vaga", e);
         }
 
         return vagas;
     }
 
-    public static List<Vaga> listarVagasPorCargo(String cargo) throws SQLException {
+    public static List<Vaga> listarVagasPorCargo(String cargo) throws RHException {
         List<Vaga> vagas = new ArrayList<>();
 
         String query = "SELECT id, nome_vaga, descricao, salario_hora FROM vagas WHERE 1=1";
@@ -83,6 +86,9 @@ public class VagaFiltroDAO {
                     vagas.add(vaga);
                 }
             }
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao listar vagas", e);
         }
 
         return vagas;

@@ -1,6 +1,7 @@
 package org.rhworkstation.dao;
 
 import org.rhworkstation.connection.Conexao;
+import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Candidato;
 import org.rhworkstation.model.Curriculo;
 
@@ -10,7 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CurriculoDAO {
-    public void criarCurriculo(Curriculo curriculo) throws SQLException{
+
+    public void criarCurriculo(Curriculo curriculo) throws RHException {
         String query = "INSERT INTO curriculo (idade, sexo, formacao, texto, id_candidato) VALUES (?, ?, ?, ?, ?)";
 
         try(Connection conn = Conexao.conectar();
@@ -24,23 +26,29 @@ public class CurriculoDAO {
             stmt.executeUpdate();
 
             System.out.println("Curriculo Criado!");
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao criar curriculo", e);
         }
     }
 
-    public void exluirCurriculo(int id) throws SQLException{
+    public void exluirCurriculo(int id) throws RHException {
         String query = "DELETE FROM curriculo WHERE id_candidato = ?";
 
         try(Connection conn = Conexao.conectar();
         PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, id);
 
+            stmt.setInt(1, id);
             stmt.executeUpdate();
 
             System.out.println("Curriculo excluido com sucesso!");
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao excluir curriculo", e);
         }
     }
 
-    public void editarCurriculo(Curriculo curriculo, int id) throws SQLException{
+    public void editarCurriculo(Curriculo curriculo, int id) throws RHException{
         CandidatoDAO candidatoDAO = new CandidatoDAO();
         String query = "UPDATE curriculo SET idade = ?, sexo = ?, formacao = ?, texto = ? WHERE id_candidato = ?";
 
@@ -54,8 +62,11 @@ public class CurriculoDAO {
             stmt.executeUpdate();
 
             System.out.println(id);
-
             System.out.println("Curriculo editado com sucesso!");
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao editar curriculo", e);
         }
     }
+
 }

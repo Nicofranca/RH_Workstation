@@ -1,6 +1,7 @@
 package org.rhworkstation.dao;
 
 import org.rhworkstation.connection.Conexao;
+import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Candidato;
 import org.rhworkstation.model.Vaga;
 
@@ -12,7 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CandidatoDAO {
-    public void criarCandidato(Candidato candidato) throws SQLException {
+
+    public void criarCandidato(Candidato candidato) throws RHException {
         String query = "INSERT INTO candidato (nome, cpf, email, senha) VALUES (?, ?, ?, ?)";
 
         try(Connection conn = Conexao.conectar();
@@ -21,14 +23,16 @@ public class CandidatoDAO {
             stmt.setString(2, candidato.getCpf());
             stmt.setString(3, candidato.getEmail());
             stmt.setString(4, candidato.getSenha());
-
             stmt.executeUpdate();
 
             System.out.println("Candidato criado com sucesso!");
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao criar candidato", e);
         }
     }
 
-    public int buscarPorCPF(String CPFCandidato) throws SQLException{
+    public int buscarPorCPF(String CPFCandidato) throws RHException{
         String query = "SELECT id FROM candidato WHERE cpf = (?)";
 
         Candidato candidatoEncontrado = null;
@@ -45,12 +49,15 @@ public class CandidatoDAO {
                     candidatoEncontrado.setId(rs.getInt("id"));
                 }
             }
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao buscar candidato", e);
         }
 
         return candidatoEncontrado.getId();
     }
 
-    public static List<Vaga> listarVagas() throws SQLException {
+    public static List<Vaga> listarVagas() throws RHException {
         List<Vaga> vagas = new ArrayList<>();
 
         String query = "SELECT id, nome_vaga, descricao, salario_hora FROM vagas";
@@ -67,6 +74,9 @@ public class CandidatoDAO {
                 vaga.setSalarioHora(rs.getDouble("salario_hora"));
                 vagas.add(vaga);
             }
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao listar vagas", e);
         }
 
         return vagas;

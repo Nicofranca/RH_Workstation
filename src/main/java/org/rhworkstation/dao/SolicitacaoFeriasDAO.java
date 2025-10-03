@@ -1,6 +1,7 @@
 package org.rhworkstation.dao;
 
 import org.rhworkstation.connection.Conexao;
+import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.SolicitacaoFerias;
 
 import java.sql.*;
@@ -9,7 +10,7 @@ import java.util.List;
 
 public class SolicitacaoFeriasDAO {
 
-    public static void criarSolicitacao(SolicitacaoFerias solicitacaoFerias) throws SQLException {
+    public static void criarSolicitacao(SolicitacaoFerias solicitacaoFerias) throws RHException {
         String query = "INSERT INTO solicitacao_ferias (colaborador_id, data_inicio, data_fim, status_solicitacao) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = Conexao.conectar();
@@ -20,10 +21,13 @@ public class SolicitacaoFeriasDAO {
             stmt.setDate(3, (Date) solicitacaoFerias.getData_fim());
             stmt.setString(4, solicitacaoFerias.getStatus_solicitacao());
             stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao criar solicitação", e);
         }
     }
 
-    public static List<SolicitacaoFerias> listarSolicitacoes() throws SQLException {
+    public static List<SolicitacaoFerias> listarSolicitacoes() throws RHException {
         List<SolicitacaoFerias> lista = new ArrayList<>();
         String query = "SELECT * FROM solicitacao_ferias";
 
@@ -42,12 +46,15 @@ public class SolicitacaoFeriasDAO {
 
                 lista.add(solicitacaoFerias);
             }
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao listar solicitação", e);
         }
 
         return lista;
     }
 
-    public static void atualizarStatusSolicitacao(int id, String status) throws SQLException {
+    public static void atualizarStatusSolicitacao(int id, String status) throws RHException {
         String query = "UPDATE solicitacao_ferias SET status_solicitacao = ? WHERE id = ?";
 
         try (Connection conn = Conexao.conectar();
@@ -56,10 +63,13 @@ public class SolicitacaoFeriasDAO {
             stmt.setString(1, status);
             stmt.setInt(2, id);
             stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao atualizar status da solicitação", e);
         }
     }
 
-    public static void deletarSolicitacao(int id) throws SQLException {
+    public static void deletarSolicitacao(int id) throws RHException {
         String query = "DELETE FROM solicitacao_ferias WHERE id = ?";
 
         try (Connection conn = Conexao.conectar();
@@ -67,6 +77,9 @@ public class SolicitacaoFeriasDAO {
 
             stmt.setInt(1, id);
             stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao deletar solicitação", e);
         }
     }
 

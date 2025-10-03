@@ -1,6 +1,7 @@
 package org.rhworkstation.service;
 
 import org.rhworkstation.dao.ColaboradorDAO;
+import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Colaborador;
 import org.rhworkstation.view.Inputs;
 
@@ -20,7 +21,9 @@ public class ColaboradorService {
         try {
             colaboradorDAO.atualizarSenha(id, novaSenha);
             System.out.println("Senha atualizada com sucesso!");
-        } catch (SQLException e) {
+
+        } catch (RHException e) {
+            System.out.println("Erro ao atualizar senha: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -35,7 +38,9 @@ public class ColaboradorService {
         try {
             colaboradorDAO.atualizarEmail(id, novoEmail);
             System.out.println("Email atualizado com sucesso!");
-        } catch (SQLException e) {
+
+        } catch (RHException e) {
+            System.out.println("Erro ao atualizar email: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -51,10 +56,13 @@ public class ColaboradorService {
                 colaboradorEncontrado = true;
                 System.out.println("Login bem-sucedido! Bem-vindo(a) colaborador, "+ colaborador.getNome());
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+
+        } catch (RHException e) {
+            System.out.println("Erro ao realizar login: "+ e.getMessage());
+            e.printStackTrace();
         }
 
         return colaboradorEncontrado;
     }
+
 }

@@ -2,6 +2,7 @@ package org.rhworkstation.dao;
 
 import org.rhworkstation.connection.Conexao;
 import org.rhworkstation.dto.DadosFolhaSalarialDTO;
+import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Candidato;
 import org.rhworkstation.model.Colaborador;
 import org.rhworkstation.model.FolhaSalarial;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class ColaboradorDAO {
 
-    public void atualizarSenha(int id, String novaSenha) throws SQLException {
+    public void atualizarSenha(int id, String novaSenha) throws RHException {
         String query = "UPDATE colaborador SET senha = ? WHERE id = ?";
 
         try (Connection conn = Conexao.conectar();
@@ -21,10 +22,13 @@ public class ColaboradorDAO {
             stmt.setString(1, novaSenha);
             stmt.setInt(2, id);
             stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao atualizar senha", e);
         }
     }
 
-    public void atualizarEmail(int id, String novoEmail) throws SQLException {
+    public void atualizarEmail(int id, String novoEmail) throws RHException {
         String query = "UPDATE colaborador SET email = ? WHERE id = ?";
 
         try (Connection conn = Conexao.conectar();
@@ -33,10 +37,13 @@ public class ColaboradorDAO {
             stmt.setString(1, novoEmail);
             stmt.setInt(2, id);
             stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao atualizar email", e);
         }
     }
 
-    public Colaborador loginColaborador(String email, String senha) throws SQLException{
+    public Colaborador loginColaborador(String email, String senha) throws RHException {
         String query = "SELECT id, nome, cpf, email, cargo, departamento, salario_hora, senha, horas_de_trabalho FROM colaborador WHERE email = ? AND senha = ?";
         Colaborador colaborador = null;
 
@@ -58,13 +65,15 @@ public class ColaboradorDAO {
                     colaborador.setSalario_hora(rs.getDouble("salario_hora"));
                 }
             }
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao realizar login", e);
         }
 
         return colaborador;
-
     }
 
-    public List<DadosFolhaSalarialDTO> gerarDadosParaFolhaSalarial() throws SQLException {
+    public List<DadosFolhaSalarialDTO> gerarDadosParaFolhaSalarial() throws RHException {
 
         List<DadosFolhaSalarialDTO> folha = new ArrayList<>();
         String query = "SELECT " +
@@ -76,8 +85,9 @@ public class ColaboradorDAO {
                 "LEFT JOIN faltas_trabalho f " +
                 "ON c.cpf = f.cpf_colaborador " +
                 "GROUP BY c.cpf, c.salario_hora, c.horas_de_trabalho;";
+
         try (Connection conn = Conexao.conectar();
-        PreparedStatement stmt =  conn.prepareStatement(query)){
+            PreparedStatement stmt =  conn.prepareStatement(query)){
 
             ResultSet rs = stmt.executeQuery();
 
@@ -91,12 +101,14 @@ public class ColaboradorDAO {
                 folha.add(colaborador);
             }
 
+        } catch (SQLException e) {
+            throw new RHException("Erro ao gerar folha salarial", e);
         }
 
         return folha;
     }
 
-    public int buscarPorCPF(String CPFColaborador) throws SQLException{
+    public int buscarPorCPF(String CPFColaborador) throws RHException{
         String query = "SELECT id FROM colaborador WHERE cpf = (?)";
 
         Colaborador colaboradorEncontrado = null;
@@ -113,6 +125,9 @@ public class ColaboradorDAO {
                     colaboradorEncontrado.setId(rs.getInt("id"));
                 }
             }
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao buscar colaborador", e);
         }
 
         return colaboradorEncontrado.getId();

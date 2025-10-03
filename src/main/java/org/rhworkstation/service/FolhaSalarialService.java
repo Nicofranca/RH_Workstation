@@ -4,6 +4,7 @@ import org.rhworkstation.dao.ColaboradorDAO;
 import org.rhworkstation.dto.Cache;
 import org.rhworkstation.dto.DadosFolhaSalarialDTO;
 import org.rhworkstation.dao.FolhaSalarialDAO;
+import org.rhworkstation.exception.RHException;
 import org.rhworkstation.dto.FolhaSalarialDTO;
 import org.rhworkstation.model.FolhaSalarial;
 
@@ -16,18 +17,17 @@ public class FolhaSalarialService {
 
     ColaboradorDAO colaboradorDAO = new ColaboradorDAO();
 
-    public void LiberarFolhaSalarial() throws SQLException {
-
+    public void LiberarFolhaSalarial() throws RHException {
         List<DadosFolhaSalarialDTO> folha = colaboradorDAO.gerarDadosParaFolhaSalarial();
 
         if(!folha.isEmpty()){
             var folhaSalarialDAO = new FolhaSalarialDAO();
             for(DadosFolhaSalarialDTO c:folha){
                 try {
-
                     String cpf = c.cpf();
                     double salarioBruto = ((c.horasDeTrabalho() * 25) - c.horasFaltas()) * c.salarioHora();
                     double inss;
+
                     if (salarioBruto <= 1518.00) {
                         inss = salarioBruto * 0.075;
                     } else if (salarioBruto <= 2793.88) {
@@ -39,17 +39,19 @@ public class FolhaSalarialService {
                     } else {
                         inss = 908.85;
                     }
+
                     double salarioLiquido = salarioBruto - inss;
                     LocalDate data = LocalDate.now();
 
                     var folhaSalarial = new FolhaSalarial(cpf, salarioBruto, inss, salarioLiquido, data);
                     folhaSalarialDAO.CriarFolhaSalarial(folhaSalarial);
                     System.out.println("cadastrado com sucesso");
-                }catch (Exception e){
-                    System.out.println("Erro ao cadastrar FolhaSalarial");
-                    System.out.println("Mensagem: " + e.getMessage());
-                    e.printStackTrace();
+
+                } catch (RHException e){
+                System.out.println("Erro ao cadastrar folha salarial:" + e.getMessage());
+                e.printStackTrace();
                 }
+
             }
         }
 
@@ -57,7 +59,7 @@ public class FolhaSalarialService {
     FolhaSalarialDAO folhaSalarialDAO = new FolhaSalarialDAO();
     Cache cache = new Cache("345.678.901-22");
 
-    public void OlharFolhaSalarial() throws SQLException {
+    public void OlharFolhaSalarial() throws RHException {
         List<FolhaSalarialDTO> folhaSalarial = folhaSalarialDAO.VisualizarFolhaSalarial(cache.cpf());
 
         try{
@@ -81,17 +83,18 @@ public class FolhaSalarialService {
                 System.out.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 
             }
-        }catch(Exception e){
 
-        }
-
+        } catch(Exception e) {}
     }
 
     public static void main(String[] args) {
 
         FolhaSalarialService folio = new FolhaSalarialService();
+
         try {
             folio.OlharFolhaSalarial();
-        } catch (SQLException e) {}
+
+        } catch (RHException e) {}
     }
+
 }

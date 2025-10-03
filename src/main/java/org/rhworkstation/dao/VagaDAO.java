@@ -1,6 +1,7 @@
 package org.rhworkstation.dao;
 
 import org.rhworkstation.connection.Conexao;
+import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Vaga;
 import org.rhworkstation.model.enums.StatusVaga;
 
@@ -13,8 +14,7 @@ import java.util.List;
 
 public class VagaDAO {
 
-
-    public List<Vaga> listarVagas() {
+    public List<Vaga> listarVagas() throws RHException {
         List<Vaga> vagasDisponiveis = new ArrayList<>();
         String sql = "SELECT * FROM vagas";
 
@@ -33,9 +33,10 @@ public class VagaDAO {
             }
 
         } catch (SQLException e) {
-            System.out.println("Erro ao listar vagas disponíveis: " + e.getMessage());
+            throw new RHException("Erro ao listar vagas", e);
         }
 
         return vagasDisponiveis;
     }
+
 }
