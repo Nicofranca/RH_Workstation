@@ -1,6 +1,7 @@
 package org.rhworkstation.dao;
 
 import org.rhworkstation.connection.Conexao;
+import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Candidato;
 import org.rhworkstation.model.Colaborador;
 import org.rhworkstation.model.Vaga;
@@ -13,6 +14,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CandidatoDAO {
+
+    public static List<Candidato> listarCandidatos() throws RHException {
+        List<Candidato> candidatos = new ArrayList<>();
+
+        String query = "SELECT id, nome, cpf, email FROM candidato";
+
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Candidato candidato = new Candidato();
+                candidato.setId(rs.getInt("id"));
+                candidato.setNome(rs.getString("nome"));
+                candidato.setCpf(rs.getString("cpf"));
+                candidato.setEmail(rs.getString("email"));
+                candidatos.add(candidato);
+            }
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao listar candidatos", e);
+        }
+
+        return candidatos;
+    }
+
     public void criarCandidato(Candidato candidato) throws SQLException {
         String query = "INSERT INTO candidato (nome, cpf, email, senha, id_candidato) VALUES (?, ?, ?, ?, ?)";
 
@@ -27,10 +54,13 @@ public class CandidatoDAO {
             stmt.executeUpdate();
 
             System.out.println("Candidato criado com sucesso!");
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao criar candidato", e);
         }
     }
 
-    public int buscarPorCPF(String CPFCandidato) throws SQLException{
+    public int buscarPorCPF(String CPFCandidato) throws RHException{
         String query = "SELECT id FROM candidato WHERE cpf = (?)";
 
         Candidato candidatoEncontrado = null;
@@ -47,12 +77,15 @@ public class CandidatoDAO {
                     candidatoEncontrado.setId(rs.getInt("id"));
                 }
             }
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao buscar candidato", e);
         }
 
         return candidatoEncontrado.getId();
     }
 
-    public static List<Vaga> listarVagas() throws SQLException {
+    public static List<Vaga> listarVagas() throws RHException {
         List<Vaga> vagas = new ArrayList<>();
 
         String query = "SELECT id, nome_vaga, descricao, salario_hora FROM vagas";
@@ -69,6 +102,9 @@ public class CandidatoDAO {
                 vaga.setSalarioHora(rs.getDouble("salario_hora"));
                 vagas.add(vaga);
             }
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao listar vagas", e);
         }
 
         return vagas;
@@ -94,6 +130,8 @@ public class CandidatoDAO {
                     candidato.setSenha(rs.getString("senha"));
                 }
             }
+        } catch (RHException e) {
+            throw new RuntimeException(e);
         }
         return candidato;
     }

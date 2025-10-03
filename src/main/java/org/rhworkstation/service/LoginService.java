@@ -7,6 +7,7 @@ import org.rhworkstation.view.Menus;
 import java.sql.SQLException;
 
 public class LoginService {
+
     Inputs input = new Inputs();
     AdminService adminService = new AdminService();
     ColaboradorService colaboradorService = new ColaboradorService();
@@ -43,7 +44,7 @@ public class LoginService {
         }
     }
 
-    public String autenticarUsuario(String email, String senha){
+    public String autenticarUsuario(String email, String senha) {
         if (adminService.loginAdmin(email, senha)){
             return "ADMIN";
         } else if (colaboradorService.loginColaborador(email, senha)) {
@@ -53,6 +54,6 @@ public class LoginService {
         }
 
         return null;
-
     }
+
 }

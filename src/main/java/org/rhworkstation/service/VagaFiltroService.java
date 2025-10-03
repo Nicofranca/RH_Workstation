@@ -1,6 +1,7 @@
 package org.rhworkstation.service;
 
 import org.rhworkstation.dao.VagaFiltroDAO;
+import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Vaga;
 import org.rhworkstation.view.Inputs;
 
@@ -44,7 +45,8 @@ public class VagaFiltroService {
                 System.out.println("---------------------------");
             }
 
-        } catch (SQLException e) {
+        } catch (RHException e) {
+            System.out.println("Erro ao filtrar vagas: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -58,7 +60,9 @@ public class VagaFiltroService {
 
         try {
             vagas = VagaFiltroDAO.listarVagasPorCargo(cargo);
-        } catch (SQLException e) {
+
+        } catch (RHException e) {
+            System.out.println("Erro ao filtrar vagas: " + e.getMessage());
             e.printStackTrace();
         }
 

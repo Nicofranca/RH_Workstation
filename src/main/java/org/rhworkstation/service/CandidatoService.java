@@ -1,6 +1,7 @@
 package org.rhworkstation.service;
 
 import org.rhworkstation.dao.CandidatoDAO;
+import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Candidato;
 import org.rhworkstation.model.Vaga;
 import org.rhworkstation.view.Inputs;
@@ -24,7 +25,33 @@ public class CandidatoService {
 
         try {
             candidatoDAO.criarCandidato(novoCandidato);
-        } catch (SQLException e) {
+
+        } catch (RHException e) {
+            System.out.println("Erro ao criar usuário: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void listarCandidatos() {
+        try {
+            List<Candidato> candidatos = CandidatoDAO.listarCandidatos();
+
+            if (candidatos.isEmpty()) {
+                System.out.println("Não há candidatos cadastrados.");
+                return;
+            }
+
+            System.out.println("=== Lista de Candidatos ===");
+            for (Candidato candidato : candidatos) {
+                System.out.println("ID: " + candidato.getId());
+                System.out.println("Nome: " + candidato.getNome());
+                System.out.println("Cpf: " + candidato.getCpf());
+                System.out.println("Email: " + candidato.getEmail());
+                System.out.println("---------------------------");
+            }
+
+        } catch (RHException e) {
+            System.out.println("Erro ao listar candidatos: " +e.getMessage());
             e.printStackTrace();
         }
     }
@@ -47,7 +74,8 @@ public class CandidatoService {
                 System.out.println("---------------------------");
             }
 
-        } catch (SQLException e) {
+        } catch (RHException e) {
+            System.out.println("Erro ao listar candidatos: " + e.getMessage());
             e.printStackTrace();
         }
     }

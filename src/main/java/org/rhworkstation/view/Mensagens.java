@@ -8,4 +8,10 @@ public class Mensagens {
 
         return;
     }
+
+    public void dataError(){
+        System.err.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.err.println("                    ┃ Data inválida! Digite no formato dd/MM/yyyy. ┃");
+        System.err.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+    }
 }

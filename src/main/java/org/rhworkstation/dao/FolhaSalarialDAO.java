@@ -1,6 +1,7 @@
 package org.rhworkstation.dao;
 
 import org.rhworkstation.connection.Conexao;
+import org.rhworkstation.exception.RHException;
 import org.rhworkstation.dto.Cache;
 import org.rhworkstation.dto.FolhaSalarialDTO;
 import org.rhworkstation.model.FolhaSalarial;
@@ -15,11 +16,8 @@ import java.util.List;
 
 public class FolhaSalarialDAO {
 
-    public void CriarFolhaSalarial(FolhaSalarial folha) throws SQLException {
-
-
+    public void CriarFolhaSalarial(FolhaSalarial folha) throws RHException {
         String query = "INSERT INTO FolhaSalarial (id,cpf_colaborador,salario_bruto,inss,salario_liquido,data_folha_salarial) VALUES (?,?,?,?,?,?) ";
-
 
         try(Connection conn = Conexao.conectar();
             PreparedStatement stmt = conn.prepareStatement(query)){
@@ -31,10 +29,14 @@ public class FolhaSalarialDAO {
             stmt.setDouble(5,folha.getSalario_liquido());
             stmt.setDate(6,java.sql.Date.valueOf(folha.getDataFolhaSalarial()));
             stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao criar folha salarial", e);
         }
     }
 
-    public List<FolhaSalarialDTO> VisualizarFolhaSalarial (String cpf) throws SQLException {
+
+    public List<FolhaSalarialDTO> VisualizarFolhaSalarial (String cpf) throws RHException {
         var folhaAtual = new ArrayList<FolhaSalarialDTO>();
         String query = "SELECT c.nome," +
                 "f.cpf_colaborador," +
@@ -48,11 +50,12 @@ public class FolhaSalarialDAO {
                 " WHERE cpf_colaborador = ?";
 
         try(Connection conn = Conexao.conectar();
-        PreparedStatement stmt = conn.prepareStatement(query)){
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
             stmt.setString(1,cpf);
             ResultSet rs = stmt.executeQuery();
-            while(rs.next()){
 
+            while(rs.next()){
                 String  nome = rs.getString("nome");
                 String  cpfColaborador = rs.getString("cpf_colaborador");
                 double  salarioBruto = rs.getDouble("salario_bruto");
@@ -64,8 +67,11 @@ public class FolhaSalarialDAO {
                 folhaAtual.add(valores);
             }
 
+        } catch (SQLException e) {
+            throw new RHException("Erro ao vizualizar folha salarial", e);
         }
 
         return folhaAtual;
     }
+
 }

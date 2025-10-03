@@ -13,10 +13,9 @@ import static org.rhworkstation.utils.Utils.inputNumber;
 
 public class  Inputs {
     Scanner input = new Scanner(System.in);
+    Mensagens mensagens = new Mensagens();
 
-    public void limparScanner(){
-        input.nextLine();
-    }
+
 
     public String inputNome(){
         System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
@@ -182,7 +181,7 @@ public class  Inputs {
             try {
                 dataInicio = formato.parse(linha);
             } catch (ParseException e) {
-                System.out.println("Data inválida! Digite no formato dd/MM/yyyy.");
+                mensagens.dataError();
             }
         }
 
@@ -205,7 +204,7 @@ public class  Inputs {
             try {
                 dataFim = formato.parse(linha);
             } catch (ParseException e) {
-                System.out.println("Data inválida! Digite no formato dd/MM/yyyy.");
+                mensagens.dataError();
             }
         }
 

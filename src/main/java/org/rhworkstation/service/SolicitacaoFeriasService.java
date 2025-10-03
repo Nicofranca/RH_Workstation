@@ -1,6 +1,7 @@
 package org.rhworkstation.service;
 
 import org.rhworkstation.dao.SolicitacaoFeriasDAO;
+import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.SolicitacaoFerias;
 import org.rhworkstation.view.Inputs;
 
@@ -23,8 +24,9 @@ public class SolicitacaoFeriasService {
         try {
             SolicitacaoFeriasDAO.criarSolicitacao(solicitacaoFerias);
             System.out.println("Solicitação de férias criada com sucesso!");
-        } catch (SQLException e) {
-            System.out.println("Erro ao criar solicitação de férias no banco de dados!");
+
+        } catch (RHException e) {
+            System.out.println("Erro ao criar solicitação de férias: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -32,13 +34,15 @@ public class SolicitacaoFeriasService {
     public void listarSolicitacoes() {
         try {
             List<SolicitacaoFerias> lista = SolicitacaoFeriasDAO.listarSolicitacoes();
+
             for (SolicitacaoFerias solicitacaoFerias : lista) {
                 System.out.println("ID: " + solicitacaoFerias.getId() + " | Colaborador: " + solicitacaoFerias.getColaborador_id() +
                         "\nInício: " + solicitacaoFerias.getData_inicio() + " | Fim: " + solicitacaoFerias.getData_fim() +
                         "\nStatus: " + solicitacaoFerias.getStatus_solicitacao() + "\n");
             }
-        } catch (SQLException e) {
-            System.out.println("Erro ao listar solicitações de férias!");
+
+        } catch (RHException e) {
+            System.out.println("Erro ao listar solicitações de férias: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -52,7 +56,9 @@ public class SolicitacaoFeriasService {
         try {
             SolicitacaoFeriasDAO.atualizarStatusSolicitacao(id, status.toUpperCase());
             System.out.println("Status de solicitação atualizado para " + status.toUpperCase());
-        } catch (SQLException e) {
+
+        } catch (RHException e) {
+            System.out.println("Erro ao atulizar status da solicitação: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -63,7 +69,9 @@ public class SolicitacaoFeriasService {
         try {
             SolicitacaoFeriasDAO.deletarSolicitacao(id);
             System.out.println("Solicitação de férias deletada com sucesso!");
-        } catch (SQLException e) {
+
+        } catch (RHException e) {
+            System.out.println("Erro ao deletar solicitação: " + e.getMessage());
             e.printStackTrace();
         }
     }
