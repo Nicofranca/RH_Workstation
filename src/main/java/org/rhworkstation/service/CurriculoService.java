@@ -11,6 +11,17 @@ public class CurriculoService {
     Inputs data = new Inputs();
 
     public void criarCurriculo(){
+        var candidatoDAO = new CandidatoDAO();
+        int idCandidato = 0;
+
+        String cpf = data.inputCpf();
+
+        try {
+            idCandidato = candidatoDAO.buscarPorCPF(cpf);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         int idade = data.inputIdade();
 
         data.limparScanner();
@@ -19,7 +30,7 @@ public class CurriculoService {
         String formacao = data.inputFormacao();
         String texto = data.inputTexto();
 
-        var curriculo = new Curriculo(idade, sexo, formacao, texto);
+        var curriculo = new Curriculo(idade, sexo, formacao, texto, idCandidato);
         var curriculoDAO = new CurriculoDAO();
 
         try {
@@ -45,7 +56,6 @@ public class CurriculoService {
     public void mostrarID(){
         String cpf = data.inputCpf();
 
-        var curriculoDAO = new CurriculoDAO();
         var candidatoDAO = new CandidatoDAO();
 
         try {

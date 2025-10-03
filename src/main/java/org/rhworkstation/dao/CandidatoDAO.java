@@ -2,6 +2,7 @@ package org.rhworkstation.dao;
 
 import org.rhworkstation.connection.Conexao;
 import org.rhworkstation.model.Candidato;
+import org.rhworkstation.model.Colaborador;
 import org.rhworkstation.model.Vaga;
 
 import java.sql.Connection;
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class CandidatoDAO {
     public void criarCandidato(Candidato candidato) throws SQLException {
-        String query = "INSERT INTO candidato (nome, cpf, email, senha) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO candidato (nome, cpf, email, senha, id_candidato) VALUES (?, ?, ?, ?, ?)";
 
         try(Connection conn = Conexao.conectar();
             PreparedStatement stmt = conn.prepareStatement(query)){
@@ -21,6 +22,7 @@ public class CandidatoDAO {
             stmt.setString(2, candidato.getCpf());
             stmt.setString(3, candidato.getEmail());
             stmt.setString(4, candidato.getSenha());
+            stmt.setInt(5, candidato.getId());
 
             stmt.executeUpdate();
 

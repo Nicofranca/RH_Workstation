@@ -5,5 +5,7 @@ public class Mensagens {
         System.err.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
         System.err.println("                    ┃ Você digitou um valor incorreto, tente um número ┃");
         System.err.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+
+        return;
     }
 }

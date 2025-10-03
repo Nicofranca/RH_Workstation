@@ -18,15 +18,17 @@ public class LoginController {
         try {
             String tipoUsuario = loginService.autenticarUsuario(email, senha);
 
+            if (tipoUsuario == null){
+                System.out.println("Usuario não encontrado!");
+                return;
+            }
+
             switch (tipoUsuario){
                 case "ADMIN" -> adminController.iniciarMenuAdmin();
                 case "COLABORADOR" -> colaboradorController.iniciarMenuColaborador();
                 case "CANDIDATO" -> candidatoController.iniciarMenuCandidato();
             }
 
-            if (tipoUsuario == null){
-                System.out.println("Usuario não encontrado!");
-            }
         } catch (Exception e){
             e.printStackTrace();
         }
