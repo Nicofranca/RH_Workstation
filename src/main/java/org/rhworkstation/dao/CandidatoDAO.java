@@ -14,6 +14,31 @@ import java.util.List;
 
 public class CandidatoDAO {
 
+    public static List<Candidato> listarCandidatos() throws RHException {
+        List<Candidato> candidatos = new ArrayList<>();
+
+        String query = "SELECT id, nome, cpf, email FROM candidato";
+
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Candidato candidato = new Candidato();
+                candidato.setId(rs.getInt("id"));
+                candidato.setNome(rs.getString("nome"));
+                candidato.setCpf(rs.getString("cpf"));
+                candidato.setEmail(rs.getString("email"));
+                candidatos.add(candidato);
+            }
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao listar candidatos", e);
+        }
+
+        return candidatos;
+    }
+
     public void criarCandidato(Candidato candidato) throws RHException {
         String query = "INSERT INTO candidato (nome, cpf, email, senha) VALUES (?, ?, ?, ?)";
 
@@ -102,6 +127,8 @@ public class CandidatoDAO {
                     candidato.setSenha(rs.getString("senha"));
                 }
             }
+        } catch (RHException e) {
+            throw new RuntimeException(e);
         }
         return candidato;
     }

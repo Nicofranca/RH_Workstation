@@ -32,6 +32,30 @@ public class CandidatoService {
         }
     }
 
+    public void listarCandidatos() {
+        try {
+            List<Candidato> candidatos = CandidatoDAO.listarCandidatos();
+
+            if (candidatos.isEmpty()) {
+                System.out.println("Não há candidatos cadastrados.");
+                return;
+            }
+
+            System.out.println("=== Lista de Candidatos ===");
+            for (Candidato candidato : candidatos) {
+                System.out.println("ID: " + candidato.getId());
+                System.out.println("Nome: " + candidato.getNome());
+                System.out.println("Cpf: " + candidato.getCpf());
+                System.out.println("Email: " + candidato.getEmail());
+                System.out.println("---------------------------");
+            }
+
+        } catch (RHException e) {
+            System.out.println("Erro ao listar candidatos: " +e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
     public void listarVagas() {
         try {
             List<Vaga> vagas = CandidatoDAO.listarVagas();
