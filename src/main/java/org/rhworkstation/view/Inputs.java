@@ -90,7 +90,9 @@ public class  Inputs {
         System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
         System.out.println("                    ┃ - Digite a Idade                         ┃");
         System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
-        int idade = input.nextInt();
+        String stringIdade = input.nextLine();
+
+        int idade = Integer.parseInt(stringIdade);
 
         return idade;
     }

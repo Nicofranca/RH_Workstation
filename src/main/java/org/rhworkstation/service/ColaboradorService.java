@@ -3,19 +3,19 @@ package org.rhworkstation.service;
 import org.rhworkstation.dao.ColaboradorDAO;
 import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Colaborador;
+import org.rhworkstation.utils.Utils;
 import org.rhworkstation.view.Inputs;
 
 import java.sql.SQLException;
 
-import static org.rhworkstation.utils.Utils.limparScanner;
 
 public class ColaboradorService {
-
+    Utils utils = new Utils();
     Inputs input = new Inputs();
 
     public void atualizarSenhaColaborador() {
         int id = input.inputID();
-        limparScanner();
+        utils.limparScanner();
         String novaSenha = input.inputSenha();
 
         var colaboradorDAO = new ColaboradorDAO();
@@ -32,14 +32,14 @@ public class ColaboradorService {
 
     public void editarColaborador() {
         int id = input.inputID();
-        limparScanner();
+        utils.limparScanner();
         String nome = input.inputNome();
         String cpf = input.inputCpf();
         String email = input.inputEmail();
         String cargo = input.inputCargo();
         String departamento = input.inputDepartamento();
         double salarioHora = input.inputSalarioHora();
-        limparScanner();
+        utils.limparScanner();
         String senha = input.inputSenha();
 
         var colaborador = new Colaborador(id, nome, cpf, email, cargo, departamento, salarioHora, senha);
@@ -71,7 +71,7 @@ public class ColaboradorService {
     }
 
     public void criarColaborador() {
-        limparScanner();
+        utils.limparScanner();
 
         String nome = input.inputNome();
         String cpf = input.inputCpf();
@@ -98,7 +98,7 @@ public class ColaboradorService {
 
     public void atualizarEmail() {
         int id = input.inputID();
-        limparScanner();
+        utils.limparScanner();
         String novoEmail = input.inputEmail();
 
         var colaboradorDAO = new ColaboradorDAO();

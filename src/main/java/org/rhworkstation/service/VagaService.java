@@ -3,12 +3,12 @@ package org.rhworkstation.service;
 import org.rhworkstation.dao.VagaDAO;
 import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Vaga;
+import org.rhworkstation.utils.Utils;
 import org.rhworkstation.view.Inputs;
 
-import static org.rhworkstation.utils.Utils.limparScanner;
 
 public class VagaService {
-
+    Utils utils = new Utils();
     Inputs input = new Inputs();
 
     public void criarVaga() {
@@ -43,7 +43,7 @@ public class VagaService {
 
     public void editarVaga() {
         int id = input.inputID();
-        limparScanner();
+        utils.limparScanner();
         String nomeVaga = input.inputNomeVaga();
         String descricao = input.inputDescricaoVaga();
         double salarioHora = input.inputSalarioHoraVaga();

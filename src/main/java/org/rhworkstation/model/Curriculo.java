@@ -1,5 +1,7 @@
 package org.rhworkstation.model;
 
+import org.rhworkstation.dao.CandidatoDAO;
+
 public class Curriculo {
 
     private int id;
@@ -7,7 +9,7 @@ public class Curriculo {
     private String sexo;
     private String formacao;
     private String texto;
-    private Candidato id_candidato;
+    private int id_candidato;
 
     public Curriculo() {}
 
@@ -18,8 +20,16 @@ public class Curriculo {
         this.texto = texto;
     }
 
-    public Curriculo(int id, int idade, String sexo, String formacao, String texto, Candidato id_candidato) {
+    public Curriculo(int id, int idade, String sexo, String formacao, String texto, int id_candidato) {
         this.id = id;
+        this.idade = idade;
+        this.sexo = sexo;
+        this.formacao = formacao;
+        this.texto = texto;
+        this.id_candidato = id_candidato;
+    }
+
+    public Curriculo(int idade, String sexo, String formacao, String texto, int id_candidato) {
         this.idade = idade;
         this.sexo = sexo;
         this.formacao = formacao;
@@ -68,11 +78,11 @@ public class Curriculo {
         this.texto = texto;
     }
 
-    public Candidato getId_candidato() {
+    public int getId_candidato() {
         return id_candidato;
     }
 
-    public void setId_candidato(Candidato id_candidato) {
+    public void setId_candidato(int id_candidato) {
         this.id_candidato = id_candidato;
     }
 

@@ -4,26 +4,37 @@ import org.rhworkstation.dao.CandidatoDAO;
 import org.rhworkstation.dao.CurriculoDAO;
 import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Curriculo;
+import org.rhworkstation.utils.Utils;
 import org.rhworkstation.view.Inputs;
 
 import java.sql.SQLException;
 
-import static org.rhworkstation.utils.Utils.limparScanner;
 
 public class CurriculoService {
-
+    Utils utils = new Utils();
     Inputs data = new Inputs();
 
     public void criarCurriculo(){
+        var candidatoDAO = new CandidatoDAO();
+        int idCandidato = 0;
+
+        String cpf = data.inputCpf();
+
+        try {
+            idCandidato = candidatoDAO.buscarPorCPF(cpf);
+        } catch (RHException e) {
+            throw new RuntimeException(e);
+        }
+
         int idade = data.inputIdade();
 
-        limparScanner();
+        utils.limparScanner();
 
         String sexo = data.inputSexo();
         String formacao = data.inputFormacao();
         String texto = data.inputTexto();
 
-        var curriculo = new Curriculo(idade, sexo, formacao, texto);
+        var curriculo = new Curriculo(idade, sexo, formacao, texto, idCandidato);
         var curriculoDAO = new CurriculoDAO();
 
         try {
@@ -53,7 +64,6 @@ public class CurriculoService {
     public void mostrarID(){
         String cpf = data.inputCpf();
 
-        var curriculoDAO = new CurriculoDAO();
         var candidatoDAO = new CandidatoDAO();
 
         try {
@@ -67,9 +77,9 @@ public class CurriculoService {
 
     public void editarCurriculo(){
         String cpf = data.inputCpf();
-        int idade = data.inputIdade();
 
-        limparScanner();
+        int idade = data.inputIdade(); //        utils.limparScanner();
+
 
         String sexo = data.inputSexo();
         String formacao = data.inputFormacao();

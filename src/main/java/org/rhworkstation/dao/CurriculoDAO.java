@@ -22,7 +22,7 @@ public class CurriculoDAO {
             stmt.setString(2, curriculo.getSexo());
             stmt.setString(3, curriculo.getFormacao());
             stmt.setString(4, curriculo.getTexto());
-            stmt.setObject(5, curriculo.getId_candidato().getId());
+            stmt.setObject(5, curriculo.getId_candidato());
             stmt.executeUpdate();
 
             System.out.println("Curriculo Criado!");

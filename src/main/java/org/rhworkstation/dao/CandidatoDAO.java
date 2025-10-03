@@ -3,6 +3,7 @@ package org.rhworkstation.dao;
 import org.rhworkstation.connection.Conexao;
 import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Candidato;
+import org.rhworkstation.model.Colaborador;
 import org.rhworkstation.model.Vaga;
 
 import java.sql.Connection;
@@ -39,7 +40,7 @@ public class CandidatoDAO {
         return candidatos;
     }
 
-    public void criarCandidato(Candidato candidato) throws RHException {
+    public void criarCandidato(Candidato candidato) throws SQLException, RHException {
         String query = "INSERT INTO candidato (nome, cpf, email, senha) VALUES (?, ?, ?, ?)";
 
         try(Connection conn = Conexao.conectar();
@@ -48,6 +49,7 @@ public class CandidatoDAO {
             stmt.setString(2, candidato.getCpf());
             stmt.setString(3, candidato.getEmail());
             stmt.setString(4, candidato.getSenha());
+
             stmt.executeUpdate();
 
             System.out.println("Candidato criado com sucesso!");

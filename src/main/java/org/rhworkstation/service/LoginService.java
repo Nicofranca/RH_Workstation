@@ -24,17 +24,20 @@ public class LoginService {
                 return;
             }
 
-            if (candidatoService.loginCandidato(email, senha)) {
+            else if (candidatoService.loginCandidato(email, senha)) {
                 menus.menuCandidato();
                 return;
             }
 
-            if (colaboradorService.loginColaborador(email, senha)) {
+            else if (colaboradorService.loginColaborador(email, senha)) {
                 menus.menuColaborador();
                 return;
             }
 
-            System.out.println("Usuário não encontrado. Verifique suas credenciais ou cadastre-se!");
+            else {
+                System.out.println("Usuário não encontrado. Verifique suas credenciais ou cadastre-se!");
+                return;
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

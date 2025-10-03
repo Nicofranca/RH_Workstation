@@ -29,6 +29,8 @@ public class CandidatoService {
         } catch (RHException e) {
             System.out.println("Erro ao criar usuário: " + e.getMessage());
             e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
