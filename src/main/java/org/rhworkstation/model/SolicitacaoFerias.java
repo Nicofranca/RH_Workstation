@@ -1,5 +1,7 @@
 package org.rhworkstation.model;
 
+import org.rhworkstation.model.enums.StatusSolicitacaoFerias;
+
 import java.util.Date;
 
 public class SolicitacaoFerias {
@@ -8,7 +10,7 @@ public class SolicitacaoFerias {
     private int colaborador_id;
     private Date data_inicio;
     private Date data_fim;
-    private String status_solicitacao;
+    private StatusSolicitacaoFerias status_solicitacao;
 
     public SolicitacaoFerias() {}
 
@@ -16,12 +18,15 @@ public class SolicitacaoFerias {
         this.id = id;
     }
 
-    public SolicitacaoFerias(int id, int colaborador_id, Date data_inicio, Date data_fim, String status_solicitacao) {
+    public SolicitacaoFerias(int id, int colaborador_id, Date data_inicio, Date data_fim, StatusSolicitacaoFerias status_solicitacao) {
         this.id = id;
         this.colaborador_id = colaborador_id;
         this.data_inicio = data_inicio;
         this.data_fim = data_fim;
-        this.status_solicitacao = status_solicitacao;
+        this.status_solicitacao = StatusSolicitacaoFerias.PENDENTE;
+    }
+
+    public SolicitacaoFerias(int id, int colaboradorId, java.sql.Date dataInicio, java.sql.Date dataFim, String statusSolicitacao) {
     }
 
     // Getters e Setters
@@ -53,11 +58,12 @@ public class SolicitacaoFerias {
         this.data_fim = data_fim;
     }
 
-    public String getStatus_solicitacao() {
+    public StatusSolicitacaoFerias getStatus_solicitacao() {
         return status_solicitacao;
     }
-    public void setStatus_solicitacao(String status_solicitacao) {
-        this.status_solicitacao = status_solicitacao;
+    public String setStatus_solicitacao(StatusSolicitacaoFerias status_solicitacao) {
+        this.status_solicitacao = StatusSolicitacaoFerias.PENDENTE;
+        return null;
     }
 
 }

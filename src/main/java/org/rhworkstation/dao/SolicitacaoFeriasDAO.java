@@ -3,6 +3,7 @@ package org.rhworkstation.dao;
 import org.rhworkstation.connection.Conexao;
 import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.SolicitacaoFerias;
+import org.rhworkstation.model.enums.StatusSolicitacaoFerias;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class SolicitacaoFeriasDAO {
             stmt.setInt(1, solicitacaoFerias.getColaborador_id());
             stmt.setDate(2, (Date) solicitacaoFerias.getData_inicio());
             stmt.setDate(3, (Date) solicitacaoFerias.getData_fim());
-            stmt.setString(4, solicitacaoFerias.getStatus_solicitacao());
+            stmt.setString(4, solicitacaoFerias.setStatus_solicitacao(StatusSolicitacaoFerias.PENDENTE));
             stmt.executeUpdate();
 
         } catch (SQLException e) {

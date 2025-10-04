@@ -3,6 +3,7 @@ package org.rhworkstation.service;
 import org.rhworkstation.dao.SolicitacaoFeriasDAO;
 import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.SolicitacaoFerias;
+import org.rhworkstation.model.enums.StatusSolicitacaoFerias;
 import org.rhworkstation.view.Inputs;
 
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ public class SolicitacaoFeriasService {
         int colaboradorId = input.inputID();
         Date dataInicio = input.inputDataInicio();
         Date dataFim = input.inputDataFim();
-        String status = "PENDENTE";
+        StatusSolicitacaoFerias status = StatusSolicitacaoFerias.PENDENTE;
 
         SolicitacaoFerias solicitacaoFerias = new SolicitacaoFerias(0, colaboradorId, dataInicio, dataFim, status);
 
