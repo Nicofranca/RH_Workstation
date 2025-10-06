@@ -7,8 +7,6 @@ import org.rhworkstation.model.Curriculo;
 import org.rhworkstation.utils.Utils;
 import org.rhworkstation.view.Inputs;
 
-import java.sql.SQLException;
-
 
 public class CurriculoService {
     Utils utils = new Utils();
@@ -53,7 +51,7 @@ public class CurriculoService {
         var candidatoDAO = new CandidatoDAO();
 
         try {
-            curriculoDAO.exluirCurriculo(candidatoDAO.buscarPorCPF(cpf));
+            curriculoDAO.excluirCurriculo(candidatoDAO.buscarPorCPF(cpf));
 
         } catch (RHException e) {
             System.out.println("Erro ao excluir curriculo: " + e.getMessage());

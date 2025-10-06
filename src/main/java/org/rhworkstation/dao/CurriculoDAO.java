@@ -2,12 +2,10 @@ package org.rhworkstation.dao;
 
 import org.rhworkstation.connection.Conexao;
 import org.rhworkstation.exception.RHException;
-import org.rhworkstation.model.Candidato;
 import org.rhworkstation.model.Curriculo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CurriculoDAO {
@@ -32,7 +30,7 @@ public class CurriculoDAO {
         }
     }
 
-    public void exluirCurriculo(int id) throws RHException {
+    public void excluirCurriculo(int id) throws RHException {
         String query = "DELETE FROM curriculo WHERE id_candidato = ?";
 
         try(Connection conn = Conexao.conectar();

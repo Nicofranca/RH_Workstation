@@ -146,6 +146,7 @@ public class Menus {
         System.out.println("                    ┃ 2 - Editar infos. Colaborador            ┃");
         System.out.println("                    ┃ 3 - Desligar Colaborador                 ┃");
         System.out.println("                    ┃ 4 - Olhar Solicitação de Férias          ┃");
+        System.out.println("                    ┃ 5 - Tornar Candidado um Colaborador      ┃");
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - Voltar                               ┃");
         System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");

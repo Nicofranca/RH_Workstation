@@ -37,4 +37,8 @@ public class AdminService {
         return adminEncontrado;
     }
 
+    public void tornarColaborador(){
+
+    }
+
 }

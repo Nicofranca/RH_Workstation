@@ -46,4 +46,8 @@ public class AdminDAO {
         return admin;
     }
 
+    public void tornarColaborador() throws RHException{
+        String query = "INSERT";
+    }
+
 }
