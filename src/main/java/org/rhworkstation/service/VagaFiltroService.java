@@ -9,12 +9,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.rhworkstation.view.Mensagens.filtroVagasValor;
+
 public class VagaFiltroService {
 
     Inputs input = new Inputs();
 
     public void listarVagasPorFaixaSalarial() {
-        System.out.println("=== Filtro de Vagas por Valor da Hora ===");
+
+        filtroVagasValor();
 
         Double salarioMin = input.inputSalarioHoraMinimo();
         if (salarioMin <= 0) salarioMin = null;
@@ -46,7 +49,7 @@ public class VagaFiltroService {
             }
 
         } catch (RHException e) {
-            System.out.println("Erro ao filtrar vagas: " + e.getMessage());
+            System.err.println("Erro ao filtrar vagas: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -62,7 +65,7 @@ public class VagaFiltroService {
             vagas = VagaFiltroDAO.listarVagasPorCargo(cargo);
 
         } catch (RHException e) {
-            System.out.println("Erro ao filtrar vagas: " + e.getMessage());
+            System.err.println("                    Erro ao filtrar vagas: " + e.getMessage());
             e.printStackTrace();
         }
 

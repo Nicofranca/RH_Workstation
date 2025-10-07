@@ -68,13 +68,13 @@ public class FolhaSalarialService {
                 System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
                 System.out.println("                    ┃            FOLHA DE PAGAMENTO            ┃");
                 System.out.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-                System.out.println("                    - Colaborador: "+c.dataFolhaSalarial());
-                System.out.println("                    - Colaborador: "+c.nome());
-                System.out.println("                    -     CPF    : "+c.cpf());
+                System.out.println("                    - Data de Emissão : "+c.dataFolhaSalarial());
+                System.out.println("                    - Colaborador     : "+c.nome());
+                System.out.println("                    - CPF             : "+c.cpf());
                 System.out.println("                    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-                System.out.println("                    - Salário Bruto: "+c.salarioBruto()+"R$");
+                System.out.println("                    - Salário Bruto   : "+c.salarioBruto()+"R$");
                 System.out.println("                    --------------------------------------------");
-                System.out.println("                    -     INSS     : -"+c.inss()+"R$");
+                System.out.println("                    -      INSS       : -"+c.inss()+"R$");
                 System.out.println("                    --------------------------------------------");
                 System.out.println("                                                                ");
                 System.out.println("                                                                ");

@@ -180,7 +180,7 @@ public class Menus {
     public void menuFinal(){
         System.out.println("                   ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
         System.out.println("                   ┃ Agradecemos por utilizar o RH-Workstation! ┃");
-        System.out.print("                   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+        System.out.print  ("                   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
     }
 }
 
