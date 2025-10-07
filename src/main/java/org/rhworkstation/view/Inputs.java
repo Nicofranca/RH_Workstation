@@ -26,7 +26,7 @@ public class  Inputs {
         return nome;
     }
 
-    public int inputHorasDeTrabalho(){
+    public double inputHorasDeTrabalho(){
         System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
         System.out.println("                    ┃ - Digite as Horas de Trabalho            ┃");
         System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");

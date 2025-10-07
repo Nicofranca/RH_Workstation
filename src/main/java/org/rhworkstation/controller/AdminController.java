@@ -8,6 +8,7 @@ public class AdminController {
     ColaboradorService colaborador = new ColaboradorService();
     CandidatoService candidato = new CandidatoService();
     VagaService vaga = new VagaService();
+    AdminService adminService = new AdminService();
     SolicitacaoFeriasService solicitacaoFeriasService = new SolicitacaoFeriasService();
 
     public void iniciarMenuAdmin() {
@@ -33,6 +34,7 @@ public class AdminController {
                         case 2 -> colaborador.editarColaborador();
                         case 3 -> colaborador.desligarColaborador();
                         case 4 -> solicitacaoFeriasService.listarSolicitacoes();
+                        case 5 -> adminService.tornarColaborador();
                         case 0 -> {
                             return;
                         }

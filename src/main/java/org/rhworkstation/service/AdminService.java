@@ -13,9 +13,10 @@ import org.rhworkstation.exception.RHException;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Scanner;
 
 public class AdminService {
-
+    Scanner sc = new Scanner(System.in);
     Inputs input = new Inputs();
 
     public boolean loginAdmin(String email, String senha){
@@ -38,7 +39,39 @@ public class AdminService {
     }
 
     public void tornarColaborador(){
+        var adminDAO = new AdminDAO();
+        var candidatoDAO = new CandidatoDAO();
+        var candidato = new Candidato();
 
+        String cpf = input.inputCpf();
+
+        try {
+            candidato = adminDAO.buscarPorCPF(cpf);
+        } catch (RHException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("Candidato encontrado: " + candidato.getCpf() + " - " + candidato.getNome() + " - " + candidato.getEmail());
+
+        System.out.println("Deseja tornar este candidato um colaborador?(s/n)");
+        String escolha = sc.nextLine();
+
+        if (escolha.equalsIgnoreCase("s")){
+            String cargo = input.inputCargo();
+            String departamento= input.inputDepartamento();
+            double salarioHora = input.inputSalarioHora();
+            double horasDeTrabalho = input.inputHorasDeTrabalho();
+
+            var colaborador = new Colaborador(candidato.getNome(), candidato.getCpf(), candidato.getEmail(), cargo, departamento, salarioHora, candidato.getSenha(), horasDeTrabalho);
+
+            try {
+                adminDAO.tornarColaborador(colaborador);
+            } catch (RHException e) {
+                throw new RuntimeException(e);
+            }
+        } else{
+            return;
+        }
     }
 
 }

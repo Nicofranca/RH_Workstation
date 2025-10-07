@@ -13,8 +13,8 @@ public class RegistroFaltaDAO {
     public void RegistrarFalta(RegistroFalta falta) throws RHException {
         String query = "INSERT INTO faltas_trabalho(cpf_colaborador,horas_faltas) values (?,?)";
 
-        try(Connection conn = Conexao.conectar();
-            PreparedStatement stmt = conn.prepareStatement(query);){
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement stmt = conn.prepareStatement(query);) {
 
             stmt.setString(1, falta.getCpfColaborador());
             stmt.setDouble(2, falta.getHorasFaltas());
@@ -24,5 +24,4 @@ public class RegistroFaltaDAO {
             throw new RHException("Erro ao registrar falta", e);
         }
     }
-
 }
