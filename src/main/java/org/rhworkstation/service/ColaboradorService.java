@@ -80,7 +80,7 @@ public class ColaboradorService {
         String cargo = input.inputCargo();
         String departamento = input.inputDepartamento();
         double salarioHora = input.inputSalarioHora();
-        int horaDeTrabalho = input.inputHorasDeTrabalho();
+        double horaDeTrabalho = input.inputHorasDeTrabalho();
 
 
         var colaborador = new Colaborador(nome, cpf, email, cargo, departamento, salarioHora, senha, horaDeTrabalho);

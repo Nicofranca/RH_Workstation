@@ -46,4 +46,70 @@ public class AdminDAO {
         return admin;
     }
 
+    public void tornarColaborador(Colaborador colaborador) throws RHException{
+        String query = "INSERT INTO colaborador (nome, cpf, email, cargo, departamento, salario_hora, senha,horas_de_trabalho) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try(Connection conn = Conexao.conectar();
+        PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, colaborador.getNome());
+            stmt.setString(2, colaborador.getCpf());
+            stmt.setString(3, colaborador.getEmail());
+            stmt.setString(4, colaborador.getCargo());
+            stmt.setString(5, colaborador.getDepartamento());
+            stmt.setDouble(6, colaborador.getSalario_hora());
+            stmt.setString(7, colaborador.getSenha());
+            stmt.setDouble(8, colaborador.getHorasDeTrabalho());
+            stmt.executeUpdate();
+
+            System.out.println("Novo colaborador Cadastrado!");
+
+            deletarCandidato(colaborador.getCpf());
+
+
+        } catch (SQLException e){
+            throw new RHException("Erro ao cadastrar colaborador no banco! " + e);
+        }
+    }
+
+    public void deletarCandidato(String cpf) throws RHException{
+        String query = "DELETE FROM candidato WHERE cpf = ?";
+
+        try(Connection conn = Conexao.conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+                stmt.setString(1, cpf);
+                stmt.executeUpdate();
+
+        } catch (SQLException e){
+                throw new RHException("Erro ao deletar candidato! "+e);
+        }
+    }
+
+    public Candidato buscarPorCPF(String CPFCandidato) throws RHException{
+        String query = "SELECT id, nome, email, cpf, senha FROM candidato WHERE cpf = (?)";
+
+        Candidato candidatoEncontrado = null;
+
+        try(Connection conn = Conexao.conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, CPFCandidato);
+
+            try(ResultSet rs = stmt.executeQuery()) {
+                if(rs.next()){
+                    candidatoEncontrado = new Candidato();
+                    candidatoEncontrado.setId(rs.getInt("id"));
+                    candidatoEncontrado.setNome(rs.getString("nome"));
+                    candidatoEncontrado.setEmail(rs.getString("email"));
+                    candidatoEncontrado.setCpf(rs.getString("cpf"));
+                    candidatoEncontrado.setSenha(rs.getString("senha"));
+
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao buscar candidato", e);
+        }
+
+        return candidatoEncontrado;
+    }
 }

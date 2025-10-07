@@ -12,10 +12,10 @@ public class Colaborador{
     private String departamento;
     private double salario_hora;
     private String senha;
-    private int horasDeTrabalho;
+    private double horasDeTrabalho;
 
 
-    public Colaborador(String nome, String cpf, String email, String cargo, String departamento, double salario_hora, String senha, int horasDeTrabalho) {
+    public Colaborador(String nome, String cpf, String email, String cargo, String departamento, double salario_hora, String senha, double horasDeTrabalho) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
@@ -26,7 +26,7 @@ public class Colaborador{
         this.horasDeTrabalho = horasDeTrabalho ;
     }
 
-    public Colaborador(int id, String nome, String cpf, String email, String cargo, String departamento, double salario_hora, String senha, int horasDeTrabalho) {
+    public Colaborador(int id, String nome, String cpf, String email, String cargo, String departamento, double salario_hora, String senha, double horasDeTrabalho) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -106,7 +106,11 @@ public class Colaborador{
     public String getSenha() { return senha; }
     public void setSenha(String senha) { this.senha = senha; }
 
-    public int getHorasDeTrabalho() {
+    public void setHorasDeTrabalho(double horasDeTrabalho) {
+        this.horasDeTrabalho = horasDeTrabalho;
+    }
+
+    public double getHorasDeTrabalho() {
         return horasDeTrabalho;
     }
 

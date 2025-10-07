@@ -26,7 +26,7 @@ public class ColaboradorDAO {
             stmt.setString(5, colaborador.getDepartamento());
             stmt.setDouble(6, colaborador.getSalario_hora());
             stmt.setString(7, colaborador.getSenha());
-            stmt.setInt(8,colaborador.getHorasDeTrabalho());
+            stmt.setDouble(8,colaborador.getHorasDeTrabalho());
             stmt.executeUpdate();
 
         } catch (SQLException e) {
