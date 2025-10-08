@@ -59,8 +59,13 @@ public class FolhaSalarialService {
     FolhaSalarialDAO folhaSalarialDAO = new FolhaSalarialDAO();
     Cache cache = new Cache("345.678.901-22");
 
-    public void OlharFolhaSalarial() throws RHException {
-        List<FolhaSalarialDTO> folhaSalarial = folhaSalarialDAO.VisualizarFolhaSalarial(cache.cpf());
+    public void OlharFolhaSalarial() {
+        List<FolhaSalarialDTO> folhaSalarial = null;
+        try {
+            folhaSalarial = folhaSalarialDAO.VisualizarFolhaSalarial(cache.cpf());
+        } catch (RHException e) {
+            throw new RuntimeException(e);
+        }
 
         try{
             for(FolhaSalarialDTO c:folhaSalarial){
@@ -84,16 +89,16 @@ public class FolhaSalarialService {
 
             }
 
-        } catch(Exception e) {}
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
         FolhaSalarialService folio = new FolhaSalarialService();
 
-        try {
-            folio.OlharFolhaSalarial();
+        folio.OlharFolhaSalarial();
 
-        } catch (RHException e) {}
     }
 
 }
