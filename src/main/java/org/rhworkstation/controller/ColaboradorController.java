@@ -1,5 +1,6 @@
 package org.rhworkstation.controller;
 
+
 import org.rhworkstation.context.CacheContext;
 import org.rhworkstation.exception.RHException;
 import org.rhworkstation.view.Menus;
@@ -25,6 +26,8 @@ public class ColaboradorController {
                     saida = true;
                 }
             }
+
+          
         }
     }
 }

@@ -45,7 +45,9 @@ public class VagaService {
 
     public void editarVaga() {
         int id = input.inputID();
+
         utils.limparScanner();
+
         String nomeVaga = input.inputNomeVaga();
         String descricao = input.inputDescricaoVaga();
         double salarioHora = input.inputSalarioHoraVaga();

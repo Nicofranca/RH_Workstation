@@ -165,6 +165,8 @@ public class  Inputs {
         System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
         int id = input.nextInt();
 
+        input.nextLine();
+
         return id;
     }
 

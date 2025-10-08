@@ -85,16 +85,16 @@ public class FolhaSalarialService {
 
             }
 
-        } catch(Exception e) {}
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
         FolhaSalarialService folio = new FolhaSalarialService();
 
-        try {
-            folio.OlharFolhaSalarial();
+        folio.OlharFolhaSalarial();
 
-        } catch (RHException e) {}
     }
 
 }

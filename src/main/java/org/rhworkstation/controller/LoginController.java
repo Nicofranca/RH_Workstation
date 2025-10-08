@@ -1,8 +1,12 @@
 package org.rhworkstation.controller;
 
+import org.rhworkstation.dao.CandidatoDAO;
+import org.rhworkstation.dto.Cache;
 import org.rhworkstation.service.CandidatoService;
 import org.rhworkstation.service.LoginService;
 import org.rhworkstation.view.Inputs;
+
+import java.sql.SQLException;
 
 public class LoginController {
     Inputs inputs = new Inputs();
