@@ -41,7 +41,13 @@ public class Mensagens {
 
     public static void naoHaVagasFaixaSalarial(){
         System.err.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.err.println("                    ┃       Filtro de Vagas por Valor da Hora          ┃");
+        System.err.println("                    ┃       Não há vagas nessa faixa salarial          ┃");
+        System.err.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+    }
+
+    public static void naoHaVagasCargo(){
+        System.err.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.err.println("                    ┃  Não há vagas nessa cadastradas para esse cargo! ┃");
         System.err.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
     }
 

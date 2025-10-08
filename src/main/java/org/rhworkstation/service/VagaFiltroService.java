@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.rhworkstation.view.Mensagens.filtroVagasValor;
+import static org.rhworkstation.view.Mensagens.*;
 
 public class VagaFiltroService {
 
@@ -35,27 +35,32 @@ public class VagaFiltroService {
             List<Vaga> vagas = VagaFiltroDAO.listarVagasPorFaixaSalarial(salarioMin, salarioMax);
 
             if (vagas.isEmpty()) {
-                System.out.println("Não há vagas cadastradas nessa faixa salarial!");
+                naoHaVagasFaixaSalarial();
                 return;
             }
 
-            System.out.println("=== Lista de Vagas por Faixa Salarial ===");
+                System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+                System.out.println("                    ┃       Lista de Vagas por Faixa Salarial          ┃");
+                System.out.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
             for (Vaga vaga : vagas) {
-                System.out.println("ID: " + vaga.getId());
-                System.out.println("Nome da Vaga: " + vaga.getNomeVaga());
-                System.out.println("Descrição: " + vaga.getDescricao());
-                System.out.println("Salário Hora: " + vaga.getSalarioHora());
-                System.out.println("---------------------------");
+                System.out.println("                    - Nome da Vaga: " + vaga.getNomeVaga());
+                System.out.println("                    ---------------------------------------------------");
+                System.out.println("                    - Descrição   : " + vaga.getDescricao());
+                System.out.println("                    ---------------------------------------------------");
+                System.out.println("                    - Salário Hora: " + vaga.getSalarioHora());
+                System.out.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
             }
 
         } catch (RHException e) {
-            System.err.println("Erro ao filtrar vagas: " + e.getMessage());
+            System.err.println("                    Erro ao filtrar vagas: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     public void listarVagasPorCargo() {
-        System.out.println("=== Filtro de Vagas por Cargo ===");
+        System.err.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.err.println("                    ┃       Lista de Vagas por Faixa Salarial          ┃");
+        System.err.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 
         String cargo = input.inputCargo();
 
@@ -70,7 +75,7 @@ public class VagaFiltroService {
         }
 
         if (vagas == null || vagas.isEmpty()) {
-            System.out.println("Não há vagas cadastradas para esse cargo!");
+            naoHaVagasCargo();
             return;
         }
 

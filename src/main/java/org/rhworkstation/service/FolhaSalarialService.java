@@ -1,7 +1,8 @@
 package org.rhworkstation.service;
 
+import org.rhworkstation.context.CacheContext;
 import org.rhworkstation.dao.ColaboradorDAO;
-import org.rhworkstation.dto.Cache;
+import org.rhworkstation.context.CacheContext;
 import org.rhworkstation.dto.DadosFolhaSalarialDTO;
 import org.rhworkstation.dao.FolhaSalarialDAO;
 import org.rhworkstation.dto.FolhaSalarialDTO;
@@ -12,6 +13,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import static org.rhworkstation.context.CacheContext.getCacheCpf;
 
 public class FolhaSalarialService {
 
@@ -57,10 +59,9 @@ public class FolhaSalarialService {
     }
 
     FolhaSalarialDAO folhaSalarialDAO = new FolhaSalarialDAO();
-    Cache cache = new Cache("345.678.901-22");
 
     public void OlharFolhaSalarial() throws RHException {
-        List<FolhaSalarialDTO> folhaSalarial = folhaSalarialDAO.VisualizarFolhaSalarial(cache.cpf());
+        List<FolhaSalarialDTO> folhaSalarial = folhaSalarialDAO.VisualizarFolhaSalarial(getCacheCpf());
 
         try{
             for(FolhaSalarialDTO c:folhaSalarial){
