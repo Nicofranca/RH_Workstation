@@ -59,7 +59,6 @@ public class CurriculoDAO {
             stmt.setInt(5, id);
             stmt.executeUpdate();
 
-            System.out.println(id);
             System.out.println("Curriculo editado com sucesso!");
 
         } catch (SQLException e) {

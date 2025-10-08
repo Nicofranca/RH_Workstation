@@ -17,33 +17,39 @@ public class AdminController {
         while (!saida) {
             switch (menus.menuAdmin()) {
                 case 1 -> {
-                    switch (menus.gerenciarVagas()) {
-                        case 1 -> vaga.criarVaga();
-                        case 2 -> vaga.editarVaga();
-                        case 3 -> vaga.excluirVaga();
-                        case 4 -> candidato.listarCandidatos();
-                        case 0 -> {
-                            return;
+                    boolean loop = false;
+
+                    while(!loop){
+                        switch (menus.gerenciarVagas()) {
+                            case 1 -> vaga.criarVaga();
+                            case 2 -> vaga.editarVaga();
+                            case 3 -> vaga.excluirVaga();
+                            case 4 -> candidato.listarCandidatos();
+                            case 0 -> {
+                                loop = true;
+                            }
                         }
                     }
                 }
 
                 case 2 -> {
-                    switch (menus.gerenciarColaborador()) {
-                        case 1 -> colaborador.criarColaborador();
-                        case 2 -> colaborador.editarColaborador();
-                        case 3 -> colaborador.desligarColaborador();
-                        case 4 -> solicitacaoFeriasService.listarSolicitacoes();
-                        case 5 -> adminService.tornarColaborador();
-                        case 0 -> {
-                            return;
+                    boolean loop = false;
+                    while(!loop) {
+                        switch (menus.gerenciarColaborador()) {
+                            case 1 -> colaborador.criarColaborador();
+                            case 2 -> colaborador.editarColaborador();
+                            case 3 -> colaborador.desligarColaborador();
+                            case 4 -> solicitacaoFeriasService.listarSolicitacoes();
+                            case 5 -> adminService.tornarColaborador();
+                            case 0 -> {
+                                loop = true;
+                            }
                         }
                     }
                 }
 
                 case 0 -> {
                     saida = true;
-                    return;
                 }
             }
         }
