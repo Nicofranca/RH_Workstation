@@ -1,5 +1,6 @@
 package org.rhworkstation.service;
 
+import org.rhworkstation.context.CacheContext;
 import org.rhworkstation.dao.ColaboradorDAO;
 import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Colaborador;
@@ -22,10 +23,10 @@ public class ColaboradorService {
 
         try {
             colaboradorDAO.atualizarSenhaColaborador(id, novaSenha);
-            System.out.println("Senha atualizada com sucesso!");
+            System.out.println("                    Senha atualizada com sucesso!");
 
         } catch (RHException e) {
-            System.out.println("Erro ao atualizar senha: " + e.getMessage());
+            System.err.println("                    Erro ao atualizar senha: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -47,10 +48,10 @@ public class ColaboradorService {
 
         try {
             colaboradorDAO.editarColaborador(colaborador);
-            System.out.println("Colaborador atualizado com sucesso!");
+            System.out.println("                    Colaborador atualizado com sucesso!");
 
         } catch (RHException e) {
-            System.out.println("Erro ao atualizar colaborador: " + e.getMessage());
+            System.err.println("                    Erro ao atualizar colaborador: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -62,10 +63,10 @@ public class ColaboradorService {
 
         try {
             colaborador.desligarColaborador(id);
-            System.out.println("Colaborador desligado com sucesso!");
+            System.out.println("                    Colaborador desligado com sucesso!");
 
         } catch (RHException e) {
-            System.out.println("Erro ao desligar colaborador: " + e.getMessage());
+            System.err.println("                    Erro ao desligar colaborador: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -88,10 +89,10 @@ public class ColaboradorService {
 
         try {
             colaboradorDAO.criarColaborador(colaborador);
-            System.out.println("Colaborador inserido com sucesso!");
+            System.out.println("                    Colaborador inserido com sucesso!");
 
         } catch (RHException e) {
-            System.out.println("Erro ao inserir colaborador: " + e.getMessage());
+            System.err.println("                    Erro ao inserir colaborador: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -105,10 +106,10 @@ public class ColaboradorService {
 
         try {
             colaboradorDAO.atualizarEmailColaborador(id, novoEmail);
-            System.out.println("Email atualizado com sucesso!");
+            System.out.println("                    Email atualizado com sucesso!");
 
         } catch (RHException e) {
-            System.out.println("Erro ao atualizar email: " + e.getMessage());
+            System.err.println("                    Erro ao atualizar email: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -122,11 +123,12 @@ public class ColaboradorService {
             Colaborador colaborador = colaboradorDAO.loginColaborador(email, senha);
             if (colaborador != null){
                 colaboradorEncontrado = true;
-                System.out.println("Login bem-sucedido! Bem-vindo(a) colaborador, "+ colaborador.getNome());
+                System.out.println("                    Login bem-sucedido! Bem-vindo(a) colaborador, "+ colaborador.getNome());
+                CacheContext.setCacheCpf(colaborador.getCpf());
             }
 
         } catch (RHException e) {
-            System.out.println("Erro ao realizar login: "+ e.getMessage());
+            System.err.println("                    Erro ao realizar login: "+ e.getMessage());
             e.printStackTrace();
         }
 

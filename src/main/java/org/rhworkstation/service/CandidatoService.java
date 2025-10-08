@@ -1,5 +1,6 @@
 package org.rhworkstation.service;
 
+import org.rhworkstation.context.CacheContext;
 import org.rhworkstation.dao.CandidatoDAO;
 import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Candidato;
@@ -92,6 +93,7 @@ public class CandidatoService {
             if (candidato != null) {
                 candidatoEncontrado = true;
                 System.out.println("Login bem-sucedido! Bem-vindo(a) candidato, " + candidato.getNome());
+                CacheContext.setCacheCpf(candidato.getCpf());
             }
 
         } catch (SQLException e) {
