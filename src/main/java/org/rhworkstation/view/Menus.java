@@ -64,21 +64,6 @@ public class Menus {
 
     }
 
-    public int menuUsuario(){
-        System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.out.println("                    ┃              SEJA BEM VINDO              ┃");
-        System.out.println("                    ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
-        System.out.println("                    ┃                  opções                  ┃");
-        System.out.println("                    ┣------------------------------------------┫");
-        System.out.println("                    ┃ 1 - Candidato                            ┃");
-        System.out.println("                    ┃ 2 - Colaborador                          ┃");
-        System.out.println("                    ┃ 3 - Administrador                        ┃");
-        System.out.println("                    ┃ 0 - sair                                 ┃");
-        System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
-
-        return inputNumber();
-    }
-
     public int menuCandidato(){
 
         System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
@@ -92,7 +77,7 @@ public class Menus {
         System.out.println("                    ┃ 4 - Excluir Currículo                    ┃");
         /*System.out.println("                    ┃ 5 - Minhas Candidaturas                  ┃");*/
         System.out.println("                    ┃                                          ┃");
-        System.out.println("                    ┃ 0 - sair                                 ┃");
+        System.out.println("                    ┃ 0 - Logout                               ┃");
         System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
 
         return inputNumber();
@@ -108,7 +93,7 @@ public class Menus {
         System.out.println("                    ┃ 1 - Gerenciar Vagas                      ┃");
         System.out.println("                    ┃ 2 - Gerenciar Colaborador                ┃");
         System.out.println("                    ┃                                          ┃");
-        System.out.println("                    ┃ 0 - sair                                 ┃");
+        System.out.println("                    ┃ 0 - Logout                               ┃");
         System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
 
 
@@ -165,7 +150,7 @@ public class Menus {
         System.out.println("                    ┃ 1 - Visualizar Folha Salarial            ┃");
         System.out.println("                    ┃ 2 - Solicitar Férias                     ┃");
         System.out.println("                    ┃                                          ┃");
-        System.out.println("                    ┃ 0 - sair                                 ┃");
+        System.out.println("                    ┃ 0 - Logout                               ┃");
         System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
 
         return inputNumber();
@@ -180,7 +165,7 @@ public class Menus {
     public void menuFinal(){
         System.out.println("                   ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
         System.out.println("                   ┃ Agradecemos por utilizar o RH-Workstation! ┃");
-        System.out.print("                   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+        System.out.print  ("                   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
     }
 }
 

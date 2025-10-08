@@ -1,7 +1,8 @@
 package org.rhworkstation.service;
 
+import org.rhworkstation.context.CacheContext;
 import org.rhworkstation.dao.ColaboradorDAO;
-import org.rhworkstation.dto.Cache;
+import org.rhworkstation.context.CacheContext;
 import org.rhworkstation.dto.DadosFolhaSalarialDTO;
 import org.rhworkstation.dao.FolhaSalarialDAO;
 import org.rhworkstation.dto.FolhaSalarialDTO;
@@ -12,6 +13,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import static org.rhworkstation.context.CacheContext.getCacheCpf;
 
 public class FolhaSalarialService {
 
@@ -57,15 +59,9 @@ public class FolhaSalarialService {
     }
 
     FolhaSalarialDAO folhaSalarialDAO = new FolhaSalarialDAO();
-    Cache cache = new Cache("345.678.901-22");
 
-    public void OlharFolhaSalarial() {
-        List<FolhaSalarialDTO> folhaSalarial = null;
-        try {
-            folhaSalarial = folhaSalarialDAO.VisualizarFolhaSalarial(cache.cpf());
-        } catch (RHException e) {
-            throw new RuntimeException(e);
-        }
+    public void OlharFolhaSalarial() throws RHException {
+        List<FolhaSalarialDTO> folhaSalarial = folhaSalarialDAO.VisualizarFolhaSalarial(getCacheCpf());
 
         try{
             for(FolhaSalarialDTO c:folhaSalarial){
@@ -73,13 +69,13 @@ public class FolhaSalarialService {
                 System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
                 System.out.println("                    ┃            FOLHA DE PAGAMENTO            ┃");
                 System.out.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-                System.out.println("                    - Colaborador: "+c.dataFolhaSalarial());
-                System.out.println("                    - Colaborador: "+c.nome());
-                System.out.println("                    -     CPF    : "+c.cpf());
+                System.out.println("                    - Data de Emissão : "+c.dataFolhaSalarial());
+                System.out.println("                    - Colaborador     : "+c.nome());
+                System.out.println("                    - CPF             : "+c.cpf());
                 System.out.println("                    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-                System.out.println("                    - Salário Bruto: "+c.salarioBruto()+"R$");
+                System.out.println("                    - Salário Bruto   : "+c.salarioBruto()+"R$");
                 System.out.println("                    --------------------------------------------");
-                System.out.println("                    -     INSS     : -"+c.inss()+"R$");
+                System.out.println("                    -      INSS       : -"+c.inss()+"R$");
                 System.out.println("                    --------------------------------------------");
                 System.out.println("                                                                ");
                 System.out.println("                                                                ");

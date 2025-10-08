@@ -6,6 +6,8 @@ import org.rhworkstation.model.Vaga;
 import org.rhworkstation.utils.Utils;
 import org.rhworkstation.view.Inputs;
 
+import static org.rhworkstation.view.Mensagens.*;
+
 
 public class VagaService {
     Utils utils = new Utils();
@@ -20,10 +22,10 @@ public class VagaService {
 
         try {
             VagaDAO.criarVaga(vaga);
-            System.out.println("Vaga criada com sucesso!");
+            vagaCriadaSucesso();
 
         } catch (RHException e) {
-            System.out.println("Erro ao criar vaga: " + e.getMessage());
+            System.err.println("                    Erro ao criar vaga: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -33,10 +35,10 @@ public class VagaService {
 
         try {
             VagaDAO.excluirVaga(id);
-            System.out.println("Vaga excluída com sucesso!");
+            vagaExcluidaSucesso();
 
         } catch (RHException e) {
-            System.out.println("Erro ao excluir vaga: " + e.getMessage());
+            System.err.println("                    Erro ao excluir vaga: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -55,10 +57,10 @@ public class VagaService {
 
         try {
             VagaDAO.editarVaga(vaga);
-            System.out.println("Vaga atualizada com sucesso!");
+            vagaEditadaSucesso();
 
         } catch (RHException e) {
-            System.out.println("Erro ao atualizar a vaga: " + e.getMessage());
+            System.err.println("                    Erro ao atualizar a vaga: " + e.getMessage());
             e.printStackTrace();
         }
     }
