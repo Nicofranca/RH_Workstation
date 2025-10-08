@@ -6,9 +6,10 @@ import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Curriculo;
 import org.rhworkstation.utils.Utils;
 import org.rhworkstation.view.Inputs;
-
+import static org.rhworkstation.context.CacheContext.getCacheCpf;
 
 public class CurriculoService {
+
     Utils utils = new Utils();
     Inputs data = new Inputs();
 
@@ -16,10 +17,8 @@ public class CurriculoService {
         var candidatoDAO = new CandidatoDAO();
         int idCandidato = 0;
 
-        String cpf = data.inputCpf();
-
         try {
-            idCandidato = candidatoDAO.buscarPorCPF(cpf);
+            idCandidato = candidatoDAO.buscarPorCPF(getCacheCpf());
         } catch (RHException e) {
             throw new RuntimeException(e);
         }
@@ -45,13 +44,11 @@ public class CurriculoService {
     }
 
     public void excluirCurriculo(){
-        String cpf = data.inputCpf();
-
         var curriculoDAO = new CurriculoDAO();
         var candidatoDAO = new CandidatoDAO();
 
         try {
-            curriculoDAO.excluirCurriculo(candidatoDAO.buscarPorCPF(cpf));
+            curriculoDAO.excluirCurriculo(candidatoDAO.buscarPorCPF(getCacheCpf()));
 
         } catch (RHException e) {
             System.out.println("Erro ao excluir curriculo: " + e.getMessage());
@@ -74,8 +71,6 @@ public class CurriculoService {
     }
 
     public void editarCurriculo(){
-        String cpf = data.inputCpf();
-
         int idade = data.inputIdade(); //        utils.limparScanner();
 
 
@@ -88,7 +83,7 @@ public class CurriculoService {
         var candidatoDAO = new CandidatoDAO();
 
         try {
-            int valorID = candidatoDAO.buscarPorCPF(cpf);
+            int valorID = candidatoDAO.buscarPorCPF(getCacheCpf());
 
             curriculoDAO.editarCurriculo(curriculo, valorID);
 
