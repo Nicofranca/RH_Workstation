@@ -35,19 +35,18 @@ public class ColaboradorDAO {
     }
 
     public static void editarColaborador(Colaborador colaborador) throws RHException {
-        String query = "UPDATE colaborador SET nome = ?, cpf = ?, email = ?, cargo = ?, departamento = ?, salario_hora = ?, senha = ? WHERE id = ?";
+        String query = "UPDATE colaborador SET nome = ?, email = ?, cargo = ?, departamento = ?, salario_hora = ?, senha = ? WHERE cpf = ?";
 
         try (Connection conn = Conexao.conectar();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
             stmt.setString(1, colaborador.getNome());
-            stmt.setString(2, colaborador.getCpf());
-            stmt.setString(3, colaborador.getEmail());
-            stmt.setString(4, colaborador.getCargo());
-            stmt.setString(5, colaborador.getDepartamento());
-            stmt.setDouble(6, colaborador.getSalario_hora());
-            stmt.setString(7, colaborador.getSenha());
-            stmt.setInt(8, colaborador.getId());
+            stmt.setString(2, colaborador.getEmail());
+            stmt.setString(3, colaborador.getCargo());
+            stmt.setString(4, colaborador.getDepartamento());
+            stmt.setDouble(5, colaborador.getSalario_hora());
+            stmt.setString(6, colaborador.getSenha());
+            stmt.setString(7, colaborador.getCpf());
             stmt.executeUpdate();
 
         } catch (SQLException e) {

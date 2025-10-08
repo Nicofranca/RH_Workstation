@@ -32,18 +32,17 @@ public class ColaboradorService {
     }
 
     public void editarColaborador() {
-        int id = input.inputID();
-        utils.limparScanner();
-        String nome = input.inputNome();
         String cpf = input.inputCpf();
+        String nome = input.inputNome();
         String email = input.inputEmail();
         String cargo = input.inputCargo();
         String departamento = input.inputDepartamento();
         double salarioHora = input.inputSalarioHora();
+        double horasDeTrabalho = input.inputHorasDeTrabalho();
         utils.limparScanner();
         String senha = input.inputSenha();
 
-        var colaborador = new Colaborador(id, nome, cpf, email, cargo, departamento, salarioHora, senha);
+        var colaborador = new Colaborador(nome, cpf, email, cargo, departamento, salarioHora, senha, horasDeTrabalho);
         var colaboradorDAO = new ColaboradorDAO();
 
         try {

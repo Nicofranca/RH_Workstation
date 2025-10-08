@@ -89,12 +89,4 @@ public class FolhaSalarialService {
             e.printStackTrace();
         }
     }
-
-    public static void main(String[] args) {
-        FolhaSalarialService folio = new FolhaSalarialService();
-
-        folio.OlharFolhaSalarial();
-
-    }
-
 }
