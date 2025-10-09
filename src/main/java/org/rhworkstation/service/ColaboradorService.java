@@ -122,7 +122,7 @@ public class ColaboradorService {
             Colaborador colaborador = colaboradorDAO.loginColaborador(email, senha);
             if (colaborador != null){
                 colaboradorEncontrado = true;
-                System.out.println("                    Login bem-sucedido! Bem-vindo(a) colaborador, "+ colaborador.getNome());
+                System.out.println("\u001b[32m                    Login bem-sucedido!\u001b[0m Bem-vindo(a) colaborador, "+ colaborador.getNome());
                 CacheContext.setCacheCpf(colaborador.getCpf());
             }
 

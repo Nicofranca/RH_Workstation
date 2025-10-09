@@ -39,9 +39,7 @@ public class VagaFiltroService {
                 return;
             }
 
-                System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-                System.out.println("                    ┃       Lista de Vagas por Faixa Salarial          ┃");
-                System.out.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+            filtroVagasFaixaSalarial();
             for (Vaga vaga : vagas) {
                 System.out.println("                    - Nome da Vaga: " + vaga.getNomeVaga());
                 System.out.println("                    ---------------------------------------------------");
@@ -58,9 +56,8 @@ public class VagaFiltroService {
     }
 
     public void listarVagasPorCargo() {
-        System.err.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.err.println("                    ┃       Lista de Vagas por Faixa Salarial          ┃");
-        System.err.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+
+        filtroVagasCargo();
 
         String cargo = input.inputCargo();
 
@@ -79,13 +76,15 @@ public class VagaFiltroService {
             return;
         }
 
-        System.out.println("=== Lista de Vagas por Cargo ===");
+        filtroVagasCargo();
+
         for (Vaga vaga : vagas) {
-            System.out.println("ID: " + vaga.getId());
-            System.out.println("Nome da Vaga: " + vaga.getNomeVaga());
-            System.out.println("Descrição: " + vaga.getDescricao());
-            System.out.println("Salário Hora: " + vaga.getSalarioHora());
-            System.out.println("---------------------------");
+            System.out.println("                    - Nome da Vaga: " + vaga.getNomeVaga());
+            System.out.println("                    ---------------------------------------------------");
+            System.out.println("                    - Descrição: " + vaga.getDescricao());
+            System.out.println("                    ---------------------------------------------------");
+            System.out.println("                    - Salário Hora: " + vaga.getSalarioHora());
+            System.out.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
         }
     }
 

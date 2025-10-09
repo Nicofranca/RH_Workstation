@@ -27,11 +27,11 @@ public class AdminService {
             Admin admin = adminDAO.verificacaoAdmin(email, senha);
             if (admin != null){
                 adminEncontrado = true;
-                System.out.println("Login bem-sucedido! Bem-vindo(a) admin, "+admin.getNome());
+                System.out.println("                    Login bem-sucedido! Bem-vindo(a) admin, "+admin.getNome());
             }
 
         } catch (RHException e){
-            System.out.println("Erro ao realizar login: " + e.getMessage());
+            System.err.println("                    Erro ao realizar login: " + e.getMessage());
             e.printStackTrace();
         }
 
@@ -51,9 +51,9 @@ public class AdminService {
             throw new RuntimeException(e);
         }
 
-        System.out.println("Candidato encontrado: " + candidato.getCpf() + " - " + candidato.getNome() + " - " + candidato.getEmail());
+        System.out.println("                    Candidato encontrado: " + candidato.getCpf() + " - " + candidato.getNome() + " - " + candidato.getEmail());
 
-        System.out.println("Deseja tornar este candidato um colaborador?(s/n)");
+        System.out.println("                    Deseja tornar este candidato um colaborador?(s/n)");
         String escolha = sc.nextLine();
 
         if (escolha.equalsIgnoreCase("s")){
