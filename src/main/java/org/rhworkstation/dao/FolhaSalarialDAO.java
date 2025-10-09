@@ -2,7 +2,6 @@ package org.rhworkstation.dao;
 
 import org.rhworkstation.connection.Conexao;
 import org.rhworkstation.exception.RHException;
-import org.rhworkstation.dto.Cache;
 import org.rhworkstation.dto.FolhaSalarialDTO;
 import org.rhworkstation.model.FolhaSalarial;
 

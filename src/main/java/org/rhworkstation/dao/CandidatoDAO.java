@@ -84,30 +84,6 @@ public class CandidatoDAO {
         return candidatoEncontrado.getId();
     }
 
-    public static List<Vaga> listarVagas() throws RHException {
-        List<Vaga> vagas = new ArrayList<>();
-
-        String query = "SELECT id, nome_vaga, descricao, salario_hora FROM vagas";
-
-        try (Connection conn = Conexao.conectar();
-             PreparedStatement stmt = conn.prepareStatement(query);
-             ResultSet rs = stmt.executeQuery()) {
-
-            while (rs.next()) {
-                Vaga vaga = new Vaga();
-                vaga.setId(rs.getInt("id"));
-                vaga.setNomeVaga(rs.getString("nome_vaga"));
-                vaga.setDescricao(rs.getString("descricao"));
-                vaga.setSalarioHora(rs.getDouble("salario_hora"));
-                vagas.add(vaga);
-            }
-
-        } catch (SQLException e) {
-            throw new RHException("Erro ao listar vagas", e);
-        }
-
-        return vagas;
-    }
 
     public Candidato verificacaoCandidato(String email, String senha) throws SQLException {
         String query = "SELECT id, nome, email, cpf, senha FROM candidato WHERE email = ? AND senha = ?";
