@@ -23,10 +23,10 @@ public class SolicitacaoFeriasService {
 
         try {
             SolicitacaoFeriasDAO.criarSolicitacao(solicitacaoFerias);
-            System.out.println("Solicitação de férias criada com sucesso!");
+            System.out.println("                    Solicitação de férias criada com sucesso!");
 
         } catch (RHException e) {
-            System.out.println("Erro ao criar solicitação de férias: " + e.getMessage());
+            System.err.println("                    Erro ao criar solicitação de férias: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -42,11 +42,11 @@ public class SolicitacaoFeriasService {
             }
 
         } catch (RHException e) {
-            System.out.println("Erro ao listar solicitações de férias: " + e.getMessage());
+            System.err.println("                    Erro ao listar solicitações de férias: " + e.getMessage());
             e.printStackTrace();
         }
     }
-
+    /*refatorar esse método e adicionar um switch a ele*/
     public void atualizarStatusSolicitacao() {
         int id = input.inputID();
 
@@ -55,10 +55,10 @@ public class SolicitacaoFeriasService {
 
         try {
             SolicitacaoFeriasDAO.atualizarStatusSolicitacao(id, status.toUpperCase());
-            System.out.println("Status de solicitação atualizado para " + status.toUpperCase());
+            System.out.println("                    Status de solicitação atualizado para " + status.toUpperCase());
 
         } catch (RHException e) {
-            System.out.println("Erro ao atulizar status da solicitação: " + e.getMessage());
+            System.err.println("                    Erro ao atulizar status da solicitação: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -68,10 +68,10 @@ public class SolicitacaoFeriasService {
 
         try {
             SolicitacaoFeriasDAO.deletarSolicitacao(id);
-            System.out.println("Solicitação de férias deletada com sucesso!");
+            System.out.println("                    Solicitação de férias deletada com sucesso!");
 
         } catch (RHException e) {
-            System.out.println("Erro ao deletar solicitação: " + e.getMessage());
+            System.err.println("                    Erro ao deletar solicitação: " + e.getMessage());
             e.printStackTrace();
         }
     }

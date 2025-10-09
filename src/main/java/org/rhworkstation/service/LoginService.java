@@ -36,7 +36,7 @@ public class LoginService {
             }
 
             else {
-                System.out.println("Usuário não encontrado. Verifique suas credenciais ou cadastre-se!");
+                System.err.println("                    Usuário não encontrado. Verifique suas credenciais ou cadastre-se!");
                 return;
             }
 

@@ -28,7 +28,7 @@ public class CandidatoService {
             candidatoDAO.criarCandidato(novoCandidato);
 
         } catch (RHException e) {
-            System.out.println("Erro ao criar usuário: " + e.getMessage());
+            System.err.println("                    Erro ao criar usuário: " + e.getMessage());
             e.printStackTrace();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -40,45 +40,25 @@ public class CandidatoService {
             List<Candidato> candidatos = CandidatoDAO.listarCandidatos();
 
             if (candidatos.isEmpty()) {
-                System.out.println("Não há candidatos cadastrados.");
+                System.err.println("                    Não há candidatos cadastrados.");
                 return;
             }
 
-            System.out.println("=== Lista de Candidatos ===");
+                System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+                System.out.println("                    ┃               Lista de Candidatos                ┃");
+                System.out.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
             for (Candidato candidato : candidatos) {
-                System.out.println("ID: " + candidato.getId());
-                System.out.println("Nome: " + candidato.getNome());
-                System.out.println("Cpf: " + candidato.getCpf());
-                System.out.println("Email: " + candidato.getEmail());
-                System.out.println("---------------------------");
+                System.out.println("                    - Nome: " + candidato.getNome());
+                System.out.println("                    ---------------------------------------------------");
+                System.out.println("                    - Cpf: " + candidato.getCpf());
+                System.out.println("                    ---------------------------------------------------");
+                System.out.println("                    - Email: " + candidato.getEmail());
+                System.out.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+
             }
 
         } catch (RHException e) {
-            System.out.println("Erro ao listar candidatos: " +e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-    public void listarVagas() {
-        try {
-            List<Vaga> vagas = CandidatoDAO.listarVagas();
-
-            if (vagas.isEmpty()) {
-                System.out.println("Não há vagas cadastrados.");
-                return;
-            }
-
-            System.out.println("=== Lista de Vagas ===");
-            for (Vaga vaga : vagas) {
-                System.out.println("ID: " + vaga.getId());
-                System.out.println("Nome da Vaga: " + vaga.getNomeVaga());
-                System.out.println("Descrição: " + vaga.getDescricao());
-                System.out.println("Salário Hora: " + vaga.getSalarioHora());
-                System.out.println("---------------------------");
-            }
-
-        } catch (RHException e) {
-            System.out.println("Erro ao listar candidatos: " + e.getMessage());
+            System.err.println("                    Erro ao listar candidatos: " +e.getMessage());
             e.printStackTrace();
         }
     }
@@ -92,16 +72,17 @@ public class CandidatoService {
 
             if (candidato != null) {
                 candidatoEncontrado = true;
-                System.out.println("Login bem-sucedido! Bem-vindo(a) candidato, " + candidato.getNome());
+                System.out.println("\u001b[32m                    Login bem-sucedido!\u001b[0m Bem-vindo(a) candidato, " + candidato.getNome());
                 CacheContext.setCacheCpf(candidato.getCpf());
             }
 
         } catch (SQLException e) {
-            System.err.println("Erro ao tentar fazer login do candidato: " + e.getMessage());
+            System.err.println("                    Erro ao tentar fazer login do candidato: " + e.getMessage());
             e.printStackTrace();
         }
 
         return candidatoEncontrado;
     }
+
 
 }

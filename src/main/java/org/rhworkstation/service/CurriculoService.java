@@ -38,7 +38,7 @@ public class CurriculoService {
             curriculoDAO.criarCurriculo(curriculo);
 
         } catch (RHException e) {
-            System.out.println("Erro ao criar curriculo: " + e.getMessage());
+            System.err.println("                    Erro ao criar curriculo: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -51,7 +51,7 @@ public class CurriculoService {
             curriculoDAO.excluirCurriculo(candidatoDAO.buscarPorCPF(getCacheCpf()));
 
         } catch (RHException e) {
-            System.out.println("Erro ao excluir curriculo: " + e.getMessage());
+            System.err.println("                    Erro ao excluir curriculo: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -65,7 +65,7 @@ public class CurriculoService {
             System.out.println(candidatoDAO.buscarPorCPF(cpf));
 
         } catch (RHException e) {
-            System.out.println("Erro ao mostrar ID: " + e.getMessage());
+            System.err.println("                    Erro ao mostrar ID: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -88,7 +88,7 @@ public class CurriculoService {
             curriculoDAO.editarCurriculo(curriculo, valorID);
 
         } catch (RHException e) {
-            System.out.println("Erro ao editar curriculo: " + e.getMessage());
+            System.err.println("                    Erro ao editar curriculo: " + e.getMessage());
             e.printStackTrace();
         }
     }

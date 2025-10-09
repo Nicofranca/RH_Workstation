@@ -48,13 +48,13 @@ public class FolhaSalarialService {
 
                     var folhaSalarial = new FolhaSalarial(cpf, salarioBruto, inss, salarioLiquido, data);
                     folhaSalarialDAO.CriarFolhaSalarial(folhaSalarial);
-                    System.out.println("cadastrado com sucesso");
 
                 } catch (RHException e){
-                    System.out.println("Erro ao cadastrar folha salarial: " + e.getMessage());
+                    System.err.println("                    Erro ao cadastrar folha salarial: " + e.getMessage());
                     e.printStackTrace();
                 }
             }
+            System.out.println("\u001b[32m                    Folhas Liberadas Com Sucesso!\u001b[0m");
         }
     }
 

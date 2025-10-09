@@ -9,6 +9,7 @@ public class Main {
 
         RhWorkstation rhworkstation = new RhWorkstation();
 
+        System.out.println("\"novo status de solicitação (ex: APROVADO, REJEITADO, PENDENTE)\"");
         rhworkstation.Application();
     }
 }
