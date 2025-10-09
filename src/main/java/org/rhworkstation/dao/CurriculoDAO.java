@@ -2,10 +2,12 @@ package org.rhworkstation.dao;
 
 import org.rhworkstation.connection.Conexao;
 import org.rhworkstation.exception.RHException;
+import org.rhworkstation.model.Candidato;
 import org.rhworkstation.model.Curriculo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CurriculoDAO {
@@ -66,4 +68,20 @@ public class CurriculoDAO {
         }
     }
 
+    public boolean verificarExistenciaCurriculo(String cpf) throws RHException {
+
+        String query = "SELECT 1 FROM curriculo WHERE id_candidato = ? LIMIT 1";
+
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, cpf);
+            try (ResultSet rs = stmt.executeQuery()) {
+                return rs.next();
+            }
+
+        } catch (SQLException e) {
+            throw new RHException("Erro ao verificar a existência do currículo.", e);
+        }
+    }
 }
