@@ -33,36 +33,6 @@ public class VagaService {
         }
     }
 
-    public void listarVagas() {
-        try {
-            List<Vaga> vagas = CandidatoDAO.listarVagas();
-
-            if (vagas.isEmpty()) {
-                System.err.println("                    Não há vagas cadastrados.");
-                return;
-            }
-
-                System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-                System.out.println("                    ┃                 Lista de Vagas                   ┃");
-                System.out.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-            for (Vaga vaga : vagas) {
-                System.out.println("                    - ID: " + vaga.getId());
-                System.out.println("                    ---------------------------------------------------");
-                System.out.println("                    - Nome da Vaga: " + vaga.getNomeVaga());
-                System.out.println("                    ---------------------------------------------------");
-                System.out.println("                    - Descrição: " + vaga.getDescricao());
-                System.out.println("                    ---------------------------------------------------");
-                System.out.println("                    - Salário Hora: " + vaga.getSalarioHora());
-                System.out.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-
-            }
-
-        } catch (RHException e) {
-            System.err.println("                    Erro ao listar candidatos: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
     public void excluirVaga() {
         int id = input.inputID();
 

@@ -14,30 +14,31 @@ import java.util.List;
 
 public class VagaDAO {
 
-    public List<Vaga> listarVagas() throws RHException {
-        List<Vaga> vagasDisponiveis = new ArrayList<>();
-        String sql = "SELECT * FROM vagas";
+    public static List<Vaga> listarVagas() throws RHException {
+        List<Vaga> vagas = new ArrayList<>();
+
+        String query = "SELECT id, nome_vaga, descricao, salario_hora FROM vagas";
 
         try (Connection conn = Conexao.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql);
+             PreparedStatement stmt = conn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
-                String nomeVaga = rs.getString("nomeVaga");
-                String descricao = rs.getString("descricao");
-                double salarioHora = rs.getDouble("salarioHora");
-                StatusVaga status = StatusVaga.valueOf(rs.getString("status"));
-
-                Vaga vaga = new Vaga(nomeVaga, descricao, salarioHora);
-                vagasDisponiveis.add(vaga);
+                Vaga vaga = new Vaga();
+                vaga.setId(rs.getInt("id"));
+                vaga.setNomeVaga(rs.getString("nome_vaga"));
+                vaga.setDescricao(rs.getString("descricao"));
+                vaga.setSalarioHora(rs.getDouble("salario_hora"));
+                vagas.add(vaga);
             }
 
         } catch (SQLException e) {
             throw new RHException("Erro ao listar vagas", e);
         }
 
-        return vagasDisponiveis;
+        return vagas;
     }
+
 
     public static void criarVaga(Vaga vaga) throws RHException {
         String query = "INSERT INTO vagas(nome_vaga, descricao, salario_hora) VALUES (?, ?, ?)";

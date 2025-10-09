@@ -2,6 +2,7 @@ package org.rhworkstation.service;
 
 import org.rhworkstation.context.CacheContext;
 import org.rhworkstation.dao.CandidatoDAO;
+import org.rhworkstation.dao.VagaDAO;
 import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.Candidato;
 import org.rhworkstation.model.Vaga;
@@ -9,6 +10,8 @@ import org.rhworkstation.view.Inputs;
 
 import java.sql.SQLException;
 import java.util.List;
+
+import static org.rhworkstation.utils.Utils.inputNumber;
 
 public class CandidatoService {
 
@@ -84,5 +87,50 @@ public class CandidatoService {
         return candidatoEncontrado;
     }
 
+    public void OlharVagas(){
+        try {
+            List<Vaga> vagas = VagaDAO.listarVagas();
+            boolean finalizado = false;
 
+            if (vagas.isEmpty()) {
+                System.err.println("                    Não há vagas cadastrados.");
+                return;
+            }
+
+                System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+                System.out.println("                    ┃                       VAGAS                       ┃");
+                System.out.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+
+                for (int i = 0; i < vagas.size(); i++) {
+                    System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+                    System.out.println("                    - Nome da Vaga: " + vagas.get(i).getNomeVaga());
+                    System.out.println("                    -----------------------------------------------------");
+                    System.out.println("                    - Descrição: " + vagas.get(i).getDescricao());
+                    System.out.println("                    -----------------------------------------------------");
+                    System.out.println("                    - Salário Hora: " + vagas.get(i).getSalarioHora());
+                    System.out.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+                    System.out.println("                    | (1)Candidatar-se | (2)Voltar | (3)Próximo | (0)Sair ");
+                    switch (inputNumber()) {
+                        case 1 -> {
+                        }
+                        case 2 -> {
+                            i-= 2;
+                        }
+                        case 0 -> {
+                            return;
+                        }
+                    }
+                }
+
+
+        } catch (RHException e) {
+            System.err.println("                    Erro ao listar candidatos: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        CandidatoService candidatoService = new CandidatoService();
+        candidatoService.OlharVagas();
+    }
 }

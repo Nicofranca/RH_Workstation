@@ -8,7 +8,7 @@ import org.rhworkstation.view.Menus;
 
 public class CandidatoController {
     Inputs inputs = new Inputs();
-    CandidatoService candidatoSevice = new CandidatoService();
+    CandidatoService candidatoService = new CandidatoService();
     CurriculoService curriculoService = new CurriculoService();
     VagaService vagaService = new VagaService();
     Menus menus = new Menus();
@@ -19,7 +19,7 @@ public class CandidatoController {
 
             while (!saida){
                 switch (menus.menuCandidato()){
-                    case 1 -> vagaService.listarVagas();
+                    case 1 -> candidatoService.OlharVagas();
                     case 2 -> curriculoService.criarCurriculo();
                     case 3 -> curriculoService.editarCurriculo();
                     case 4 -> curriculoService.excluirCurriculo();
@@ -32,6 +32,6 @@ public class CandidatoController {
         }
 
         public void criarCandidato(){
-            candidatoSevice.criarUsuario();
+            candidatoService.criarUsuario();
         }
 }
