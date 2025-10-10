@@ -70,7 +70,11 @@ public class CurriculoDAO {
 
     public boolean verificarExistenciaCurriculo(String cpf) throws RHException {
 
-        String query = "SELECT 1 FROM curriculo WHERE id_candidato = ? LIMIT 1";
+        String query = """
+                SELECT 1 FROM curriculo c 
+                JOIN candidato cand ON c.id_candidato = cand.id 
+                WHERE cand.cpf = ? LIMIT 1
+                """;
 
         try (Connection conn = Conexao.conectar();
              PreparedStatement stmt = conn.prepareStatement(query)) {

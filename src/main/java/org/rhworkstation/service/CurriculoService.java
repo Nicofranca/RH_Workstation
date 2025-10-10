@@ -26,9 +26,17 @@ public class CurriculoService {
             throw new RuntimeException(e);
         }
 
-        if (verificar != false){
+        if (verificar == false){
             try {
                 idCandidato = candidatoDAO.buscarPorCPF(getCacheCpf());
+
+                if (idCandidato <= 0) {
+                    System.err.println("Erro: Candidato com o CPF informado não foi encontrado.");
+                    return;
+                }
+
+                System.out.println("Candidato encontrado. Por favor, complete os dados do currículo:");
+
             } catch (RHException e) {
                 throw new RuntimeException(e);
             }
