@@ -15,31 +15,43 @@ public class CurriculoService {
 
     public void criarCurriculo(){
         var candidatoDAO = new CandidatoDAO();
+        var curriculoDAO = new CurriculoDAO();
         int idCandidato = 0;
 
+        boolean verificar;
+
         try {
-            idCandidato = candidatoDAO.buscarPorCPF(getCacheCpf());
+            verificar = curriculoDAO.verificarExistenciaCurriculo(getCacheCpf());
         } catch (RHException e) {
             throw new RuntimeException(e);
         }
 
-        int idade = data.inputIdade();
+        if (verificar != false){
+            try {
+                idCandidato = candidatoDAO.buscarPorCPF(getCacheCpf());
+            } catch (RHException e) {
+                throw new RuntimeException(e);
+            }
 
-        utils.limparScanner();
+            int idade = data.inputIdade();
 
-        String sexo = data.inputSexo();
-        String formacao = data.inputFormacao();
-        String texto = data.inputTexto();
+            utils.limparScanner();
 
-        var curriculo = new Curriculo(idade, sexo, formacao, texto, idCandidato);
-        var curriculoDAO = new CurriculoDAO();
+            String sexo = data.inputSexo();
+            String formacao = data.inputFormacao();
+            String texto = data.inputTexto();
 
-        try {
-            curriculoDAO.criarCurriculo(curriculo);
+            var curriculo = new Curriculo(idade, sexo, formacao, texto, idCandidato);
 
-        } catch (RHException e) {
-            System.err.println("                    Erro ao criar curriculo: " + e.getMessage());
-            e.printStackTrace();
+            try {
+                curriculoDAO.criarCurriculo(curriculo);
+
+            } catch (RHException e) {
+                System.err.println("                    Erro ao criar curriculo: " + e.getMessage());
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Você ja possui um curriculo!");
         }
     }
 

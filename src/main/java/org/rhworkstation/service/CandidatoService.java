@@ -11,7 +11,9 @@ import org.rhworkstation.view.Inputs;
 import java.sql.SQLException;
 import java.util.List;
 
+
 import static org.rhworkstation.context.CacheContext.getCacheCpf;
+
 import static org.rhworkstation.utils.Utils.inputNumber;
 
 public class CandidatoService {
