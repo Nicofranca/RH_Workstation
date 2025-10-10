@@ -24,10 +24,6 @@ public class ColaboradorController {
                 case 2 ->{
                     solicitacaoFeriasService.criarSolicitacao();
                 }
-
-                case 3 ->{
-                    colaborador.editarColaborador();
-                }
                 case 0 ->{
                     CacheContext.setCacheCpf(null);
                     saida = true;

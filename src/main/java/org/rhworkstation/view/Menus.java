@@ -149,7 +149,6 @@ public class Menus {
         System.out.println("                    ┣------------------------------------------┫");
         System.out.println("                    ┃ 1 - Visualizar Folha Salarial            ┃");
         System.out.println("                    ┃ 2 - Solicitar Férias                     ┃");
-        System.out.println("                    ┃ 3 - Editar Perfil                        ┃");
         System.out.println("                    ┃                                          ┃");
         System.out.println("                    ┃ 0 - Logout                               ┃");
         System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
