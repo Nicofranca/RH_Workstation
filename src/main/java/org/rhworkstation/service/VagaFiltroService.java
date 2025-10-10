@@ -50,7 +50,7 @@ public class VagaFiltroService {
             }
 
         } catch (RHException e) {
-            System.err.println("                    Erro ao filtrar vagas: " + e.getMessage());
+            System.out.println("                    Erro ao filtrar vagas: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -67,7 +67,7 @@ public class VagaFiltroService {
             vagas = VagaFiltroDAO.listarVagasPorCargo(cargo);
 
         } catch (RHException e) {
-            System.err.println("                    Erro ao filtrar vagas: " + e.getMessage());
+            System.out.println("                    Erro ao filtrar vagas: " + e.getMessage());
             e.printStackTrace();
         }
 

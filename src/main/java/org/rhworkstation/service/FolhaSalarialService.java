@@ -50,7 +50,7 @@ public class FolhaSalarialService {
                     folhaSalarialDAO.CriarFolhaSalarial(folhaSalarial);
 
                 } catch (RHException e){
-                    System.err.println("                    Erro ao cadastrar folha salarial: " + e.getMessage());
+                    System.out.println("                    Erro ao cadastrar folha salarial: " + e.getMessage());
                     e.printStackTrace();
                 }
             }

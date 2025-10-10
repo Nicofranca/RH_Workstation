@@ -31,7 +31,7 @@ public class CandidatoService {
             candidatoDAO.criarCandidato(novoCandidato);
 
         } catch (RHException e) {
-            System.err.println("                    Erro ao criar usuário: " + e.getMessage());
+            System.out.println("                    Erro ao criar usuário: " + e.getMessage());
             e.printStackTrace();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -43,7 +43,7 @@ public class CandidatoService {
             List<Candidato> candidatos = CandidatoDAO.listarCandidatos();
 
             if (candidatos.isEmpty()) {
-                System.err.println("                    Não há candidatos cadastrados.");
+                System.out.println("                    Não há candidatos cadastrados.");
                 return;
             }
 
@@ -61,7 +61,7 @@ public class CandidatoService {
             }
 
         } catch (RHException e) {
-            System.err.println("                    Erro ao listar candidatos: " +e.getMessage());
+            System.out.println("                    Erro ao listar candidatos: " +e.getMessage());
             e.printStackTrace();
         }
     }
@@ -80,7 +80,7 @@ public class CandidatoService {
             }
 
         } catch (SQLException e) {
-            System.err.println("                    Erro ao tentar fazer login do candidato: " + e.getMessage());
+            System.out.println("                    Erro ao tentar fazer login do candidato: " + e.getMessage());
             e.printStackTrace();
         }
 
@@ -93,7 +93,7 @@ public class CandidatoService {
             boolean finalizado = false;
 
             if (vagas.isEmpty()) {
-                System.err.println("                    Não há vagas cadastrados.");
+                System.out.println("                    Não há vagas cadastrados.");
                 return;
             }
 
@@ -116,6 +116,7 @@ public class CandidatoService {
                         case 2 -> {
                             i-= 2;
                         }
+                        case 3 ->{}
                         case 0 -> {
                             return;
                         }
@@ -124,7 +125,7 @@ public class CandidatoService {
 
 
         } catch (RHException e) {
-            System.err.println("                    Erro ao listar candidatos: " + e.getMessage());
+            System.out.println("                    Erro ao listar candidatos: " + e.getMessage());
             e.printStackTrace();
         }
     }

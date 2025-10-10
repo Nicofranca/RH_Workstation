@@ -26,7 +26,7 @@ public class ColaboradorService {
             System.out.println("                    Senha atualizada com sucesso!");
 
         } catch (RHException e) {
-            System.err.println("                    Erro ao atualizar senha: " + e.getMessage());
+            System.out.println("                    Erro ao atualizar senha: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -50,7 +50,7 @@ public class ColaboradorService {
             System.out.println("                    Colaborador atualizado com sucesso!");
 
         } catch (RHException e) {
-            System.err.println("                    Erro ao atualizar colaborador: " + e.getMessage());
+            System.out.println("                    Erro ao atualizar colaborador: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -65,7 +65,7 @@ public class ColaboradorService {
             System.out.println("                    Colaborador desligado com sucesso!");
 
         } catch (RHException e) {
-            System.err.println("                    Erro ao desligar colaborador: " + e.getMessage());
+            System.out.println("                    Erro ao desligar colaborador: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -91,7 +91,7 @@ public class ColaboradorService {
             System.out.println("                    Colaborador inserido com sucesso!");
 
         } catch (RHException e) {
-            System.err.println("                    Erro ao inserir colaborador: " + e.getMessage());
+            System.out.println("                    Erro ao inserir colaborador: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -108,7 +108,7 @@ public class ColaboradorService {
             System.out.println("                    Email atualizado com sucesso!");
 
         } catch (RHException e) {
-            System.err.println("                    Erro ao atualizar email: " + e.getMessage());
+            System.out.println("                    Erro ao atualizar email: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -127,7 +127,7 @@ public class ColaboradorService {
             }
 
         } catch (RHException e) {
-            System.err.println("                    Erro ao realizar login: "+ e.getMessage());
+            System.out.println("                    Erro ao realizar login: "+ e.getMessage());
             e.printStackTrace();
         }
 

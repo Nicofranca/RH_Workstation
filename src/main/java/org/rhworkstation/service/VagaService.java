@@ -28,7 +28,7 @@ public class VagaService {
             vagaCriadaSucesso();
 
         } catch (RHException e) {
-            System.err.println("                    Erro ao criar vaga: " + e.getMessage());
+            System.out.println("                    Erro ao criar vaga: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -41,7 +41,7 @@ public class VagaService {
             vagaExcluidaSucesso();
 
         } catch (RHException e) {
-            System.err.println("                    Erro ao excluir vaga: " + e.getMessage());
+            System.out.println("                    Erro ao excluir vaga: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -63,7 +63,7 @@ public class VagaService {
             vagaEditadaSucesso();
 
         } catch (RHException e) {
-            System.err.println("                    Erro ao atualizar a vaga: " + e.getMessage());
+            System.out.println("                    Erro ao atualizar a vaga: " + e.getMessage());
             e.printStackTrace();
         }
     }
