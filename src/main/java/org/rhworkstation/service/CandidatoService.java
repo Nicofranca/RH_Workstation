@@ -11,6 +11,9 @@ import org.rhworkstation.view.Inputs;
 import java.sql.SQLException;
 import java.util.List;
 
+
+import static org.rhworkstation.context.CacheContext.getCacheCpf;
+
 import static org.rhworkstation.utils.Utils.inputNumber;
 
 public class CandidatoService {
@@ -90,7 +93,6 @@ public class CandidatoService {
     public void OlharVagas(){
         try {
             List<Vaga> vagas = VagaDAO.listarVagas();
-            boolean finalizado = false;
 
             if (vagas.isEmpty()) {
                 System.err.println("                    Não há vagas cadastrados.");
@@ -112,12 +114,17 @@ public class CandidatoService {
                     System.out.println("                    | (1)Candidatar-se | (2)Voltar | (3)Próximo | (0)Sair ");
                     switch (inputNumber()) {
                         case 1 -> {
+                            var candidato = new CandidatoDAO();
+                            candidato.CandidatarSe(getCacheCpf(),vagas.get(i).getId());
                         }
                         case 2 -> {
                             i-= 2;
                         }
                         case 0 -> {
                             return;
+                        }
+                        default -> {
+                            System.out.println("\u001b[31m                    Opção não existe! Tente denovo!\u001b[0m");
                         }
                     }
                 }
@@ -126,6 +133,8 @@ public class CandidatoService {
         } catch (RHException e) {
             System.err.println("                    Erro ao listar candidatos: " + e.getMessage());
             e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
