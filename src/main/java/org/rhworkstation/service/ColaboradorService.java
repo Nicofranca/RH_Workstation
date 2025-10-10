@@ -9,6 +9,8 @@ import org.rhworkstation.view.Inputs;
 
 import java.sql.SQLException;
 
+import static org.rhworkstation.context.CacheContext.getCacheCpf;
+
 
 public class ColaboradorService {
     Utils utils = new Utils();
@@ -32,18 +34,21 @@ public class ColaboradorService {
     }
 
     public void editarColaborador() {
-        String cpf = input.inputCpf();
+        var colaboradorDAO = new ColaboradorDAO();
+
+
+        String cpf = getCacheCpf();
+
         String nome = input.inputNome();
         String email = input.inputEmail();
         String cargo = input.inputCargo();
         String departamento = input.inputDepartamento();
+        String senha = input.inputSenha();
         double salarioHora = input.inputSalarioHora();
         double horasDeTrabalho = input.inputHorasDeTrabalho();
         utils.limparScanner();
-        String senha = input.inputSenha();
 
         var colaborador = new Colaborador(nome, cpf, email, cargo, departamento, salarioHora, senha, horasDeTrabalho);
-        var colaboradorDAO = new ColaboradorDAO();
 
         try {
             colaboradorDAO.editarColaborador(colaborador);

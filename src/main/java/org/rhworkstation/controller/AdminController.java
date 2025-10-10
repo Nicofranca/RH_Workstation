@@ -1,5 +1,6 @@
 package org.rhworkstation.controller;
 
+import org.rhworkstation.context.CacheContext;
 import org.rhworkstation.service.*;
 import org.rhworkstation.view.Menus;
 
@@ -26,6 +27,7 @@ public class AdminController {
                             case 3 -> vaga.excluirVaga();
                             case 4 -> candidato.listarCandidatos();
                             case 0 -> {
+                                CacheContext.setCacheCpf(null);
                                 loop = true;
                             }
                         }

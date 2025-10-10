@@ -29,7 +29,7 @@ public class Mensagens {
 
     public static void vagaEditadaSucesso(){
         System.out.println("\u001b[32m                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\u001b[0m");
-        System.out.println("\u001b[32m                    ┃          Vaga excluida com sucesso!          ┃\u001b[0m");
+        System.out.println("\u001b[32m                    ┃          Vaga editada com sucesso!           ┃\u001b[0m");
         System.out.print  ("\u001b[32m                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\u001b[0m");
     }
 

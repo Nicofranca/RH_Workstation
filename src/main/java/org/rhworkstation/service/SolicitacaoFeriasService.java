@@ -1,9 +1,12 @@
 package org.rhworkstation.service;
 
+import org.rhworkstation.dao.ColaboradorDAO;
 import org.rhworkstation.dao.SolicitacaoFeriasDAO;
 import org.rhworkstation.exception.RHException;
 import org.rhworkstation.model.SolicitacaoFerias;
 import org.rhworkstation.view.Inputs;
+import static org.rhworkstation.context.CacheContext.getCacheCpf;
+
 
 import java.sql.SQLException;
 import java.util.Date;
@@ -12,9 +15,16 @@ import java.util.List;
 public class SolicitacaoFeriasService {
 
     Inputs input = new Inputs();
+    ColaboradorDAO colaboradorDAO = new ColaboradorDAO();
 
     public void criarSolicitacao() {
-        int colaboradorId = input.inputID();
+        int colaboradorId = 0;
+        try {
+            colaboradorId = colaboradorDAO.buscarPorCPF(getCacheCpf());
+        } catch (RHException e) {
+            throw new RuntimeException(e);
+        }
+
         Date dataInicio = input.inputDataInicio();
         Date dataFim = input.inputDataFim();
         String status = "PENDENTE";

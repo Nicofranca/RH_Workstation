@@ -1,5 +1,6 @@
 package org.rhworkstation.controller;
 
+import org.rhworkstation.context.CacheContext;
 import org.rhworkstation.service.CandidatoService;
 import org.rhworkstation.service.CurriculoService;
 import org.rhworkstation.service.VagaService;
@@ -25,6 +26,7 @@ public class CandidatoController {
                     case 4 -> curriculoService.excluirCurriculo();
                     case 0 -> {
                         saida = true;
+                        CacheContext.setCacheCpf(null);
                         return;
                     }
                 }
