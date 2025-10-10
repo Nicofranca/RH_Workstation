@@ -111,4 +111,19 @@ public class CandidatoDAO {
         return candidato;
     }
 
+    public void CandidatarSe(String cpf, int id) throws SQLException, RHException {
+
+        String query = "INSERT INTO Candidaturas (cpf_candidato, id_vaga) values (?, ?)";
+
+        try(Connection conn = Conexao.conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)){
+
+            stmt.setString(1, cpf);
+            stmt.setInt(2, id);
+            stmt.executeUpdate();
+            System.out.println("\u001b[32m                    Candidatura realizada com sucesso!\u001b[0m");
+        }
+
+    }
+
 }
