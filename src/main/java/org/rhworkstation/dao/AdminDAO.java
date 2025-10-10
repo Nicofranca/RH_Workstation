@@ -63,8 +63,6 @@ public class AdminDAO {
 
             System.out.println("Novo colaborador Cadastrado!");
 
-            deletarCandidato(colaborador.getCpf());
-
 
         } catch (SQLException e){
             throw new RHException("Erro ao cadastrar colaborador no banco! " + e);

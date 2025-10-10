@@ -37,10 +37,14 @@ public class ColaboradorService {
         var colaboradorDAO = new ColaboradorDAO();
 
 
-        String cpf = getCacheCpf();
+        String cpf = input.inputCpf();
 
         String nome = input.inputNome();
+
         String email = input.inputEmail();
+
+        utils.limparScanner();
+
         String cargo = input.inputCargo();
         String departamento = input.inputDepartamento();
         String senha = input.inputSenha();
