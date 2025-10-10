@@ -5,6 +5,9 @@ import org.rhworkstation.utils.Utils.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -170,22 +173,21 @@ public class  Inputs {
         return id;
     }
 
-    public Date inputDataInicio() {
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        formato.setLenient(false);
-
-        Date dataInicio = null;
+    public LocalDate inputDataInicio() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dataInicio = null;
 
         while (dataInicio == null) {
             System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-            System.out.println("                    ┃ - Digite a Data de Início                ┃");
+            System.out.println("                    ┃ - Digite a Data de Início (dd/MM/yyyy)   ┃");
             System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
-            String linha = input.nextLine();
+
+            String entrada = input.nextLine();
 
             try {
-                dataInicio = formato.parse(linha);
-            } catch (ParseException e) {
-                mensagens.dataError();
+                dataInicio = LocalDate.parse(entrada, formatter);
+            } catch (DateTimeParseException e) {
+                System.out.println("                    ⚠️  Formato inválido! Use o formato dd/MM/yyyy (ex: 11/10/2025).");
             }
         }
 
@@ -193,22 +195,21 @@ public class  Inputs {
 
     }
 
-    public Date inputDataFim() {
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        formato.setLenient(false);
-
-        Date dataFim = null;
+    public LocalDate inputDataFim() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dataFim = null;
 
         while (dataFim == null) {
             System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-            System.out.println("                    ┃ - Digite a Data de Fim                   ┃");
+            System.out.println("                    ┃ - Digite a Data de Fim (dd/MM/yyyy)      ┃");
             System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
-            String linha = input.nextLine();
+
+            String entrada = input.nextLine();
 
             try {
-                dataFim = formato.parse(linha);
-            } catch (ParseException e) {
-                mensagens.dataError();
+                dataFim = LocalDate.parse(entrada, formatter);
+            } catch (DateTimeParseException e) {
+                System.out.println("⚠️  Formato inválido! Use o formato dd/MM/yyyy (ex: 11/10/2025).");
             }
         }
 

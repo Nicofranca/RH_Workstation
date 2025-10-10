@@ -1,13 +1,14 @@
 package org.rhworkstation.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class SolicitacaoFerias {
 
     private int id;
     private int colaborador_id;
-    private Date data_inicio;
-    private Date data_fim;
+    private LocalDate data_inicio;
+    private LocalDate data_fim;
     private String status_solicitacao;
 
     public SolicitacaoFerias() {}
@@ -16,7 +17,7 @@ public class SolicitacaoFerias {
         this.id = id;
     }
 
-    public SolicitacaoFerias(int id, int colaborador_id, Date data_inicio, Date data_fim, String status_solicitacao) {
+    public SolicitacaoFerias(int id, int colaborador_id, LocalDate data_inicio, LocalDate data_fim, String status_solicitacao) {
         this.id = id;
         this.colaborador_id = colaborador_id;
         this.data_inicio = data_inicio;
@@ -39,17 +40,17 @@ public class SolicitacaoFerias {
         this.colaborador_id = colaborador_id;
     }
 
-    public Date getData_inicio() {
+    public LocalDate getData_inicio() {
         return data_inicio;
     }
-    public void setData_inicio(Date data_inicio) {
+    public void setData_inicio(LocalDate data_inicio) {
         this.data_inicio = data_inicio;
     }
 
-    public Date getData_fim() {
+    public LocalDate getData_fim() {
         return data_fim;
     }
-    public void setData_fim(Date data_fim) {
+    public void setData_fim(LocalDate data_fim) {
         this.data_fim = data_fim;
     }
 

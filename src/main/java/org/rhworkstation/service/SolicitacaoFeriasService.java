@@ -9,6 +9,7 @@ import static org.rhworkstation.context.CacheContext.getCacheCpf;
 
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -25,8 +26,8 @@ public class SolicitacaoFeriasService {
             throw new RuntimeException(e);
         }
 
-        Date dataInicio = input.inputDataInicio();
-        Date dataFim = input.inputDataFim();
+        LocalDate dataInicio = input.inputDataInicio();
+        LocalDate dataFim = input.inputDataFim();
         String status = "PENDENTE";
 
         SolicitacaoFerias solicitacaoFerias = new SolicitacaoFerias(0, colaboradorId, dataInicio, dataFim, status);

@@ -17,8 +17,8 @@ public class SolicitacaoFeriasDAO {
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
             stmt.setInt(1, solicitacaoFerias.getColaborador_id());
-            stmt.setDate(2, (Date) solicitacaoFerias.getData_inicio());
-            stmt.setDate(3, (Date) solicitacaoFerias.getData_fim());
+            stmt.setObject(2, solicitacaoFerias.getData_inicio());
+            stmt.setObject(3, solicitacaoFerias.getData_fim());
             stmt.setString(4, solicitacaoFerias.getStatus_solicitacao());
             stmt.executeUpdate();
 
@@ -39,8 +39,8 @@ public class SolicitacaoFeriasDAO {
                 SolicitacaoFerias solicitacaoFerias = new SolicitacaoFerias(
                         rs.getInt("id"),
                         rs.getInt("colaborador_id"),
-                        rs.getDate("data_inicio"),
-                        rs.getDate("data_fim"),
+                        rs.getDate("data_inicio").toLocalDate(),
+                        rs.getDate("data_fim").toLocalDate(),
                         rs.getString("status_solicitacao")
                 );
 

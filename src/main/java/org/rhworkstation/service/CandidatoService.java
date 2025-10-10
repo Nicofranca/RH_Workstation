@@ -138,9 +138,4 @@ public class CandidatoService {
             throw new RuntimeException(e);
         }
     }
-
-    public static void main(String[] args) {
-        CandidatoService candidatoService = new CandidatoService();
-        candidatoService.OlharVagas();
-    }
 }

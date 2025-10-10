@@ -15,7 +15,6 @@ public class Utils {
 
         do {
             try {
-                System.out.print("                    ");
                 number = input.nextInt();
                 error = false;
             } catch (InputMismatchException e) {
