@@ -1,42 +1,108 @@
-<h1>PARA DAR O PULL REQUEST</h1>
+# 🧠 RH Workstation
 
-<h3>- Na sua Branch</h3>
-<h3>1. git add .</h3>
-<h3>2. git commit -m</h3>
-<h3>3. git push orgin nome-branch</h3>
-<h3>4. Dentro do git, va ate pull request</h3>
-<h3>5. Selecione os que vão confirmar o request</h3>
-<h3>6. Após a verificação, dê o merge</h3>
+**RH Workstation** é um sistema completo de **gestão de recursos humanos**, desenvolvido em **Java**, que visa facilitar o gerenciamento de colaboradores, candidatos, vagas, folhas salariais e solicitações internas de forma organizada e eficiente.
+
+---
+
+## 🏗️ Estrutura do Projeto
+
+O projeto segue uma arquitetura **em camadas**, garantindo melhor manutenção e escalabilidade:
+
+```
+src
+└── main
+    └── java
+        └── org.rhworkstation
+            ├── app              # Ponto de entrada da aplicação
+            ├── connection       # Conexão com o banco de dados
+            ├── context          # Contextos globais (cache e sessão)
+            ├── controller       # Controladores principais da aplicação
+            ├── dao              # Camada de acesso a dados (Data Access Object)
+            ├── dto              # Objetos de transferência de dados
+            ├── exception        # Tratamento de exceções personalizadas
+            ├── model            # Modelos e enums da aplicação
+            ├── service          # Camada de lógica de negócio
+            ├── utils            # Funções utilitárias
+            └── view             # Interface textual (mensagens, inputs e menus)
+```
+
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- ☕ **Java 22 (Corretto)**
+- 🧱 **Maven** para gerenciamento de dependências
+- 🗄️ **MySQL Connector** (integração com banco de dados)
+- 💾 **DTO/DAO Pattern**
+- 🧩 **MVC (Model-View-Controller)**
+
+---
+
+## ⚙️ Funcionalidades
+
+- 👔 **Gestão de Colaboradores**  
+  Cadastro, edição e visualização de funcionários da empresa.
+
+- 🧾 **Folha Salarial**  
+  Cálculo e exibição de informações salariais e descontos.
+
+- 📝 **Controle de Faltas e Férias**  
+  Registro de faltas e solicitações de férias.
+
+- 💼 **Gestão de Vagas e Candidatos**  
+  Criação e acompanhamento de vagas e candidatos.
+
+- 🔐 **Sistema de Login**  
+  Autenticação de usuários com diferentes perfis (Admin, Colaborador, Candidato).
+
+---
+
+## 💻 Como Executar o Projeto
+
+1. **Clone o repositório**
+   ```bash
+   git clone https://github.com/seu-usuario/RH_Workstation.git
+   ```
+
+2. **Abra o projeto em uma IDE (IntelliJ, Eclipse, VS Code com plugin Java)**  
+   Certifique-se de que o **JDK 22+** está configurado corretamente.
+
+3. **Configure o banco de dados MySQL**  
+   - Crie um schema no banco  
+   - Ajuste as credenciais no arquivo de conexão (`Conexao.java`)
+
+4. **Execute a aplicação**  
+   - Rode o arquivo `Main.java` localizado em `org.rhworkstation.app`
+
+---
+
+## 🧩 Padrões de Projeto Utilizados
+
+- **DAO (Data Access Object):** separa a lógica de acesso a dados do restante da aplicação.  
+- **DTO (Data Transfer Object):** facilita a transferência de dados entre camadas.  
+- **Service Layer:** centraliza a lógica de negócio.  
+- **MVC:** organiza a aplicação entre Model, View e Controller.
+
+---
+
+## 📂 Pacotes Principais
+
+| Pacote | Função |
+|--------|--------|
+| `app` | Contém o ponto de entrada da aplicação |
+| `connection` | Gerencia a conexão com o banco de dados |
+| `controller` | Controla a interação entre as camadas |
+| `dao` | Manipula os dados do banco |
+| `dto` | Representa objetos de transporte de dados |
+| `model` | Modelos e enums do domínio |
+| `service` | Contém as regras de negócio |
+| `view` | Exibe mensagens, menus e entradas de dados |
+
+---
+
+## 🧠 Autores
+
+**Lorhan, Nicolas, Sara e Victor**  
+📅 Projeto desenvolvido para fins acadêmicos e profissionais.
 
 
-<h2>O QUE JA TEMOS</h2>
-<h3><br>Admin</h3>
-<h4>- criarColaborador</h4>
-<h4>- editarColaborador</h4>
-<h4>- desligarColaborador</h4>
-<h4>- listarCandidatos</h4>
-<h4>- criarVaga</h4>
-<h4>- excluirVaga</h4>
-<h4>- editarVaga</h4>
-
-<h3><br>Candidato</h3>
-<h4>- criarCandidato</h4>
-<h4>- listarVagas</h4>
-
-<h3><br>Colaborador</h3>
-<h4>- atualizarSenha</h4>
-<h4>- atualizarEmail</h4>
-
-<h3><br>Curriculo</h3>
-<h4>- criarCurriculo</h4>
-<h4>- exluirCurriculo</h4>
-<h4>- editarCurriculo</h4>
-
-<h3><br>Férias</h3>
-<h4>- criarSolicitacao</h4>
-<h4>- listarSolicitacoes</h4>
-<h4>- atualizarStatusSolicitacao</h4>
-<h4>- deletarSolicitacao</h4>
-
-<h3><br>Vaga</h3>
-<h4>- listarVagas</h4>
