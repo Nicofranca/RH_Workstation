@@ -2,17 +2,17 @@ package org.rhworkstation.view;
 
 public class Mensagens {
     public void numberError(){
-        System.err.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.err.println("                    ┃ Você digitou um valor incorreto, tente um número ┃");
-        System.err.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+        System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("                    ┃ Você digitou um valor incorreto, tente um número ┃");
+        System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
 
         return;
     }
 
     public void dataError(){
-        System.err.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.err.println("                    ┃ Data inválida! Digite no formato dd/MM/yyyy. ┃");
-        System.err.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
+        System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("                    ┃ Data inválida! Digite no formato dd/MM/yyyy. ┃");
+        System.out.print  ("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n                    :");
     }
 
     public static void vagaCriadaSucesso(){
@@ -52,15 +52,15 @@ public class Mensagens {
     }
 
     public static void naoHaVagasFaixaSalarial(){
-        System.err.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.err.println("                    ┃       Não há vagas nessa faixa salarial          ┃");
-        System.err.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+        System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("                    ┃       Não há vagas nessa faixa salarial          ┃");
+        System.out.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
     }
 
     public static void naoHaVagasCargo(){
-        System.err.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.err.println("                    ┃  Não há vagas nessa cadastradas para esse cargo! ┃");
-        System.err.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+        System.out.println("                    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("                    ┃  Não há vagas nessa cadastradas para esse cargo! ┃");
+        System.out.println("                    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
     }
 
     public static void main(String[] args) {

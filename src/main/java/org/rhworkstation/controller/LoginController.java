@@ -23,7 +23,7 @@ public class LoginController {
             String tipoUsuario = loginService.autenticarUsuario(email, senha);
 
             if (tipoUsuario == null){
-                System.out.println("Usuario não encontrado!");
+                System.out.println("                    Usuario não encontrado!");
                 return;
             }
 

@@ -31,7 +31,7 @@ public class AdminService {
             }
 
         } catch (RHException e){
-            System.err.println("                    Erro ao realizar login: " + e.getMessage());
+            System.out.println("                    Erro ao realizar login: " + e.getMessage());
             e.printStackTrace();
         }
 

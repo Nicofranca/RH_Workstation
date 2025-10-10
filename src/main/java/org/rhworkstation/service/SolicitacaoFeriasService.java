@@ -23,10 +23,10 @@ public class SolicitacaoFeriasService {
 
         try {
             SolicitacaoFeriasDAO.criarSolicitacao(solicitacaoFerias);
-            System.out.println("                    Solicitação de férias criada com sucesso!");
+            System.out.println("\u001b[32m                    Solicitação de férias criada com sucesso!\u001b[0m");
 
         } catch (RHException e) {
-            System.err.println("                    Erro ao criar solicitação de férias: " + e.getMessage());
+            System.out.println("                    Erro ao criar solicitação de férias: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -42,7 +42,7 @@ public class SolicitacaoFeriasService {
             }
 
         } catch (RHException e) {
-            System.err.println("                    Erro ao listar solicitações de férias: " + e.getMessage());
+            System.out.println("                    Erro ao listar solicitações de férias: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -58,7 +58,7 @@ public class SolicitacaoFeriasService {
             System.out.println("                    Status de solicitação atualizado para " + status.toUpperCase());
 
         } catch (RHException e) {
-            System.err.println("                    Erro ao atulizar status da solicitação: " + e.getMessage());
+            System.out.println("                    Erro ao atulizar status da solicitação: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -68,10 +68,10 @@ public class SolicitacaoFeriasService {
 
         try {
             SolicitacaoFeriasDAO.deletarSolicitacao(id);
-            System.out.println("                    Solicitação de férias deletada com sucesso!");
+            System.out.println("\u001b[32m                    Solicitação de férias deletada com sucesso!\u001b[0m");
 
         } catch (RHException e) {
-            System.err.println("                    Erro ao deletar solicitação: " + e.getMessage());
+            System.out.println("                    Erro ao deletar solicitação: " + e.getMessage());
             e.printStackTrace();
         }
     }
